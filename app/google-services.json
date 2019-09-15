@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1098895161786",
+    "firebase_url": "https://iutassistan.firebaseio.com",
+    "project_id": "iutassistan",
+    "storage_bucket": "iutassistan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098895161786:android:e29e80642f982f31",
+        "android_client_info": {
+          "package_name": "com.example.iutassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098895161786-td951jtdjqa2sg6kvu1o2a28lmbtcltk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.iutassistant",
+            "certificate_hash": "770c96482dc90cff563d0c50e3f7f718f9e1d75a"
+          }
+        },
+        {
+          "client_id": "1098895161786-f1akudag64ci00ht5pba0qupqbu3l929.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE7WvAkYkq5uJDMZwq-XWIVVZ0SgsJvHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098895161786-f1akudag64ci00ht5pba0qupqbu3l929.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
