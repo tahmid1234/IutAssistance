@@ -15,13 +15,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LogIn extends AppCompatActivity {
 
     EditText enteredPassword, confirmPassWord, emailAdd;
-    Button signUp, logIn;
+    Button signUp, logIn,admin;
     private FirebaseAuth mAuth;
     private static String uid;
+    DatabaseReference dbFetch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,7 @@ public class LogIn extends AppCompatActivity {
         signUp = (Button) findViewById(R.id.SignUp);
         logIn = (Button) findViewById(R.id.LogIn);
 
+        admin=(Button) findViewById(R.id.admin);
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,9 +66,30 @@ public class LogIn extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 
                                     uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                   dbFetch=FirebaseDatabase.getInstance().getReference("User").child(uid).child("profession");
+                                   dbFetch.addValueEventListener(new ValueEventListener() {
+                                       @Override
+                                       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                           System.out.println("I will tell you all about when i see you again,see you again");
+                                           //String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                           String prof =String.valueOf(dataSnapshot.child("profession").getValue());
+                                           if(prof.equals("Students"))
+                                               startActivity(new Intent(getApplicationContext(),home_page_student.class));
+                                           else
+                                               startActivity(new Intent(getApplicationContext(),TeachersHomePage.class));
+                                           //System.out.println("University"+user.getUni());
+                                           Toast.makeText(getApplicationContext(), "Post send", Toast.LENGTH_LONG).show();
+                                       }
 
+                                       @Override
+                                       public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                       }
+                                   });
                                     setUid(uid);
                                     startActivity(new Intent(getApplicationContext(),home_page_student.class));
+
+
 
                                    // startActivity(new Intent(getApplicationContext(), Welcome.class));
                                 } else {
@@ -79,7 +107,14 @@ public class LogIn extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), UniversitySelectingClass.class));
+            }
+        });
+
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }

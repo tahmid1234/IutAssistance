@@ -125,5 +125,17 @@
         android:text="Sign Up "
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
+    <Button
+        android:id="@+id/admin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="30dp"
+
+        android:layout_marginBottom="150dp"
+        android:backgroundTint="#164E0F"
+        android:text="Sign in as Admin "
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
 </RelativeLayout>

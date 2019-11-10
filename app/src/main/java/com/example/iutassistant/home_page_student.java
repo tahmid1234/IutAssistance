@@ -1,5 +1,6 @@
 package com.example.iutassistant;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.iutassistant.AdapterClasses.PostAdapter;
@@ -78,11 +79,18 @@ public class home_page_student extends AppCompatActivity
             }
         });
 
+
+
         postbutton = findViewById(R.id.postid);
         postedit = findViewById(R.id.posteditid);
         databaseReference = FirebaseDatabase.getInstance().getReference("Post");
 
-
+        profileimageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Profile.class));
+            }
+        });
         postbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -150,12 +158,13 @@ public class home_page_student extends AppCompatActivity
     }
 
     public void saveData() {
-      //  String post = postedit.getText().toString().trim();
+        //  String post = postedit.getText().toString().trim();
 
-       // final String[] poster_name = new String[1];
-         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        // final String[] poster_name = new String[1];
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         key1=databaseReference.push().getKey();
         dbNameFechingRef=FirebaseDatabase.getInstance().getReference().child("Students").child(uid);
+
 
 
         dbNameFechingRef.addValueEventListener(new ValueEventListener() {
@@ -166,7 +175,7 @@ public class home_page_student extends AppCompatActivity
                 String poster_name =dataSnapshot.child("name").getValue().toString();
                 String post = postedit.getText().toString().trim();
                 Post post1 = new Post(poster_name, post);
-                 key1=databaseReference.push().getKey()+uid;
+                key1=databaseReference.push().getKey()+uid;
                 databaseReference.child(key1).setValue(post1);
                 //System.out.println("University"+user.getUni());
                 Toast.makeText(getApplicationContext(), "Post send", Toast.LENGTH_LONG).show();
@@ -182,9 +191,9 @@ public class home_page_student extends AppCompatActivity
         });
         System.out.println("It been a long without my friend");
         System.out.println(uid);
-       // String key = databaseReference.push().getKey();
+        // String key = databaseReference.push().getKey();
 
-       // Post post1 = new Post(poster_name[0], post);
+        // Post post1 = new Post(poster_name[0], post);
 
 
         //databaseReference.child(uid).setValue(post1);

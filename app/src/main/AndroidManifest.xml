@@ -9,12 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Profile"></activity>
+        <activity android:name=".CourseSelection" />
+        <activity android:name=".LogIn" /> <!-- <service -->
+        <!--  -->
+        <!-- android:name=".MyMessage" -->
+        <!-- android:enabled="true" -->
+        <!-- android:exported="true" -->
+        <!-- &gt;</service> -->
+        <service android:name=".MyMessage">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".Message" />
+        <activity android:name=".UniversitySelectingClass" />
+        <activity
+            android:name=".TeachersHomePage"
+            android:label="@string/title_activity_teachers_home_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AdminLoginActivity" />
         <activity
             android:name=".home_page_student"
             android:label="@string/title_activity_home_page"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Welcome" />
-        <activity android:name=".LogIn">
+        <activity android:name=".splash_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +43,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".signup_student" />
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Information" />
+        <activity android:name=".MainActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"

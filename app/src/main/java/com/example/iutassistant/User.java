@@ -1,19 +1,36 @@
 package com.example.iutassistant;
 
 public class User {
+
+
     private String name,id,dept,prog,uni,profession,sec;
 
     public User() {
     }
+    public void setUni(String uni) {
+        this.uni = uni;
+    }
 
-    public User(String id, String name, String dept, String prog, String sec, String uni,String profession) {
+    public User(String id, String name, String dept, String prog, String sec, String profession,String uni) {
         this.name = name;
         this.id = id;
         this.dept = dept;
         this.prog = prog;
-        this.uni = uni;
+
         this.profession = profession;
         this.sec=sec;
+        this.uni=uni;
+    }
+
+    public User(String id, String name, String dept, String profession,String uni) {
+        this.name = name;
+        this.id = id;
+        this.dept = dept;
+
+
+        this.profession = profession;
+
+        this.uni=uni;
     }
 
     public String getName() {
