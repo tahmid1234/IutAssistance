@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/iut"
+        android:alpha=".1"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10"
+        >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:orientation="horizontal"
+
+        >
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Search"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Student Id: "
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/Attendence_id"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/present_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Present"
+            android:layout_gravity="center"
+            android:layout_margin="25dp"
+            android:background="#15692A"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+
+            />
+
+        <Button
+            android:id="@+id/absent_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Absent"
+            android:layout_gravity="center"
+            android:layout_margin="25dp"
+            android:background="#F54B0C"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            />
+        <Button
+            android:id="@+id/late_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Late"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="#F9EB17"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

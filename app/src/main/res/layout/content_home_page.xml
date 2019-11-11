@@ -230,7 +230,7 @@
                         android:padding="20dp"
                         android:layout_weight="3"
                         android:id="@+id/moreid"
-                        android:src="@drawable/more_icon"
+                        android:src="@drawable/attendence_sheet"
                         />
 
                     <TextView
