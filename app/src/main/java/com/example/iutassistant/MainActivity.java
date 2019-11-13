@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        databaseReference= FirebaseDatabase.getInstance().getReference();
+        //databaseReference= FirebaseDatabase.getInstance().getReference("Profession");
         dbref=FirebaseDatabase.getInstance().getReference("University");
         String profession=universitySelectingClass.getProffesion();
         addItemsOnDept();
@@ -144,23 +144,26 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-
-                                        String university= universitySelectingClass.getUid();
+                                        System.out.println("professionnnnnnnnnnnnnnnnnnnnnnn");
+                                        final String university= universitySelectingClass.getUid();
                                         final String profession=universitySelectingClass.getProffesion();
-                                        User information;
-                                        if (profession=="Students")
+                                        final User information;
+                                        if (profession=="Students"){
                                             information=new User(id,name,sec,prog,dept,profession,university);
+                                          }
                                         else
                                             information=new User(id,name,dept,profession,university);
 
                                         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                        System.out.println("Laal profession");
+                                        System.out.println("Laalllllllllllllllll profession");
                                         System.out.println(profession);
                                         setUid(uid);
 
 
-                                        dbref.child(university).child(dept).child(prog).child(sec).child("UID").setValue(uid);//hierarchy of university to student uid is set
-                                        FirebaseDatabase.getInstance().getReference(profession).child(uid);
+                                        //dbref.child(university).child(dept).child(prog).child(sec).child("UID").setValue(uid);//hierarchy of university to student uid is set
+                                        FirebaseDatabase.getInstance().getReference(profession).child(uid).child("name").setValue(name);
+                                        //FirebaseDatabase.getInstance().getReference("University").child("IUT").child("StudentsInSection").child("id").setValue(uid);
+                                        //databaseReference.child("profession").child(uid).setValue("");
                                         FirebaseDatabase.getInstance().getReference("User").child(uid).setValue(information).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
@@ -169,12 +172,15 @@ public class MainActivity extends AppCompatActivity {
                                                 System.out.println("okay2");
 
                                                 System.out.println(profession);
-                                                if(profession.equals("Students"))
-                                                    startActivity(new Intent(getApplicationContext(), home_page_student.class));
+                                                if(profession.equals("Students")){
+                                                    User partialInfo;
+                                                    partialInfo=new User(uid,id);
+                                                    FirebaseDatabase.getInstance().getReference("University").child(university).child("StudentsInSection").child(sec).child(id).setValue(uid);
+                                                    startActivity(new Intent(getApplicationContext(), home_page_student.class));}
                                                     else
                                                     startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));
 
-                                                    System.out.println("Profession 2"+profession);
+                                                    System.out.println("Profession 2222222222222222"+profession);
                                                 //startActivity(new Intent(getApplicationContext(), LogIn.class));
                                                 Toast.makeText(MainActivity.this, profession, Toast.LENGTH_SHORT).show();
                                                 System.out.println(profession);
@@ -253,6 +259,7 @@ public class MainActivity extends AppCompatActivity {
         list.add("CEE17  2");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
+
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         inputSec.setAdapter(dataAdapter);
     }

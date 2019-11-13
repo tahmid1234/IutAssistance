@@ -66,19 +66,22 @@ public class LogIn extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 
                                     uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                   dbFetch=FirebaseDatabase.getInstance().getReference("User").child(uid).child("profession");
+                                    System.out.println(uid+"      XXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                                   dbFetch=FirebaseDatabase.getInstance().getReference("User").child(uid);
                                    dbFetch.addValueEventListener(new ValueEventListener() {
                                        @Override
                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                            System.out.println("I will tell you all about when i see you again,see you again");
                                            //String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                                            String prof =String.valueOf(dataSnapshot.child("profession").getValue());
+                                           Toast.makeText(getApplicationContext(), prof, Toast.LENGTH_LONG).show();
                                            if(prof.equals("Students"))
                                                startActivity(new Intent(getApplicationContext(),home_page_student.class));
                                            else
                                                startActivity(new Intent(getApplicationContext(),TeachersHomePage.class));
                                            //System.out.println("University"+user.getUni());
                                            Toast.makeText(getApplicationContext(), "Post send", Toast.LENGTH_LONG).show();
+                                           System.out.println(prof+" ***********************************");
                                        }
 
                                        @Override
@@ -87,7 +90,12 @@ public class LogIn extends AppCompatActivity {
                                        }
                                    });
                                     setUid(uid);
-                                    startActivity(new Intent(getApplicationContext(),home_page_student.class));
+                                  //  startActivity(new Intent(getApplicationContext(),home_page_student.class));
+
+                                   // home_page_student home_page_student= new home_page_student();
+                                   // home_page_student.setDatabase();
+                                    //home_page_student.getData();
+                                   // getData();
 
 
 

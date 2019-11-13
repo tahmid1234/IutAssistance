@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Attendance"></activity>
+        <activity android:name=".AttendanceSelection"></activity>
+        <activity android:name=".Attendance" />
         <activity android:name=".Profile" />
         <activity android:name=".CourseSelection" />
         <activity android:name=".LogIn" /> <!-- <service -->

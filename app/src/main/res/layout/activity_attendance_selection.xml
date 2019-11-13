@@ -95,37 +95,5 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/SelectBtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="30dp"
 
-        android:layout_marginBottom="11dp"
-        android:backgroundTint="#164E0F"
-        android:text="Select "
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/attendance"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="30dp"
-
-        android:layout_marginBottom="11dp"
-        android:backgroundTint="#164E0F"
-        android:text="Attendance "
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
-
-
-
-
-
-    </LinearLayout>
-
-
-
+</LinearLayout>

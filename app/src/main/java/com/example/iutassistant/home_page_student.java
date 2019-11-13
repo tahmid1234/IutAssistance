@@ -44,7 +44,7 @@ public class home_page_student extends AppCompatActivity
 
     private FirebaseAuth mAuth;
     private Spinner post_student_spinner;
-    private ImageView profileimageview, moreimageview;
+    private ImageView profileimageview, moreimageview,message;
     private Button postbutton;
     private EditText postedit;
     private ListView postList;
@@ -52,13 +52,17 @@ public class home_page_student extends AppCompatActivity
     String key1;
     User user;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        databaseReference=FirebaseDatabase.getInstance().getReference("Post");
+       databaseReference=FirebaseDatabase.getInstance().getReference("Post");
+       // setDatabase();
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -70,12 +74,12 @@ public class home_page_student extends AppCompatActivity
 
         moreimageview = findViewById(R.id.moreid);
         postList = findViewById(R.id.postList);
-
-
+        getData();
         moreimageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getData();
+                startActivity(new Intent(getApplicationContext(), CourseSelection.class));
+
             }
         });
 
@@ -83,6 +87,7 @@ public class home_page_student extends AppCompatActivity
 
         postbutton = findViewById(R.id.postid);
         postedit = findViewById(R.id.posteditid);
+        profileimageview = findViewById(R.id.profile_id);
         databaseReference = FirebaseDatabase.getInstance().getReference("Post");
 
         profileimageview.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +99,9 @@ public class home_page_student extends AppCompatActivity
         postbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getData();
                 saveData();
+                getData();
             }
         });
     }
@@ -162,6 +169,7 @@ public class home_page_student extends AppCompatActivity
 
         // final String[] poster_name = new String[1];
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        System.out.println(uid);
         key1=databaseReference.push().getKey();
         dbNameFechingRef=FirebaseDatabase.getInstance().getReference().child("Students").child(uid);
 
@@ -170,18 +178,24 @@ public class home_page_student extends AppCompatActivity
         dbNameFechingRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                System.out.println("I will tell you all about when i see you again,see you again");
-                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                String poster_name =dataSnapshot.child("name").getValue().toString();
-                String post = postedit.getText().toString().trim();
-                Post post1 = new Post(poster_name, post);
-                key1=databaseReference.push().getKey()+uid;
-                databaseReference.child(key1).setValue(post1);
-                //System.out.println("University"+user.getUni());
-                Toast.makeText(getApplicationContext(), "Post send", Toast.LENGTH_LONG).show();
 
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
+                        System.out.println("I will tell you all about when i see you again,see you again");
+                        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        System.out.println("name");
+                        String poster_name = String.valueOf(dataSnapshot.child("name").getValue());
+                        System.out.println(uid);
+                        String post = postedit.getText().toString().trim();
+                        Post post1 = new Post(poster_name, post);
+                        key1 = databaseReference.push().getKey() + uid;
+                        databaseReference.child(key1).setValue(post1);
+                        //System.out.println("University"+user.getUni());
+                        Toast.makeText(getApplicationContext(), "Post sent", Toast.LENGTH_LONG).show();
 
+                    }
+                }
             }
 
             @Override
@@ -209,7 +223,7 @@ public class home_page_student extends AppCompatActivity
 
         final ArrayList<Post> postArrayList = new ArrayList<>();
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("Post").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -226,7 +240,12 @@ public class home_page_student extends AppCompatActivity
 
                 Collections.reverse(postArrayList);
                 PostAdapter postAdapter = new PostAdapter(home_page_student.this, postArrayList);
+               //  ListView postList;
+               // postList= findViewById(R.id.postList);
                 postList.setAdapter(postAdapter);
+                Toast.makeText(getApplicationContext(), "Post sent222", Toast.LENGTH_LONG).show();
+                System.out.println("OKAY");
+
 
             }
 
@@ -235,5 +254,8 @@ public class home_page_student extends AppCompatActivity
 
             }
         });
+
+
     }
+
 }
