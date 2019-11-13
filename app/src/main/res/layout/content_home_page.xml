@@ -55,7 +55,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"
+        android:layout_weight="5"
         android:orientation="vertical"
         >
 
@@ -237,7 +237,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="More"
+                        android:text="Course Selection"
                         android:gravity="center"/>
 
                 </LinearLayout>
@@ -311,13 +311,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_weight="5"
         >
 
 
         <ListView
             android:id="@+id/postList"
             android:layout_width="match_parent"
+            android:layout_margin="20dp"
             android:layout_height="wrap_content"/>
 
 

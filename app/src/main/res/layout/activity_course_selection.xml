@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal"
         android:weightSum="10">
 
@@ -40,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal"
         android:weightSum="10">
 
@@ -70,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal"
         android:weightSum="10">
 
@@ -101,8 +102,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="30dp"
-
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="15dp"
         android:backgroundTint="#164E0F"
         android:text="Select "
         android:textColor="#FFFFFF"
@@ -114,15 +114,11 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="30dp"
-
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="15dp"
         android:backgroundTint="#164E0F"
         android:text="Attendance "
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
-
-
-
 
 
     </LinearLayout>

@@ -21,36 +21,47 @@
         android:weightSum="10"
         >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:layout_weight="4"
+            >
+            <Button
+                android:id="@+id/search_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search"
+                />
 
-    <LinearLayout
+
+        </LinearLayout>
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4"
+        android:layout_weight="2"
         android:orientation="horizontal"
+            android:layout_marginHorizontal="10dp"
 
         >
 
-        <Button
-            android:id="@+id/search_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Search"
-            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="Student Id: "
-            android:textColor="#000000"
+            android:layout_marginTop="40dp"
+            android:textColor="#036F06"
             android:textSize="25dp"
             android:textStyle="bold" />
         <EditText
             android:layout_width="match_parent"
             android:id="@+id/Attendence_id"
+            android:textColor="#036F06"
+            android:layout_marginTop="40dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+
             />
 
 
@@ -67,7 +78,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Present"
-            android:layout_gravity="center"
             android:layout_margin="25dp"
             android:background="#15692A"
             android:textColor="#FFFFFF"
@@ -80,7 +90,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Absent"
-            android:layout_gravity="center"
             android:layout_margin="25dp"
             android:background="#F54B0C"
             android:textColor="#FFFFFF"
@@ -91,7 +100,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Late"
-            android:layout_gravity="center"
             android:layout_margin="20dp"
             android:background="#F9EB17"
             android:textColor="#FFFFFF"
@@ -101,6 +109,26 @@
 
 
     </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            >
+
+            <Button
+                android:id="@+id/back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BACK" />
+
+
+        </LinearLayout>
+
+
+
 
 
 
