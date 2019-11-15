@@ -22,7 +22,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -175,7 +177,10 @@ public class MainActivity extends AppCompatActivity {
                                                 if(profession.equals("Students")){
                                                     User partialInfo;
                                                     partialInfo=new User(uid,id);
-                                                    FirebaseDatabase.getInstance().getReference("University").child(university).child("StudentsInSection").child(sec).child(id).setValue(uid);
+
+                                                    String timeStamp =new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+                                                    System.out.println(sec+"HOItese naki ***********************************"+id+"   "+timeStamp);
+                                                    FirebaseDatabase.getInstance().getReference("University/IUT/StudentsInSection").child(sec).child(id).setValue(uid);
                                                     startActivity(new Intent(getApplicationContext(), home_page_student.class));}
                                                     else
                                                     startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));
