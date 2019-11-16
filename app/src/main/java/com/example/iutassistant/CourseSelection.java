@@ -26,6 +26,7 @@ public class CourseSelection extends AppCompatActivity {
     DatabaseReference courseDatabase,dbNameFechingRef;
     private Button selectBTN,attendanceBTN;
     public String sec,crs;
+    public static String T_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class CourseSelection extends AppCompatActivity {
         addItemsOnSextion();
 
        selectButton();
+       attendanceBTN();
     }
 
     public void addItemsOnCourses() {
@@ -47,6 +49,7 @@ public class CourseSelection extends AppCompatActivity {
 
          System.out.println(sec+" &&&&&&&&&&&&&&&&&&&&   "+crs);
         final List<String> list = new ArrayList<String>();
+
         final String[] path = {""};
         courseDatabase=FirebaseDatabase.getInstance().getReference("University/IUT");
         final ArrayList<String> statesArrayList= new ArrayList<>();
@@ -56,6 +59,7 @@ public class CourseSelection extends AppCompatActivity {
             {System.out.println("HOI ns krno");}
                                                        @Override
                                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                                           list.clear();
                                                            System.out.println("HOI  krno");
                                                           // for(DataSnapshot uniqueKeySnapshot : dataSnapshot.getChildren()){
                                                                //Loop 1 to go through all the child nodes of users
@@ -96,7 +100,7 @@ public class CourseSelection extends AppCompatActivity {
             {System.out.println("HOI ns krno");}
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                list.clear();
                 System.out.println("HOI  krno");
                 // for(DataSnapshot uniqueKeySnapshot : dataSnapshot.getChildren()){
                 //Loop 1 to go through all the child nodes of users
@@ -146,7 +150,7 @@ public class CourseSelection extends AppCompatActivity {
 
 
                 System.out.println(sec+"    ****section  "+crs);
-                dbNameFechingRef= FirebaseDatabase.getInstance().getReference().child("Teachers").child(uid);
+                dbNameFechingRef= FirebaseDatabase.getInstance().getReference("Teachers").child(uid);
 
                 System.out.println(uid+" ******uid");
 
@@ -165,6 +169,11 @@ public class CourseSelection extends AppCompatActivity {
                                 nameT=name;
                                 FirebaseDatabase.getInstance().getReference("University/IUT").child("TEACHES").child(sec).child(crs).setValue(name);
                                 //  Toast.makeText(getApplicationContext(), "Post sent", Toast.LENGTH_LONG).show();
+
+                                FirebaseDatabase.getInstance().getReference("University/IUT").child("Section_assigned_Teacher").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(sec).setValue(crs);
+
+                                FirebaseDatabase.getInstance().getReference("University/IUT").child("Courses_assigned_Teacher").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(crs).setValue(sec);
+
 
                             }
 
@@ -191,6 +200,93 @@ public class CourseSelection extends AppCompatActivity {
             }
         });
 
+
+
+    }
+
+    void attendanceBTN(){
+        System.out.println("Attendace a ashche ********");
+        attendanceBTN=(Button)findViewById(R.id.attendance);
+
+        attendanceBTN.setOnClickListener(new View.OnClickListener() {
+            { System.out.println("View a ashche ********");}
+            @Override
+            public void onClick(View view) {
+                final String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                final String  sec=section.getSelectedItem().toString();
+                final String crs=course.getSelectedItem().toString();
+
+
+
+
+
+
+                System.out.println(sec+"    ****section  "+crs);
+                dbNameFechingRef= FirebaseDatabase.getInstance().getReference("Teachers").child(uid);
+
+                System.out.println(uid+" ******uid");
+
+                dbNameFechingRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange( DataSnapshot dataSnapshot) {
+                        System.out.println(" check******uid"+dataSnapshot.exists());
+                        if (dataSnapshot.exists()) {
+                            System.out.println(" check******uid"+dataSnapshot.child(uid).getChildren());
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                                System.out.println("I will tell you all about when i see you again,,,,,see you again");
+                                //String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                System.out.println("name");
+                                String name = String.valueOf(dataSnapshot.child("name").getValue());
+                                System.out.println(name+" protidin");
+                                nameT=name;
+                                T_name=name;
+                                System.out.println(T_name+" for  ytffhgfghfhjfghfjgfhjfghfhfhgjghfgjghfvhjfhjghjfjhfhjfghfghfghf  set T_name ");
+                                setT_T_name(name);
+                                FirebaseDatabase.getInstance().getReference("University/IUT").child("TEACHES").child(sec).child(crs).setValue(name);
+                                //  Toast.makeText(getApplicationContext(), "Post sent", Toast.LENGTH_LONG).show();
+
+
+                            }
+                            System.out.println(T_name+"if    ytffhgfghfhjfghfjgfhjfghfhfhgjghfgjghfvhjfhjghjfjhfhjfghfghfghf  set T_name ");
+
+                        }
+                        System.out.println("button a ashche ********"+T_name);
+                        System.out.println(sec+" **********sec "+crs);
+                        StudentsAttendanceList studentsAttendanceList=new StudentsAttendanceList("University/IUT/StudentsInSection",sec);
+                        studentsAttendanceList.setStudentsAttendanceListPath(sec,crs,T_name);
+                        System.out.println("returned from class a ashche ********");
+                        startActivity(new Intent(getApplicationContext(), Attendance.class));
+
+
+
+
+
+
+                    }
+
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+
+            }
+        });
+
+    }
+    void setT_T_name(String T_name){
+         this.T_name=T_name;
+        System.out.println(T_name+" ytffhgfghfhjfghfjgfhjfghfhfhgjghfgjghfvhjfhjghjfjhfhjfghfghfghf  set T_name ");
+    }
+    String getT_name(){
+        System.out.println(T_name+" get   T_name ");
+         return T_name;
     }
 
 

@@ -67,6 +67,7 @@ public class Profile extends AppCompatActivity {
                         uni.setText(unis);
                         prof.setText(professions);
                         dept.setText(depts);
+                        System.out.println("Yooyooo");
 
 
                     }

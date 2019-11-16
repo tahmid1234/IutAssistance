@@ -27,14 +27,27 @@
             android:gravity="right"
             android:layout_weight="4"
             >
-            <Button
-                android:id="@+id/search_btn"
+
+            <TextView
+                android:id="@+id/sec_name"
+                android:layout_width="69dp"
+                android:layout_height="46dp"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/teacher_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Search"
-                />
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="TextView" />
 
-
+            <TextView
+                android:id="@+id/crs_name"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="TextView" />
         </LinearLayout>
 
         <LinearLayout
@@ -55,14 +68,15 @@
             android:textColor="#036F06"
             android:textSize="25dp"
             android:textStyle="bold" />
-        <EditText
-            android:layout_width="match_parent"
-            android:id="@+id/Attendence_id"
-            android:textColor="#036F06"
-            android:layout_marginTop="40dp"
-            android:layout_height="wrap_content"
 
-            />
+            <EditText
+                android:id="@+id/Attendence_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:textColor="#036F06"
+
+                />
 
 
     </LinearLayout>

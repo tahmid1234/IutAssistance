@@ -17,9 +17,12 @@ public class PostAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<Post> posts;
 
+
+
     public PostAdapter(Context mContext, ArrayList<Post> posts) {
         this.mContext = mContext;
         this.posts = posts;
+        System.out.println(posts.size()+" ****post  size 2*****");
     }
 
     @Override
