@@ -170,6 +170,11 @@ public class CourseSelection extends AppCompatActivity {
                                 FirebaseDatabase.getInstance().getReference("University/IUT").child("TEACHES").child(sec).child(crs).setValue(name);
                                 //  Toast.makeText(getApplicationContext(), "Post sent", Toast.LENGTH_LONG).show();
 
+                                FirebaseDatabase.getInstance().getReference("University/IUT").child("Section_assigned_Teacher").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(sec).setValue(crs);
+
+                                FirebaseDatabase.getInstance().getReference("University/IUT").child("Courses_assigned_Teacher").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(crs).setValue(sec);
+
+
                             }
 
                         }

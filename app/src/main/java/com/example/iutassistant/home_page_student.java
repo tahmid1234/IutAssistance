@@ -78,7 +78,7 @@ public class home_page_student extends AppCompatActivity
         moreimageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), CourseSelection.class));
+                startActivity(new Intent(getApplicationContext(), ShowAttendance.class));
 
             }
         });
