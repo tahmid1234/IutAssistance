@@ -29,6 +29,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -44,7 +46,7 @@ public class TeachersHomePage extends AppCompatActivity
 
         implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
-    private Spinner post_student_spinner;
+
     private ImageView profileimageview, moreimageview,courses;
     private Button postbutton,profileBtn;
     private EditText postedit;
@@ -78,6 +80,13 @@ public class TeachersHomePage extends AppCompatActivity
         getData();
 
 
+
+
+
+
+
+
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Post");
 
         moreimageview.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +104,10 @@ public class TeachersHomePage extends AppCompatActivity
             }
         });
 
+
+
+
+
         postbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,6 +116,8 @@ public class TeachersHomePage extends AppCompatActivity
             }
         });
     }
+
+
 
 
     @Override
