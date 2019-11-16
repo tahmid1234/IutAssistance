@@ -57,12 +57,14 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:orientation="vertical"
+        android:weightSum="10"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="0dp"
             android:orientation="vertical"
+            android:layout_weight="5"
             android:weightSum="2">
 
             <LinearLayout
@@ -117,7 +119,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="Message"
+                        android:text="Quiz"
                         android:gravity="center"/>
 
                 </LinearLayout>
@@ -147,11 +149,6 @@
                         android:gravity="center"/>
 
                 </LinearLayout>
-
-
-
-
-
 
 
 
@@ -262,43 +259,52 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="15dp"
-
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:layout_weight="5"
             android:weightSum="10"
+            android:background="#EFF3EC"
             >
 
             <EditText
-                android:layout_width="0dp"
-                android:layout_weight="6"
-                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_weight="7"
+                android:layout_height="140dp"
                 android:background="#1242"
                 android:hint="Write Your Post Here"
                 android:id="@+id/posteditid"
                 android:gravity="center"
                 />
 
+                <Spinner
+
+                    android:id="@+id/post_spinner_id_1"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    >
+
+                </Spinner>
+
+
             <Button
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
                 android:id="@+id/postid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center"
                 android:text="Post"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#164E0F"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/roundbutton"
 
                 />
-            <Spinner
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:id="@+id/post_spinner_id"
-                android:layout_gravity="center"
-                >
 
-            </Spinner>
 
         </LinearLayout>
 

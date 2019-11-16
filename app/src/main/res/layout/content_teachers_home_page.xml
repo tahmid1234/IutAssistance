@@ -16,7 +16,9 @@
         android:layout_weight="2"
         android:orientation="horizontal"
         android:weightSum="10"
-        android:background="#164E0F">
+        android:background="#164E0F"
+        android:visibility="gone"
+        >
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
@@ -119,7 +121,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="Message"
+                        android:text="Quiz"
                         android:gravity="center"/>
 
                 </LinearLayout>
@@ -230,16 +232,16 @@
                     <ImageView
                         android:id="@+id/moreid"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_weight="3"
                         android:padding="20dp"
-                        android:src="@drawable/more_icon" />
+                        android:src="@drawable/attendence_sheet" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="More"
+                        android:text="Course Selection"
                         android:gravity="center"/>
 
                 </LinearLayout>
@@ -266,33 +268,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
-
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:background="#EFF3EC"
             android:weightSum="10"
             >
 
+<<<<<<< HEAD
 
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:id="@+id/postid"
-                android:text="Post"
-
+=======
+            <EditText
+                android:id="@+id/posteditid"
+                android:layout_width="match_parent"
+                android:layout_weight="7"
+                android:layout_height="120dp"
+                android:background="#1242"
+                android:hint="Write Your Post Here"
+                android:gravity="center"
                 />
-            <Spinner
-                android:layout_width="0dp"
+>>>>>>> 87475d60024c95be0772b78b553c2d3a5c4d4868
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:id="@+id/post_spinner_id"
-                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="10"
                 >
 
-            </Spinner>
+
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/postid"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:text="Post"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#164E0F"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/roundbutton"
+
+                />
+
 
         </LinearLayout>
 

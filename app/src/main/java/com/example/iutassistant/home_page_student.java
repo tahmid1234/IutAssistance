@@ -29,6 +29,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -39,11 +41,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 
+//todo: gmnhj,khujk,jlk
+
 public class home_page_student extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth mAuth;
-    private Spinner post_student_spinner;
+
     private ImageView profileimageview, moreimageview,message;
     private Button postbutton;
     private EditText postedit;
@@ -82,6 +86,8 @@ public class home_page_student extends AppCompatActivity
 
             }
         });
+
+
 
 
 
