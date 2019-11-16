@@ -22,6 +22,7 @@ public class Attendance_Adapter extends BaseAdapter {
     public Attendance_Adapter(Context mContext, ArrayList<Attendance_detail> attendance_details) {
         this.attendance_details=attendance_details;
         this.mContext=mContext;
+        System.out.println(attendance_details.size()+" ****atttttt  size 2*****");
     }
 
     @Override
