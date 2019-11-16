@@ -271,15 +271,7 @@
             android:weightSum="10"
             >
 
-            <EditText
-                android:layout_width="0dp"
-                android:layout_weight="6"
-                android:layout_height="100dp"
-                android:background="#1242"
-                android:hint="Write Your Post Here"
-                android:id="@+id/posteditid"
-                android:gravity="center"
-                />
+
 
             <Button
                 android:layout_width="0dp"
@@ -317,10 +309,7 @@
         >
 
 
-        <ListView
-            android:id="@+id/postList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
 
 
     </LinearLayout>

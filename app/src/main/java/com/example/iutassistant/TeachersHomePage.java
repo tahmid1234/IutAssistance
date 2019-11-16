@@ -47,8 +47,8 @@ public class TeachersHomePage extends AppCompatActivity
     private Spinner post_student_spinner;
     private ImageView profileimageview, moreimageview,courses;
     private Button postbutton,profileBtn;
-    private EditText postedit;
-    private ListView postList;
+   // private EditText postedit;
+   // private ListView postList;
     DatabaseReference databaseReference,dbNameFechingRef;
     String key1;
     User user;
@@ -70,12 +70,12 @@ public class TeachersHomePage extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         moreimageview = findViewById(R.id.moreid);
-        postList = findViewById(R.id.postList);
+      //  postList = findViewById(R.id.postList);
         courses=findViewById(R.id.courseSelection);
         postbutton = findViewById(R.id.postid);
-        postedit = findViewById(R.id.posteditid);
+      //  postedit = findViewById(R.id.posteditid);
         profileimageview = findViewById(R.id.profile_id);
-        getData();
+      //  getData();
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Post");
@@ -98,8 +98,8 @@ public class TeachersHomePage extends AppCompatActivity
         postbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveData();
-                getData();
+             //   saveData();
+              //  getData();
             }
         });
     }
@@ -162,7 +162,7 @@ public class TeachersHomePage extends AppCompatActivity
         return true;
     }
 
-    public void saveData() {
+ /*   public void saveData() {
         //  String post = postedit.getText().toString().trim();
 
         // final String[] poster_name = new String[1];
@@ -177,8 +177,8 @@ public class TeachersHomePage extends AppCompatActivity
                // System.out.println("I will tell you all about when i see you again,see you again");
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 String poster_name =String.valueOf(dataSnapshot.child("name").getValue());//dataSnapshot.child("name").getValue().toString();
-                String post = postedit.getText().toString().trim();
-                Post post1 = new Post(poster_name, post);
+              //  String post = postedit.getText().toString().trim();
+               // Post post1 = new Post(poster_name, post);
                 key1=databaseReference.push().getKey()+uid;
                 databaseReference.child(key1).setValue(post1);
                 //System.out.println("University"+user.getUni());
@@ -239,5 +239,5 @@ public class TeachersHomePage extends AppCompatActivity
 
             }
         });
-    }
+    }*/
 }
