@@ -273,9 +273,7 @@
             android:weightSum="10"
             >
 
-<<<<<<< HEAD
 
-=======
             <EditText
                 android:id="@+id/posteditid"
                 android:layout_width="match_parent"
@@ -285,7 +283,6 @@
                 android:hint="Write Your Post Here"
                 android:gravity="center"
                 />
->>>>>>> 87475d60024c95be0772b78b553c2d3a5c4d4868
 
             <LinearLayout
                 android:layout_width="match_parent"

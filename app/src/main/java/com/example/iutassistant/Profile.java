@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +26,7 @@ public class Profile extends AppCompatActivity {
     private ProfileAdapter adapter;
     private List<ProfileInfo> profileListInfo;
     TextView name,id,uni,prof,dept;
+    private Spinner residential_status_spinner,blood_group_spinner,hall_spinner;
 
     DatabaseReference dbprofiles;
 
@@ -33,6 +36,56 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         System.out.println("ProfileInfo ************");
+
+
+
+        residential_status_spinner = findViewById(R.id.res_status_id);
+        blood_group_spinner = findViewById(R.id.blood_id);
+        hall_spinner = findViewById(R.id.hall_id);
+
+
+
+        final ArrayList<String> hall_of_residence = new ArrayList<>();
+        hall_of_residence.add("South Hall of Residence");
+        hall_of_residence.add("North Hall of Residence");
+
+        final ArrayAdapter<String> hall_adapter =  new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item,hall_of_residence);
+        hall_spinner.setAdapter(hall_adapter);
+
+
+
+
+
+        final ArrayList<String> residential_status = new ArrayList<>();
+        residential_status.add("Residential");
+        residential_status.add("Non-Residential");
+
+        final ArrayAdapter<String> residential_status_adapter =  new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item,residential_status);
+        residential_status_spinner.setAdapter(residential_status_adapter);
+
+
+
+
+
+
+
+        final ArrayList<String> blood_group = new ArrayList<>();
+        blood_group.add("A-positive");
+        blood_group.add("A-negative");
+        blood_group.add("B-positive");
+        blood_group.add("B-negative");
+        blood_group.add("AB-positive");
+        blood_group.add("AB-negative");
+        blood_group.add("O-positive");
+        blood_group.add("O-negative");
+
+        final ArrayAdapter<String> blood_group_adapter =  new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item,blood_group);
+        blood_group_spinner.setAdapter(blood_group_adapter);
+
+
 
         String uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
   /*      Query query = FirebaseDatabase.getInstance().getReference("User")
@@ -59,13 +112,13 @@ public class Profile extends AppCompatActivity {
                         name=(TextView)findViewById(R.id.nameText);
                         id=(TextView)findViewById(R.id.idText);
                         uni=(TextView)findViewById(R.id.uniText);
-                        prof=(TextView)findViewById(R.id.profText);
+                       // prof=(TextView)findViewById(R.id.profText);
                         dept=(TextView)findViewById(R.id.deptText);
 
                         name.setText(names);
                         id.setText(ids);
-                        uni.setText(unis);
-                        prof.setText(professions);
+                       // uni.setText(unis);
+                       // prof.setText(professions);
                         dept.setText(depts);
                         System.out.println("Yooyooo");
 
