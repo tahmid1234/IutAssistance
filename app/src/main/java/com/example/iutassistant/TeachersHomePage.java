@@ -3,13 +3,8 @@ package com.example.iutassistant;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.iutassistant.AdapterClasses.PostAdapter;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -17,11 +12,8 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -29,17 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class TeachersHomePage extends AppCompatActivity
 
@@ -48,7 +31,7 @@ public class TeachersHomePage extends AppCompatActivity
     private FirebaseAuth mAuth;
 
     private ImageView profileimageview, moreimageview,courses;
-    private Button postbutton,profileBtn;
+    private Button postbutton,profileBtn,quizBtn;
    // private EditText postedit;
    // private ListView postList;
     DatabaseReference databaseReference,dbNameFechingRef;
@@ -83,11 +66,17 @@ public class TeachersHomePage extends AppCompatActivity
 
 
 
+        quizBtn=findViewById(R.id.quizBtn);
+        quizBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Quiz.class));
+            }
+        });
 
 
 
-
-        databaseReference = FirebaseDatabase.getInstance().getReference("Post");
+        //databaseReference = FirebaseDatabase.getInstance().getReference("Post");
 
         moreimageview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,13 +97,13 @@ public class TeachersHomePage extends AppCompatActivity
 
 
 
-        postbutton.setOnClickListener(new View.OnClickListener() {
+       /* quizBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
              //   saveData();
               //  getData();
             }
-        });
+        });*/
     }
 
 

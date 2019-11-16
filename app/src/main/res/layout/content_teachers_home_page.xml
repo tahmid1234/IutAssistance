@@ -275,6 +275,7 @@
 
 
 
+<<<<<<< HEAD
             <EditText
                 android:id="@+id/posteditid"
                 android:layout_width="match_parent"
@@ -284,6 +285,10 @@
                 android:hint="Write Your Post Here"
                 android:gravity="center"
                 />
+=======
+=======
+
+>>>>>>> 21c507cf0ad0049c258dafc55643e2fadd223f45
 
 =======
 
@@ -302,19 +307,7 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/postid"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="2"
-                android:layout_gravity="center"
-                android:text="Post"
-                android:layout_marginTop="15dp"
-                android:backgroundTint="#164E0F"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/roundbutton"
 
-                />
 
 
         </LinearLayout>
@@ -324,6 +317,12 @@
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/quizBtn"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="Quiz" />
 
     <LinearLayout
         android:layout_width="match_parent"
