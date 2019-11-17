@@ -192,16 +192,11 @@
             android:layout_height="50dp"
             android:text="Present Address"
             android:textColor="#164E0F"
-<<<<<<< HEAD
             android:layout_weight="4"
             />
-        <EditText
-=======
-            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/Syllabus"
->>>>>>> 21c507cf0ad0049c258dafc55643e2fadd223f45
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="#164E0F"

@@ -275,7 +275,6 @@
 
 
 
-<<<<<<< HEAD
             <EditText
                 android:id="@+id/posteditid"
                 android:layout_width="match_parent"
