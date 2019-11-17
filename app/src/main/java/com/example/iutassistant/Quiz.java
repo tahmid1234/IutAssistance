@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Quiz extends AppCompatActivity {
-    Spinner secSpinner,crsSpinner;
+    Spinner secSpinner,crsSpinner,quizNo_spinner;
     Button doneButton;
     EditText syllabus_edit,day_edit,month_edit,year_edit;
     DatabaseReference dbList;
@@ -40,11 +40,13 @@ public class Quiz extends AppCompatActivity {
         month_edit=findViewById(R.id.month);
         year_edit=findViewById(R.id.year);
         doneButton=findViewById(R.id.done_btn);
+        quizNo_spinner=findViewById(R.id.quiz_no);
 
 
 
         add_crs_list();
         add_sec_list();
+        add_quizNo_list();
         doneButton_action();
 
 
@@ -125,7 +127,24 @@ public class Quiz extends AppCompatActivity {
         crsSpinner.setAdapter(dataAdapter);
     }
 
-   public void doneButton_action(){
+    public void add_quizNo_list() {
+
+
+        List<String> list = new ArrayList<String>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("4");
+        list.add("");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        quizNo_spinner.setAdapter(dataAdapter);
+    }
+
+
+    public void doneButton_action(){
 
         //final String crs=inputName.getText().toString().trim();
 
@@ -135,13 +154,14 @@ public class Quiz extends AppCompatActivity {
            public void onClick(View view) {
                final String crs=crsSpinner.getSelectedItem().toString();
                final  String sec=secSpinner.getSelectedItem().toString();
+               final  String quizNo=quizNo_spinner.getSelectedItem().toString();
                final String syllabus,day,month,year;
                syllabus=syllabus_edit.getText().toString().trim();
                day=day_edit.getText().toString().trim();
                month=month_edit.getText().toString().trim();
                year=year_edit.getText().toString().trim();
                final String quiz_date=day+"-"+month+"-"+year;
-               QuizInfo quizInfo=new QuizInfo(uid,syllabus,quiz_date);
+               QuizInfo quizInfo=new QuizInfo(uid,syllabus,quiz_date,quizNo);
                FirebaseDatabase.getInstance().getReference("University/IUT").child("Quiz").child(sec).child(crs).setValue(quizInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                    @Override
                    public void onComplete(@NonNull Task<Void> task) {

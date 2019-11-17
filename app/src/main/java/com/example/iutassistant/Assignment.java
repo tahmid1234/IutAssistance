@@ -39,11 +39,12 @@ public class Assignment extends AppCompatActivity {
         crsSpinner = (Spinner) findViewById(R.id.crs_value);
         secSpinner = findViewById(R.id.sec_value);
         typeSpinner = findViewById(R.id.type);
-        description_edit = findViewById(R.id.explanation);
+        description_edit = findViewById(R.id.description_text);
         day_edit = findViewById(R.id.day);
         month_edit = findViewById(R.id.month);
         year_edit = findViewById(R.id.year);
         doneButton = findViewById(R.id.done_btn);
+
 
         add_crs_list();
         add_sec_list();
@@ -168,7 +169,7 @@ public class Assignment extends AppCompatActivity {
                 year = year_edit.getText().toString().trim();
                 final String resheduled_date = day + "-" + month + "-" + year;
                 ResheduledInfo resheduledInfo = new ResheduledInfo(uid, type, explanation, resheduled_date);
-                System.out.println(sec+"bhj "+crs+" ");
+                System.out.println(sec+"bhjg "+crs+" ");
                 FirebaseDatabase.getInstance().getReference("University/IUT").child("Assignment").child(sec).child(crs).setValue(resheduledInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
