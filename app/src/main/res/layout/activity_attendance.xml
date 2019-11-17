@@ -13,7 +13,6 @@
         />
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,77 +22,86 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="right"
-            android:layout_weight="4"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:weightSum="3"
+            android:orientation="horizontal"
             >
 
             <TextView
                 android:id="@+id/sec_name"
-                android:layout_width="69dp"
-                android:layout_height="46dp"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:textColor="#036F06"
+                android:textStyle="bold"
+                android:text="TextView1" />
 
             <TextView
                 android:id="@+id/teacher_name"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:text="TextView" />
-
+                android:textColor="#036F06"
+                android:textStyle="bold"
+                android:text="TextView2" />
             <TextView
                 android:id="@+id/crs_name"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:textColor="#036F06"
+                android:textStyle="bold"
+                android:text="TextView3" />
+
         </LinearLayout>
 
         <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:weightSum="4"
         android:orientation="horizontal"
-            android:layout_marginHorizontal="10dp"
-
         >
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Student Id: "
-            android:layout_marginTop="40dp"
             android:textColor="#036F06"
             android:textSize="25dp"
+            android:layout_weight="2"
             android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/Attendence_id"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_weight="2"
                 android:textColor="#036F06"
-
                 />
 
 
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:weightSum="3"
         android:orientation="horizontal"
         >
         <Button
             android:id="@+id/present_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Present"
+            android:layout_weight="1"
             android:layout_margin="25dp"
-            android:background="#15692A"
+            android:backgroundTint="#15692A"
+            android:background="@drawable/roundbutton"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
 
@@ -101,21 +109,25 @@
 
         <Button
             android:id="@+id/absent_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Absent"
             android:layout_margin="25dp"
-            android:background="#F54B0C"
+            android:backgroundTint="#F54B0C"
+            android:layout_weight="1"
+            android:background="@drawable/roundbutton"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             />
         <Button
             android:id="@+id/late_id"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Late"
             android:layout_margin="20dp"
-            android:background="#F9EB17"
+            android:layout_weight="1"
+            android:background="@drawable/roundbutton"
+            android:backgroundTint="#EEF508"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             />
@@ -130,18 +142,18 @@
             android:layout_height="96dp"
             android:gravity="center_horizontal"
             android:layout_marginTop="20dp"
+            android:layout_weight="1"
             >
 
             <Button
                 android:id="@+id/back_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
+                android:layout_marginTop="50dp"
                 android:layout_height="wrap_content"
                 android:text="BACK" />
 
 
         </LinearLayout>
-
-
 
 
 

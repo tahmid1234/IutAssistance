@@ -30,8 +30,9 @@ public class TeachersHomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
 
-    private ImageView profileimageview, moreimageview,courses;
-    private Button postbutton,profileBtn,quizBtn, classResheduling,assignment_btn;
+    private ImageView profileimageview,classResheduling,assignment_img,quiz_img;
+            Button courses, moreimageview;
+    private Button postbutton,profileBtn;
    // private EditText postedit;
    // private ListView postList;
     DatabaseReference databaseReference,dbNameFechingRef;
@@ -56,7 +57,7 @@ public class TeachersHomePage extends AppCompatActivity
 
         moreimageview = findViewById(R.id.moreid);
       //  postList = findViewById(R.id.postList);
-        courses=findViewById(R.id.courseSelection);
+        //courses=findViewById(R.id.courseSelection);
         postbutton = findViewById(R.id.postid);
       //  postedit = findViewById(R.id.posteditid);
         profileimageview = findViewById(R.id.profile_id);
@@ -66,10 +67,10 @@ public class TeachersHomePage extends AppCompatActivity
 
 
 
-        quizBtn=findViewById(R.id.quizBtn);
+        quiz_img=findViewById(R.id.quizBtn);
         classResheduling =findViewById(R.id.classUpdateBtn);
-        assignment_btn=findViewById(R.id.assignmentbtn);
-        quizBtn.setOnClickListener(new View.OnClickListener() {
+        assignment_img=findViewById(R.id.assignmentbtn);
+        quiz_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Quiz.class));
@@ -82,7 +83,7 @@ public class TeachersHomePage extends AppCompatActivity
             }
         });
 
-        assignment_btn.setOnClickListener(new View.OnClickListener() {
+        assignment_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Assignment.class));

@@ -31,11 +31,12 @@
             android:textColor="#036F06"
             android:textSize="40sp"
             android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -65,8 +66,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -94,8 +95,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -119,11 +120,12 @@
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -138,24 +140,22 @@
 
             <EditText
                 android:id="@+id/description_text"
-                android:layout_width="wrap_content"
-                android:layout_height="158dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="7"
-
-
-
                 android:textColor="#164E0F"
                 android:textSize="14sp" />
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
-            android:weightSum="14">
+            android:weightSum="10">
 
             <TextView
                 android:layout_width="0dp"
@@ -169,7 +169,7 @@
                 android:id="@+id/day"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="2"
 
                 android:hint="dd "
                 android:textColor="#164E0F"
@@ -179,7 +179,7 @@
                 android:id="@+id/month"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="2"
                 android:hint="mm "
                 android:textColor="#164E0F"
                 android:textSize="14sp" />
@@ -188,7 +188,7 @@
                 android:id="@+id/year"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
+                android:layout_weight="3"
 
                 android:hint="yyyy "
                 android:textColor="#164E0F"
@@ -200,9 +200,11 @@
 
         <Button
             android:id="@+id/done_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
             android:background="#036F06"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="100dp"
             android:text="Done" />
 
 

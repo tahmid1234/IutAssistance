@@ -66,12 +66,12 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:orientation="vertical"
-            android:weightSum="2">
+            android:weightSum="4">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:weightSum="3"
                 android:orientation="horizontal">
 
@@ -87,7 +87,7 @@
                     <ImageView
                         android:id="@+id/profile_id"
                         android:layout_width="match_parent"
-                        android:layout_height="52dp"
+                        android:layout_height="0dp"
                         android:layout_weight="3"
                         android:padding="20dp"
                         android:src="@drawable/profile_icon" />
@@ -111,6 +111,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/quizBtn"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="3"
@@ -136,6 +137,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/classUpdateBtn"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:padding="20dp"
@@ -147,7 +149,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="Routine"
+                        android:text="Reschedule"
                         android:gravity="center"/>
 
                 </LinearLayout>
@@ -164,7 +166,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:orientation="horizontal"
                 android:weightSum="3">
 
@@ -178,6 +180,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/assignmentbtn"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:padding="20dp"
@@ -203,7 +206,6 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/courseSelection"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:padding="20dp"
@@ -214,7 +216,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="Course Selection"
+                        android:text="Result"
                         android:gravity="center"/>
 
                 </LinearLayout>
@@ -230,7 +232,6 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/moreid"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="3"
@@ -241,7 +242,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="Course Selection"
+                        android:text="More"
                         android:gravity="center"/>
 
                 </LinearLayout>
@@ -266,46 +267,21 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:orientation="vertical"
-            android:background="#EFF3EC"
-            android:weightSum="10"
+            android:layout_height="180dp"
+            android:layout_weight="1"
+            android:layout_gravity="left"
             >
 
-
-
-<<<<<<< HEAD
-            <EditText
-                android:id="@+id/posteditid"
-                android:layout_width="match_parent"
-                android:layout_weight="7"
-                android:layout_height="120dp"
-                android:background="#1242"
-                android:hint="Write Your Post Here"
-                android:gravity="center"
-                />
-=======
-=======
-=======
->>>>>>> 707e220a7de1ff14a73264eb22876f049991f33f
-
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                >
-
-
-
-
-            </LinearLayout>
-
+            <Button
+                android:id="@+id/moreid"
+                android:layout_width="100dp"
+                android:layout_marginTop="50dp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#D3AAA3 "
+                android:layout_marginLeft="155dp"
+                android:layout_height="100dp"
+                android:background="@drawable/btn_round"
+                android:text="COURSE Selection" />
 
 
 
@@ -315,36 +291,7 @@
 
 
 
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/quizBtn"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="Quiz" />
-    <Button
-        android:id="@+id/classUpdateBtn"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="Class Rescheduling" />
-    <Button
-        android:id="@+id/assignmentbtn"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="Assignment" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
-        >
-
-
-
-
-
-    </LinearLayout>
-
+</LinearLayout>
 
 
 

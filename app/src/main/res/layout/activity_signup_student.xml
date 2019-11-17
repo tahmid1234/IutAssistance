@@ -38,7 +38,37 @@
             android:weightSum="10"
             android:orientation="horizontal"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Email"
+                android:textColor="#164E0F"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:inputType="textEmailAddress"
+                android:textColor="#164E0F"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="15dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -64,7 +94,7 @@
             android:weightSum="10"
             android:orientation="horizontal"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="15dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -83,35 +113,6 @@
                 android:textSize="14sp"/>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="10"
-            android:orientation="horizontal"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="Email"
-                android:textColor="#164E0F"
-                android:textSize="14sp"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="7"
-                android:inputType="textEmailAddress"
-                android:textColor="#164E0F"
-                android:textSize="14sp"/>
-
-        </LinearLayout>
-
-
-
 
 
     </LinearLayout>

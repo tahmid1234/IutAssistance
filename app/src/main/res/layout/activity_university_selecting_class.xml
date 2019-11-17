@@ -49,6 +49,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
+            android:visibility="gone"
             android:weightSum="10">
 
             <TextView
@@ -64,7 +65,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="7"
-
                 android:textColor="#164E0F"
                 android:textSize="14sp"></Spinner>
 
@@ -72,6 +72,7 @@
 
         <RadioButton
             android:id="@+id/teacher"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Teacher" />
@@ -79,6 +80,7 @@
         <RadioButton
             android:id="@+id/student"
             android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
             android:layout_height="wrap_content"
             android:text="Student" />
 

@@ -10,9 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal"
         android:weightSum="10">
 
@@ -30,18 +29,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="7"
-
-
             android:textColor="#164E0F"
-            android:textSize="14sp" ></Spinner>
+            android:textSize="14sp" >
+        </Spinner>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal"
         android:weightSum="10">
 
@@ -70,9 +68,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal"
+        android:visibility="gone"
         android:weightSum="10">
 
         <TextView
@@ -88,11 +87,10 @@
             android:id="@+id/uni"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
-
             android:layout_weight="7"
             android:textColor="#164E0F"
-            android:textSize="14sp"></Spinner>
+            android:textSize="14sp">
+        </Spinner>
 
     </LinearLayout>
 
@@ -103,6 +101,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="15dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="#164E0F"
         android:text="Select "
         android:textColor="#FFFFFF"
