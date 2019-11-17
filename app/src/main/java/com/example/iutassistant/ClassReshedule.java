@@ -23,32 +23,31 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Quiz extends AppCompatActivity {
-    Spinner secSpinner,crsSpinner,quizNo_spinner;
+public class ClassReshedule extends AppCompatActivity {
+
+    Spinner secSpinner,crsSpinner,typeSpinner;
     Button doneButton;
-    EditText syllabus_edit,day_edit,month_edit,year_edit;
+    EditText explanation_edit,day_edit,month_edit,year_edit;
     DatabaseReference dbList;
     String uid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz);
+        setContentView(R.layout.activity_class_reshedule);
         crsSpinner = (Spinner) findViewById(R.id.crs_value);
         secSpinner=findViewById(R.id.sec_value);
-        syllabus_edit=findViewById(R.id.syllabus);
+        typeSpinner=findViewById(R.id.type);
+        explanation_edit=findViewById(R.id.explanation);
         day_edit=findViewById(R.id.day);
         month_edit=findViewById(R.id.month);
         year_edit=findViewById(R.id.year);
         doneButton=findViewById(R.id.done_btn);
-        quizNo_spinner=findViewById(R.id.quiz_no);
-
-
 
         add_crs_list();
         add_sec_list();
-        add_quizNo_list();
+        add_type_list();
         doneButton_action();
-
 
     }
 
@@ -67,7 +66,7 @@ public class Quiz extends AppCompatActivity {
                 System.out.println("HOI  krno");
                 for(DataSnapshot secSnapshot : dataSnapshot.child(uid).getChildren()){
                     String seckey = secSnapshot.getKey();
-                   // String secValue = String.valueOf(crsSnapshot.getValue());
+                    // String secValue = String.valueOf(crsSnapshot.getValue());
                     list.add(seckey);
 
                     System.out.println(seckey+ "  ^^^^^^ ");
@@ -127,51 +126,47 @@ public class Quiz extends AppCompatActivity {
         crsSpinner.setAdapter(dataAdapter);
     }
 
-    public void add_quizNo_list() {
+    public void add_type_list() {
 
 
         List<String> list = new ArrayList<String>();
-        list.add("1");
-        list.add("2");
-        list.add("3");
-        list.add("4");
+        list.add("Cancellation");
+        list.add("Extra Class");
         list.add("");
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        quizNo_spinner.setAdapter(dataAdapter);
+        typeSpinner.setAdapter(dataAdapter);
     }
-
 
     public void doneButton_action(){
 
         //final String crs=inputName.getText().toString().trim();
 
 
-       doneButton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               final String crs=crsSpinner.getSelectedItem().toString();
-               final  String sec=secSpinner.getSelectedItem().toString();
-               final  String quizNo=quizNo_spinner.getSelectedItem().toString();
-               final String syllabus,day,month,year;
-               syllabus=syllabus_edit.getText().toString().trim();
-               day=day_edit.getText().toString().trim();
-               month=month_edit.getText().toString().trim();
-               year=year_edit.getText().toString().trim();
-               final String quiz_date=day+"-"+month+"-"+year;
-               QuizInfo quizInfo=new QuizInfo(uid,syllabus,quiz_date,quizNo);
-               FirebaseDatabase.getInstance().getReference("University/IUT").child("Quiz").child(sec).child(crs).setValue(quizInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
-                   @Override
-                   public void onComplete(@NonNull Task<Void> task) {
-                       startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));
-                   }
-               });
-           }
-       });
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String crs=crsSpinner.getSelectedItem().toString();
+                final  String sec=secSpinner.getSelectedItem().toString();
+                final  String type=typeSpinner.getSelectedItem().toString();
+                final String explanation,day,month,year;
+                explanation=explanation_edit.getText().toString().trim();
+                day=day_edit.getText().toString().trim();
+                month=month_edit.getText().toString().trim();
+                year=year_edit.getText().toString().trim();
+                final String resheduled_date=day+"-"+month+"-"+year;
+                ResheduledInfo resheduledInfo=new ResheduledInfo(uid,type,explanation,resheduled_date);
+                FirebaseDatabase.getInstance().getReference("University/IUT").child("ClassTime").child(sec).child(crs).setValue(resheduledInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));
+                    }
+                });
+            }
+        });
 
     }
-
 
 }

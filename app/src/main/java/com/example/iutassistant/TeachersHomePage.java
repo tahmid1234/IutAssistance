@@ -31,7 +31,7 @@ public class TeachersHomePage extends AppCompatActivity
     private FirebaseAuth mAuth;
 
     private ImageView profileimageview, moreimageview,courses;
-    private Button postbutton,profileBtn,quizBtn;
+    private Button postbutton,profileBtn,quizBtn, classResheduling,assignment_btn;
    // private EditText postedit;
    // private ListView postList;
     DatabaseReference databaseReference,dbNameFechingRef;
@@ -67,10 +67,25 @@ public class TeachersHomePage extends AppCompatActivity
 
 
         quizBtn=findViewById(R.id.quizBtn);
+        classResheduling =findViewById(R.id.classUpdateBtn);
+        assignment_btn=findViewById(R.id.assignmentbtn);
         quizBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Quiz.class));
+            }
+        });
+        classResheduling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ClassReshedule.class));
+            }
+        });
+
+        assignment_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Assignment.class));
             }
         });
 

@@ -48,7 +48,7 @@ public class home_page_student extends AppCompatActivity
 
     private FirebaseAuth mAuth;
 
-    private ImageView profileimageview, moreimageview,message;
+    private ImageView profileimageview, moreimageview,message,quiz_img;
     private Button postbutton;
     private EditText postedit;
     private ListView postList;
@@ -95,6 +95,15 @@ public class home_page_student extends AppCompatActivity
         postedit = findViewById(R.id.posteditid);
         profileimageview = findViewById(R.id.profile_id);
         databaseReference = FirebaseDatabase.getInstance().getReference("Post");
+
+        quiz_img=findViewById(R.id.quiz_img);
+
+        quiz_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), QuizReminder.class));
+            }
+        });
 
         profileimageview.setOnClickListener(new View.OnClickListener() {
             @Override
