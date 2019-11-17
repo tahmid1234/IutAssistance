@@ -116,18 +116,14 @@ public class ShowAttendance extends AppCompatActivity {
 
                     date="Date"+date+"="+count;
                     System.out.println(crs_in+"function a&&&&&&&&&&&&&&&&&&&&&&&&7"+date);
-                    //Post post=new Post("Course_Name"+crs_in ,date);
-                   // Attendance_detail attendance_detail1=new Attendance_detail(crs_in,date,count);
-                 //   System.out.println(post.getPoster_name()+"   ************   "+post.getPost());
-                   // list.add(post);
+
                     list.add(attendance_detail);
                 }
 
                 System.out.println(list.size()+" ****post  size 1*****");
                 Collections.reverse(list);
                 Attendance_Adapter attendance_adapter=new Attendance_Adapter(ShowAttendance.this,list);
-             //   PostAdapter postAdapter = new PostAdapter(ShowAttendance.this, list);
-              //  listView.setAdapter(postAdapter);
+
                 listView.setAdapter(attendance_adapter);
             }
 

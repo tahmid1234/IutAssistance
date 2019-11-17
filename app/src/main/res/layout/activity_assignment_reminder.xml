@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -14,7 +15,6 @@
         >
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="2"
@@ -22,7 +22,6 @@
             android:orientation="horizontal"
             >
             <TextView
-                android:id="@+id/crs_name_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Course Code "
@@ -50,10 +49,9 @@
             android:layout_marginTop="10dp"
             >
             <TextView
-                android:id="@+id/date_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:text="Date"
                 android:layout_weight="1"
                 android:textColor="#164E0F"
                 android:textStyle="bold" />
@@ -79,9 +77,9 @@
             android:layout_marginTop="10dp"
             >
             <TextView
-                android:id="@+id/info"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:text="Syllabus"
                 android:layout_weight="1"
                 android:textColor="#164E0F"
                 android:textStyle="bold" />
@@ -107,10 +105,9 @@
             android:layout_marginTop="10dp"
             >
             <TextView
-                android:id="@+id/type_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
+                android:text="Quiz No"
                 android:layout_weight="1"
                 android:textColor="#164E0F"
                 android:textStyle="bold" />

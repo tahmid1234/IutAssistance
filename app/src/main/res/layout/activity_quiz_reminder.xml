@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="Quiz Reminder"
+       
         android:textAlignment="center"
         android:textColor="#036F06"
         android:textSize="40sp"
@@ -43,9 +43,10 @@
 
 
         <ListView
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/listViewAttendance"></ListView>
+            android:id="@+id/listViewAnnouncement"></ListView>
 
 
 
