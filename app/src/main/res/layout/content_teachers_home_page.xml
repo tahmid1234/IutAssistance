@@ -216,7 +216,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="Result"
+                        android:text="Marks"
                         android:gravity="center"/>
 
                 </LinearLayout>
@@ -277,7 +277,7 @@
                 android:layout_width="100dp"
                 android:layout_marginTop="50dp"
                 android:textColor="#FFFFFF"
-                android:backgroundTint="#D3AAA3 "
+                android:backgroundTint="#4FB18F"
                 android:layout_marginLeft="155dp"
                 android:layout_height="100dp"
                 android:background="@drawable/btn_round"
