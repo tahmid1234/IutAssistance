@@ -42,9 +42,10 @@
         >
 
         <TextView
+            android:id="@+id/bsc_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="B.sc in "
+
             android:layout_marginLeft="155dp"
             android:textColor="#164E0F"
             />

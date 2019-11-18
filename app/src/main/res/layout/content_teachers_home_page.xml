@@ -275,13 +275,40 @@
             <Button
                 android:id="@+id/moreid"
                 android:layout_width="100dp"
-                android:layout_marginTop="50dp"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="#4FB18F"
-                android:layout_marginLeft="155dp"
                 android:layout_height="100dp"
+                android:layout_marginLeft="155dp"
+                android:layout_marginTop="50dp"
                 android:background="@drawable/btn_round"
-                android:text="COURSE Selection" />
+                android:backgroundTint="#4FB18F"
+                android:text="COURSE Selection"
+                android:textColor="#FFFFFF" />
+
+
+
+            <!--<Spinner-->
+                <!--android:id="@+id/crs"-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="100dp"-->
+                <!--android:layout_marginLeft="15dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:background="@drawable/btn_round"-->
+                <!--android:backgroundTint="#4FB18F"-->
+                <!--android:spinnerMode="dialog"-->
+                <!--android:text="Course"-->
+                <!--android:textColor="#FFFFFF" />-->
+          <!--<Spinner-->
+                <!--android:id="@+id/sec"-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="100dp"-->
+                <!--android:layout_marginLeft="-350dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:background="@drawable/btn_round"-->
+                <!--android:backgroundTint="#4FB18F"-->
+                <!--android:spinnerMode="dialog"-->
+                <!--android:text="Section"-->
+                <!--android:textColor="#FFFFFF" />-->
+
+
 
 
 
@@ -291,7 +318,16 @@
 
 
 
+
+
 </LinearLayout>
+
+
+
+
+
+
+
 
 
 

@@ -31,6 +31,7 @@ public class ShowAttendance extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_attendance);
+        System.out.println("ATTENDANCE a ashche **");
         ListView listView=findViewById(R.id.listViewAttendance);
         list_Creating();
 
@@ -45,6 +46,7 @@ public class ShowAttendance extends AppCompatActivity {
 
         final ArrayList<String> crs_list=new ArrayList<>();
         final String uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        System.out.println("function a&&&&&&&&&&&&&&&&&&&&&&&&7");
         path ="User/"+uid;
                 studentInfo= FirebaseDatabase.getInstance().getReference(path);
         studentInfo.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -77,7 +79,7 @@ public class ShowAttendance extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 System.out.println("function porer on datai a&&&&&&&&&&&&&&&&&&&&&&&&7");
-
+                System.out.println("SECCCCCCC"+sec);
                 for (DataSnapshot crsSnapshot : dataSnapshot.child(sec).getChildren()) {
                     System.out.println("functionporer loop a a&&&&&&&&&&&&&&&&&&&&&&&&7");
                     crs = crsSnapshot.getKey();
@@ -115,7 +117,7 @@ public class ShowAttendance extends AppCompatActivity {
                     Attendance_detail attendance_detail=new Attendance_detail(crs_in,date,count);
 
                     date="Date"+date+"="+count;
-                    System.out.println(crs_in+"function a&&&&&&&&&&&&&&&&&&&&&&&&7"+date);
+                    System.out.println(count+"function a&&&&&&&&&&&&&&&&&&&&&&&&7"+date+" "+crs_in);
 
                     list.add(attendance_detail);
                 }
