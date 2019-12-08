@@ -122,7 +122,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Late"
-            android:layout_margin="20dp"
+            android:layout_margin="25dp"
             android:layout_weight="1"
             android:background="@drawable/roundbutton"
             android:backgroundTint="#EEF508"

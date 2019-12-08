@@ -205,6 +205,7 @@
             android:background="#036F06"
             android:layout_marginLeft="55dp"
             android:layout_marginTop="100dp"
+            android:textColor="#FFFFFF"
             android:text="Done" />
 
 
