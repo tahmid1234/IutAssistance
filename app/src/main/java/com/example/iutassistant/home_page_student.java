@@ -47,7 +47,7 @@ public class home_page_student extends AppCompatActivity
 
     private FirebaseAuth mAuth;
 
-    private ImageView profileimageview, moreimageview,message,quiz_img,routin_img,assignment_img;
+    private ImageView profileimageview, showAttendancePercentage,message,quiz_img,routin_img,assignment_img;
     private Button postbutton;
     private EditText postedit;
     private ListView postList;
@@ -78,13 +78,15 @@ public class home_page_student extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        moreimageview = findViewById(R.id.moreid);
+        showAttendancePercentage = findViewById(R.id.moreid);
         postList = findViewById(R.id.postList);
        getData();
-        moreimageview.setOnClickListener(new View.OnClickListener() {
+        showAttendancePercentage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 System.out.println("Attendance a jaitese ***");
+                AttendanceCalculation attendanceCalculation=new AttendanceCalculation();
+                attendanceCalculation.clearPercentageLists();
                 startActivity(new Intent(getApplicationContext(), ShowAttendance.class));
 
             }
