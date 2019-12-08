@@ -24,6 +24,7 @@ public class Attendance extends AppCompatActivity {
     Button present,late,absent,record;
     EditText id;
     TextView sec_text,crs_text,teacher_text,attendanceInPercentage;
+    EditText date_text;
     StudentsAttendanceList studentsAttendanceList=new StudentsAttendanceList();
     String sec=studentsAttendanceList.getSec();
     String crs=studentsAttendanceList.getCrs();
@@ -38,6 +39,7 @@ public class Attendance extends AppCompatActivity {
 
         String sid=studentsAttendanceList.getSID(i);
         attendanceInPercentage=findViewById(R.id.attendanceInpercentage);
+        date_text=findViewById(R.id.dateATT);
         record=findViewById(R.id.record);
         id=findViewById(R.id.Attendence_id);
         sec_text=findViewById(R.id.sec_name);
@@ -78,6 +80,7 @@ public class Attendance extends AppCompatActivity {
         System.out.println("Laal1 ");
 
         final String timeStamp =new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
+        date_text.setText(timeStamp);
         {System.out.println("***studentId***"+student_id);}
         present.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +89,7 @@ public class Attendance extends AppCompatActivity {
 
                 i+=1;
                 System.out.println("present a dhukse"+student_id+" "+timeStamp);
-                attendanceRef.child(student_id).child(timeStamp).setValue("1");
+                attendanceRef.child(student_id).child(date_text.getText().toString().trim()).setValue("1");
 
                 student_id=studentsAttendanceList.getSID(i);
                 if(student_id.equals("End")){
@@ -94,6 +97,7 @@ public class Attendance extends AppCompatActivity {
                     i=-1;}
                 else {
                     id.setText(student_id);
+                    date_text.setText(timeStamp);
                     System.out.println("calculation a jabe $$"+student_id+" "+timeStamp);
                     attendanceCalculation=new AttendanceCalculation(crs,sec,student_id,"percentage_text",attendanceInPercentage);
                 }
@@ -109,13 +113,15 @@ public class Attendance extends AppCompatActivity {
 
                 i+=1;
                 System.out.println("LAAAALALALALA"+student_id);
-                attendanceRef.child(student_id).child(timeStamp).setValue("0");
+
+                attendanceRef.child(student_id).child(date_text.getText().toString().trim()).setValue("0");
 
                 student_id=studentsAttendanceList.getSID(i);
                 if(student_id.equals("End")){
                     Toast.makeText(getApplicationContext(), "No more students left, Go back or Edit", Toast.LENGTH_LONG).show();
                     i=-1;}
                 else {
+                    date_text.setText(timeStamp);
                     id.setText(student_id);
                     attendanceCalculation=new AttendanceCalculation(crs,sec,student_id,"percentage_text",attendanceInPercentage);
                 }
@@ -127,13 +133,14 @@ public class Attendance extends AppCompatActivity {
             public void onClick(View view) {
                 student_id=id.getText().toString().trim();
 
-                attendanceRef.child(student_id).child(timeStamp).setValue(".5");
+                attendanceRef.child(student_id).child(date_text.getText().toString().trim()).setValue(".5");
                 i+=1;
                 student_id=studentsAttendanceList.getSID(i);
                 if(student_id.equals("End")){
                     Toast.makeText(getApplicationContext(), "No more students left, Go back or Edit", Toast.LENGTH_LONG).show();
                     i=-1;}
                 else {
+                    date_text.setText(timeStamp);
                     id.setText(student_id);
                     attendanceCalculation=new AttendanceCalculation(crs,sec,student_id,"percentage_text",attendanceInPercentage);
                 }
