@@ -80,8 +80,8 @@ public class LogIn extends AppCompatActivity {
                                            else
                                                startActivity(new Intent(getApplicationContext(),TeachersHomePage.class));
                                            //System.out.println("University"+user.getUni());
-                                           Toast.makeText(getApplicationContext(), "Post send", Toast.LENGTH_LONG).show();
-                                           System.out.println(prof+" ***********************************");
+                                          // Toast.makeText(getApplicationContext(), "Post send", Toast.LENGTH_LONG).show();
+                                          // System.out.println(prof+" ***********************************");
                                        }
 
                                        @Override

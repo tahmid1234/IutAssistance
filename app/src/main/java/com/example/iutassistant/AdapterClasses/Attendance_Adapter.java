@@ -47,11 +47,11 @@ public class Attendance_Adapter extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.list_view_attendance_layout,viewGroup,false);}
 
 
-        TextView crs = view.findViewById(R.id.crs);
+       // TextView crs = view.findViewById(R.id.crs);
         TextView date = view.findViewById(R.id.date);
         TextView count=view.findViewById(R.id.count);
 
-        crs.setText(attendance_details.get(i).getCrs());
+       // crs.setText(attendance_details.get(i).getCrs());
         date.setText(attendance_details.get(i).getDate());
         count.setText(attendance_details.get(i).getAttendace_count());
 

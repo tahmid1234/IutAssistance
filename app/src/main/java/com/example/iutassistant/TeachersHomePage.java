@@ -3,8 +3,10 @@ package com.example.iutassistant;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.text.TextUtils;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -12,8 +14,11 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -21,8 +26,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TeachersHomePage extends AppCompatActivity
 
@@ -30,12 +41,13 @@ public class TeachersHomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
 
-    private ImageView profileimageview,classResheduling,assignment_img,quiz_img;
-            Button courses, moreimageview;
-    private Button postbutton,profileBtn;
-   // private EditText postedit;
-   // private ListView postList;
-    DatabaseReference databaseReference,dbNameFechingRef;
+    private ImageView profileimageview, classResheduling, assignment_img, quiz_img;
+    Button courses, moreimageview;
+    private Button postbutton, profileBtn;
+    Spinner section, course;
+    // private EditText postedit;
+    // private ListView postList;
+    DatabaseReference databaseReference, dbNameFechingRef, courseDatabase;
     String key1;
     User user;
 
@@ -45,7 +57,7 @@ public class TeachersHomePage extends AppCompatActivity
         setContentView(R.layout.activity_teachers_home_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        databaseReference= FirebaseDatabase.getInstance().getReference("Post");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Post");
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -55,24 +67,25 @@ public class TeachersHomePage extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+        course = findViewById(R.id.crs);
+        section = findViewById((R.id.sec));
+
         moreimageview = findViewById(R.id.moreid);
-      //  postList = findViewById(R.id.postList);
+        //  postList = findViewById(R.id.postList);
         //courses=findViewById(R.id.courseSelection);
         postbutton = findViewById(R.id.postid);
-      //  postedit = findViewById(R.id.posteditid);
+        //  postedit = findViewById(R.id.posteditid);
         profileimageview = findViewById(R.id.profile_id);
-      //  getData();
+        //  getData();
 
 
-
-
-
-        quiz_img=findViewById(R.id.quizBtn);
-        classResheduling =findViewById(R.id.classUpdateBtn);
-        assignment_img=findViewById(R.id.assignmentbtn);
+        quiz_img = findViewById(R.id.quizBtn);
+        classResheduling = findViewById(R.id.classUpdateBtn);
+        assignment_img = findViewById(R.id.assignmentbtn);
         quiz_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("Quiz Class a jaitese");
                 startActivity(new Intent(getApplicationContext(), Quiz.class));
             }
         });
@@ -91,8 +104,9 @@ public class TeachersHomePage extends AppCompatActivity
         });
 
 
-
         //databaseReference = FirebaseDatabase.getInstance().getReference("Post");
+
+        //courseRegistration();
 
         moreimageview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +123,9 @@ public class TeachersHomePage extends AppCompatActivity
             }
         });
 
+       // addItemsOnSextion();
+       // addItemsOnCourses();
+
 
 
 
@@ -123,8 +140,6 @@ public class TeachersHomePage extends AppCompatActivity
     }
 
 
-
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -132,6 +147,9 @@ public class TeachersHomePage extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            moveTaskToBack(true);
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
         }
     }
 
@@ -182,82 +200,179 @@ public class TeachersHomePage extends AppCompatActivity
         return true;
     }
 
- /*   public void saveData() {
-        //  String post = postedit.getText().toString().trim();
+  /*  public void addItemsOnSextion() {
 
-        // final String[] poster_name = new String[1];
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        key1=databaseReference.push().getKey();
-        dbNameFechingRef=FirebaseDatabase.getInstance().getReference().child("Teachers").child(uid);
+        section = (Spinner) findViewById(R.id.sec);
+        section.setPrompt("Section") ;
+        courseDatabase = FirebaseDatabase.getInstance().getReference("University/IUT");
+        final List<String> list = new ArrayList<String>();
 
-
-        dbNameFechingRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               // System.out.println("I will tell you all about when i see you again,see you again");
-                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                String poster_name =String.valueOf(dataSnapshot.child("name").getValue());//dataSnapshot.child("name").getValue().toString();
-              //  String post = postedit.getText().toString().trim();
-               // Post post1 = new Post(poster_name, post);
-                key1=databaseReference.push().getKey()+uid;
-                databaseReference.child(key1).setValue(post1);
-                //System.out.println("University"+user.getUni());
-                Toast.makeText(getApplicationContext(), "Post send", Toast.LENGTH_LONG).show();
-
-
-
+        courseDatabase.addValueEventListener(new ValueEventListener() {
+            {
+                System.out.println("HOI ns krno");
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                list.clear();
+                System.out.println("HOI  krno");
+                // for(DataSnapshot uniqueKeySnapshot : dataSnapshot.getChildren()){
+                //Loop 1 to go through all the child nodes of users
+                for (DataSnapshot crsSnapshot : dataSnapshot.child("SECTION").getChildren()) {
+                    //loop 2 to go through all the child nodes of books node
+                    String seckey = crsSnapshot.getKey();
+                    String secValue = String.valueOf(crsSnapshot.getValue());
+                    list.add(seckey);
+
+                    System.out.println(seckey + "  ^^^^^^ " + secValue);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
-      //  System.out.println("It been a long without my friend");
-        ///System.out.println(uid);
-        // String key = databaseReference.push().getKey();
 
-        // Post post1 = new Post(poster_name[0], post);
+        list.add("");
 
-
-        //databaseReference.child(uid).setValue(post1);
-        //Toast.makeText(getApplicationContext(), "Post send", Toast.LENGTH_LONG).show();
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
 
 
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        section.setAdapter(dataAdapter);
 
 
     }
 
+    public void addItemsOnCourses() {
 
-    public void getData() {
+        course = (Spinner) findViewById(R.id.crs);
+        section= (Spinner) findViewById(R.id.sec);
 
-        final ArrayList<Post> postArrayList = new ArrayList<>();
+        course.setPrompt("Courses");
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        final List<String> list = new ArrayList<String>();
+       // list.add("Courses");
+        final String[] path = {""};
+        courseDatabase=FirebaseDatabase.getInstance().getReference("University/IUT");
+        final ArrayList<String> statesArrayList= new ArrayList<>();
+        final String[] keyList={""};
+
+        courseDatabase.addValueEventListener(new ValueEventListener() {
+            {System.out.println("HOI ns krno");}
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                postArrayList.clear();
-
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    Post post1 = dataSnapshot1.getValue(Post.class);
-
-                    postArrayList.add(post1);
-
-                    //System.out.println(post1.getPost() + "................................");
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                list.clear();
+                System.out.println("HOI  krno");
+                // for(DataSnapshot uniqueKeySnapshot : dataSnapshot.getChildren()){
+                //Loop 1 to go through all the child nodes of users
+                for(DataSnapshot crsSnapshot : dataSnapshot.child("COURSES").getChildren()){
+                    //loop 2 to go through all the child nodes of books node
+                    String crskey = crsSnapshot.getKey();
+                    String crsValue = String.valueOf(crsSnapshot.getValue());
+                    list.add(crskey);
+                    System.out.println(crskey+ "  &&&&&&&&&& "+crsValue);
 
                 }
-
-                Collections.reverse(postArrayList);
-                PostAdapter postAdapter = new PostAdapter(TeachersHomePage.this, postArrayList);
-                postList.setAdapter(postAdapter);
-
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+
+
+        list.add("");
+
+        ArrayAdapter<String> dataAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
+
+
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        course.setAdapter(dataAdapter);
+    }
+
+    public String nameT;
+    void courseRegistration(){
+       // moreimageview=(Button)findViewById(R.id.SelectBtn);
+
+        System.out.println(section+"    section  ");
+
+
+
+
+
+        moreimageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                final String  sec=section.getSelectedItem().toString();
+                final String crs=course.getSelectedItem().toString();
+                if(TextUtils.isEmpty(sec) || TextUtils.isEmpty(crs) ) {
+                    Toast.makeText(getApplicationContext(), "Please choose course and section first", Toast.LENGTH_LONG).show();
+
+                    return;
+                }
+
+
+
+
+                System.out.println(sec+"    ****section  "+crs);
+                dbNameFechingRef= FirebaseDatabase.getInstance().getReference("Teachers").child(uid);
+
+                System.out.println(uid+" ******uid");
+
+                dbNameFechingRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange( DataSnapshot dataSnapshot) {
+                        System.out.println(" check******uid");
+                        if (dataSnapshot.exists()) {
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                                System.out.println("I will tell you all about when i see you again,see you again");
+                                //String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                System.out.println("name");
+                                String name = String.valueOf(dataSnapshot.child("name").getValue());
+                                System.out.println(name+" protidin");
+                                nameT=name;
+                                FirebaseDatabase.getInstance().getReference("University/IUT").child("TEACHES").child(sec).child(crs).setValue(name);
+                                //  Toast.makeText(getApplicationContext(), "Post sent", Toast.LENGTH_LONG).show();
+
+                                FirebaseDatabase.getInstance().getReference("University/IUT").child("Section_assigned_Teacher").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(sec).setValue(crs);
+
+                                FirebaseDatabase.getInstance().getReference("University/IUT").child("Courses_assigned_Teacher").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(crs).setValue(sec);
+
+
+                            }
+
+                        }
+
+
+
+
+
+
+                    }
+
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+                System.out.println(nameT+" ************8");
+
+                // startActivity(new Intent(getApplicationContext(), home_page_student.class));
+                //
+            }
+        });
+
+
+
     }*/
+
+
 }

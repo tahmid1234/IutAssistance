@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.example.iutassistant.AdapterClasses.PostAdapter;
 
+import android.text.TextUtils;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -27,14 +28,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 //todo: gmnhj,khujk,jlk
 
@@ -43,12 +47,14 @@ public class home_page_student extends AppCompatActivity
 
     private FirebaseAuth mAuth;
 
-    private ImageView profileimageview, moreimageview,message,quiz_img,routin_img,assignment_img;
+    private ImageView profileimageview, showAttendancePercentage,message,quiz_img,routin_img,assignment_img;
     private Button postbutton;
     private EditText postedit;
     private ListView postList;
+    Spinner postSpinner;
     DatabaseReference databaseReference,dbNameFechingRef;
-    String key1;
+    String key1,poster_dept,poster_prog;
+    List<String> list = new ArrayList<String>();
     User user;
     public static int flag=0;
 
@@ -72,18 +78,21 @@ public class home_page_student extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        moreimageview = findViewById(R.id.moreid);
+        showAttendancePercentage = findViewById(R.id.moreid);
         postList = findViewById(R.id.postList);
-        getData();
-        moreimageview.setOnClickListener(new View.OnClickListener() {
+       getData();
+        showAttendancePercentage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("Attendance a jaitese ***");
+                AttendanceCalculation attendanceCalculation=new AttendanceCalculation();
+                attendanceCalculation.clearPercentageLists();
                 startActivity(new Intent(getApplicationContext(), ShowAttendance.class));
 
             }
         });
-
-
+        postSpinner=findViewById(R.id.post_spinner_id_1);
+        addSpinnerList();
 
 
 
@@ -92,6 +101,7 @@ public class home_page_student extends AppCompatActivity
         postbutton = findViewById(R.id.postid);
         postedit = findViewById(R.id.posteditid);
         profileimageview = findViewById(R.id.profile_id);
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Post");
 
         quiz_img=findViewById(R.id.quiz_img);
@@ -130,7 +140,13 @@ public class home_page_student extends AppCompatActivity
         postbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getData();
+             //   getData();
+                String post_sent=postedit.getText().toString().trim();
+                if(TextUtils.isEmpty(post_sent)) {
+                    Toast.makeText(getApplicationContext(), "Please write something to post", Toast.LENGTH_LONG).show();
+
+                    return;
+                }
                 saveData();
                 getData();
             }
@@ -200,9 +216,11 @@ public class home_page_student extends AppCompatActivity
 
         // final String[] poster_name = new String[1];
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        System.out.println(uid);
+        System.out.println(uid+"save button");
+
         key1=databaseReference.push().getKey();
-        dbNameFechingRef=FirebaseDatabase.getInstance().getReference().child("Students").child(uid);
+
+        dbNameFechingRef=FirebaseDatabase.getInstance().getReference().child("User").child(uid);
 
 
 
@@ -217,16 +235,18 @@ public class home_page_student extends AppCompatActivity
                         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         System.out.println("name");
                         String poster_name = String.valueOf(dataSnapshot.child("name").getValue());
+                        String poster_id=String.valueOf(dataSnapshot.child("id").getValue());
                         System.out.println(uid);
                         String post = postedit.getText().toString().trim();
-                        Post post1 = new Post(poster_name, post);
-                        key1 = databaseReference.push().getKey() + uid;
+                        Post post1 = new Post(poster_name, post,poster_id);
+                     //   key1 = databaseReference.push().getKey() + uid;
                         databaseReference.child(key1).setValue(post1);
                         //System.out.println("University"+user.getUni());
                         Toast.makeText(getApplicationContext(), "Post sent", Toast.LENGTH_LONG).show();
 
                     }
                 }
+
             }
 
             @Override
@@ -274,7 +294,7 @@ public class home_page_student extends AppCompatActivity
                //  ListView postList;
                // postList= findViewById(R.id.postList);
                 postList.setAdapter(postAdapter);
-                Toast.makeText(getApplicationContext(), "Post sent222", Toast.LENGTH_LONG).show();
+               // Toast.makeText(getApplicationContext(), "Post sent222", Toast.LENGTH_LONG).show();
                 System.out.println("OKAY");
 
 
@@ -290,6 +310,52 @@ public class home_page_student extends AppCompatActivity
     }
     public int getFlag(){
         return flag;
+    }
+
+    public void addSpinnerList(){
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+
+        dbNameFechingRef=FirebaseDatabase.getInstance().getReference().child("User").child(uid);
+
+
+
+        dbNameFechingRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list.clear();
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+
+                        String poster_dept = String.valueOf(dataSnapshot.child("dept").getValue());
+                        String poster_prog=String.valueOf(dataSnapshot.child("prog").getValue());
+                        list.add(poster_dept);
+                        list.add(poster_prog);
+                        break;
+
+
+                    }
+                }
+
+
+
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        list.add("");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        postSpinner.setAdapter(dataAdapter);
+
     }
 
 }

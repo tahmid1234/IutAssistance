@@ -49,9 +49,11 @@ public class PostAdapter extends BaseAdapter {
 
         TextView posterNameBox = view.findViewById(R.id.posterNameBox);
         TextView postBox = view.findViewById(R.id.postBox);
+        TextView posterId=view.findViewById(R.id.posterIdBox);
 
         posterNameBox.setText(posts.get(i).getPoster_name());
         postBox.setText(posts.get(i).getPost());
+      posterId.setText(posts.get(i).getId());
 
 
 

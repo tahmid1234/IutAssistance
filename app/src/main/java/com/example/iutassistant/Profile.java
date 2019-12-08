@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ public class Profile extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProfileAdapter adapter;
     private List<ProfileInfo> profileListInfo;
-    TextView name,id,uni,prof,dept;
+    TextView name,id,uni,prof,dept,bsc_text,bsc_id_text;
     private Spinner residential_status_spinner,blood_group_spinner,hall_spinner;
 
     DatabaseReference dbprofiles;
@@ -109,14 +110,18 @@ public class Profile extends AppCompatActivity {
                         String depts = String.valueOf(dataSnapshot.child("dept").getValue());
                         String professions = String.valueOf(dataSnapshot.child("profession").getValue());
                         String unis = String.valueOf(dataSnapshot.child("uni").getValue());
+
                         name=(TextView)findViewById(R.id.nameText);
                         id=(TextView)findViewById(R.id.idText);
                         uni=(TextView)findViewById(R.id.uniText);
                        // prof=(TextView)findViewById(R.id.profText);
                         dept=(TextView)findViewById(R.id.deptText);
+                       // bsc_text=(TextView)findViewById(R.id.progText);
 
                         name.setText(names);
                         id.setText(ids);
+
+
                        // uni.setText(unis);
                        // prof.setText(professions);
                         dept.setText(depts);

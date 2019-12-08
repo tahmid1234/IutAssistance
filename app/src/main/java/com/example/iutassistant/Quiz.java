@@ -165,7 +165,7 @@ public class Quiz extends AppCompatActivity {
                FirebaseDatabase.getInstance().getReference("University/IUT").child("Quiz").child(sec).child(crs).setValue(quizInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                    @Override
                    public void onComplete(@NonNull Task<Void> task) {
-                       startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));
+                      // startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));
                    }
                });
            }

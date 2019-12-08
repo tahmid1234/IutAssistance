@@ -161,7 +161,7 @@ public class ClassReshedule extends AppCompatActivity {
                 FirebaseDatabase.getInstance().getReference("University/IUT").child("ClassTime").child(sec).child(crs).setValue(resheduledInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));
+                       // startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));
                     }
                 });
             }
