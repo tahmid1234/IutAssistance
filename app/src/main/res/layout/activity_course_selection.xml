@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal"
         android:weightSum="10">
 
@@ -22,7 +22,7 @@
             android:layout_weight="3"
             android:text="Course"
             android:textColor="#164E0F"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
         <Spinner
             android:id="@+id/crs"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="7"
             android:textColor="#164E0F"
-            android:textSize="14sp" >
+            android:textSize="16sp" >
         </Spinner>
 
     </LinearLayout>
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:orientation="horizontal"
         android:weightSum="10">
 
@@ -50,7 +50,7 @@
             android:layout_weight="3"
             android:text="Section"
             android:textColor="#164E0F"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
 
         <Spinner
@@ -58,10 +58,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="7"
-
-
             android:textColor="#164E0F"
-            android:textSize="14sp" ></Spinner>
+            android:textSize="16sp" >
+        </Spinner>
 
     </LinearLayout>
 
@@ -100,8 +99,8 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="#164E0F"
         android:text="Select "
         android:textColor="#FFFFFF"
@@ -111,6 +110,7 @@
         android:id="@+id/attendance"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="5dp"
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="15dp"

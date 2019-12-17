@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,13 +26,14 @@ public class UniversitySelectingClass extends AppCompatActivity {
     private static String uni;
     private DatabaseReference databaseReference;
     RadioButton radioStudent,radioTeacher;
+    RadioGroup RADIO_GROUP;
     private static String proffesion ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_university_selecting_class);
-
+        RADIO_GROUP = findViewById(R.id.radioGroupId);
         radioStudent=(RadioButton)findViewById(R.id.student);
         radioTeacher=(RadioButton)findViewById(R.id.teacher);
         addItemsOnuniversity();

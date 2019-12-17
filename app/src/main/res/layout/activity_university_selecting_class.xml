@@ -70,19 +70,30 @@
 
         </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/teacher"
-            android:layout_marginTop="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Teacher" />
 
-        <RadioButton
-            android:id="@+id/student"
+        <RadioGroup
+            android:id="@+id/radioGroupId"
             android:layout_width="match_parent"
-            android:layout_marginTop="15dp"
-            android:layout_height="wrap_content"
-            android:text="Student" />
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/teacher"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Teacher" />
+
+            <RadioButton
+                android:id="@+id/student"
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                android:text="Student" />
+
+
+        </RadioGroup>
+
+
 
 
 
