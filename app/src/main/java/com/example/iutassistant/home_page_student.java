@@ -14,6 +14,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
+import com.example.iutassistant.AdapterClasses.Request_Adapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -50,13 +51,17 @@ public class home_page_student extends AppCompatActivity
     private ImageView profileimageview, showAttendancePercentage,message,quiz_img,routin_img,assignment_img;
     private Button postbutton;
     private EditText postedit;
-    private ListView postList;
+    private ListView postList, requestListView;
     Spinner postSpinner;
     DatabaseReference databaseReference,dbNameFechingRef;
     String key1,poster_dept,poster_prog;
     List<String> list = new ArrayList<String>();
     User user;
     public static int flag=0;
+    String requestedSecName;
+    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+    ArrayList<RequestInfo> requestInfoList =new ArrayList<RequestInfo>();
 
 
 
@@ -68,6 +73,8 @@ public class home_page_student extends AppCompatActivity
         setSupportActionBar(toolbar);
        databaseReference=FirebaseDatabase.getInstance().getReference("Post");
        // setDatabase();
+
+        requestListView =findViewById(R.id.requestList);
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -151,6 +158,8 @@ public class home_page_student extends AppCompatActivity
                 getData();
             }
         });
+
+        //getRequestList();
     }
 
 
@@ -215,7 +224,7 @@ public class home_page_student extends AppCompatActivity
         //  String post = postedit.getText().toString().trim();
 
         // final String[] poster_name = new String[1];
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         System.out.println(uid+"save button");
 
         key1=databaseReference.push().getKey();
@@ -232,7 +241,7 @@ public class home_page_student extends AppCompatActivity
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
                         System.out.println("I will tell you all about when i see you again,see you again");
-                        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                         System.out.println("name");
                         String poster_name = String.valueOf(dataSnapshot.child("name").getValue());
                         String poster_id=String.valueOf(dataSnapshot.child("id").getValue());
@@ -316,7 +325,7 @@ public class home_page_student extends AppCompatActivity
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 
-        dbNameFechingRef=FirebaseDatabase.getInstance().getReference().child("User").child(uid);
+        dbNameFechingRef=FirebaseDatabase.getInstance().getReference().child("University/IUT/Students").child(uid);
 
 
 
@@ -325,17 +334,23 @@ public class home_page_student extends AppCompatActivity
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list.clear();
                 if (dataSnapshot.exists()) {
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                   // for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
 
                         String poster_dept = String.valueOf(dataSnapshot.child("dept").getValue());
-                        String poster_prog=String.valueOf(dataSnapshot.child("prog").getValue());
+
+                        requestedSecName=String.valueOf(dataSnapshot.child("sec").getValue());
+
+                        System.out.println(requestedSecName+" eta retrivimh");
+
                         list.add(poster_dept);
-                        list.add(poster_prog);
-                        break;
+                        list.add(requestedSecName);
+                        list.add("IUT");
+                        getRequestList();
+                      //  break;
 
 
-                    }
+                   // }
                 }
 
 
@@ -356,6 +371,38 @@ public class home_page_student extends AppCompatActivity
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         postSpinner.setAdapter(dataAdapter);
 
+    }
+
+    void getRequestList(){
+
+
+        System.out.println(requestedSecName+" eta applying");
+
+        FirebaseDatabase.getInstance().getReference("University/IUT/REQUEST").child(requestedSecName).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                requestInfoList.clear();
+                if(dataSnapshot.exists()){
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                     String requestedSid=String.valueOf(snapshot.getKey());
+                     String requestedUid=String.valueOf(dataSnapshot.child(requestedSid).child("id").getValue());
+                        System.out.println(requestedSid+" eta applying"+requestedUid);
+                     RequestInfo requestInfo=new RequestInfo(requestedSid,requestedUid,requestedSecName);
+                        requestInfoList.add(requestInfo);
+
+                    }
+                }
+
+                Request_Adapter request_adapter=new Request_Adapter(home_page_student.this,requestInfoList);
+                requestListView.setAdapter(request_adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }

@@ -76,7 +76,7 @@ public class LogIn extends AppCompatActivity {
                                            String prof =String.valueOf(dataSnapshot.child("profession").getValue());
                                            Toast.makeText(getApplicationContext(), prof, Toast.LENGTH_LONG).show();
                                            if(prof.equals("Students"))
-                                               startActivity(new Intent(getApplicationContext(),home_page_student.class));
+                                               startActivity(new Intent(getApplicationContext(),SectionCreation.class));
                                            else
                                                startActivity(new Intent(getApplicationContext(),TeachersHomePage.class));
                                            //System.out.println("University"+user.getUni());

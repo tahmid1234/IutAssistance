@@ -321,7 +321,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
+        android:orientation="vertical"
         >
+
+        <ListView
+            android:id="@+id/requestList"
+            android:layout_width="match_parent"
+            android:layout_height="113dp"
+            android:layout_margin="20dp" />
 
 
         <ListView
@@ -329,6 +336,8 @@
             android:layout_width="match_parent"
             android:layout_margin="20dp"
             android:layout_height="wrap_content"/>
+
+
 
 
     </LinearLayout>
