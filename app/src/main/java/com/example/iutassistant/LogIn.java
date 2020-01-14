@@ -125,6 +125,8 @@ public class LogIn extends AppCompatActivity {
 
             }
         });
+
+
     }
 
     public void setUid(String uid) {

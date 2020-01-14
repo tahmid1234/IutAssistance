@@ -3,7 +3,7 @@ package com.example.iutassistant;
 public class User {
 
 
-    private String name,id,dept,prog,uni,profession,sec,uid;
+    private String name,id,dept,prog,uni,profession,sec,uid,email;
 
     public User() {
     }
@@ -17,7 +17,7 @@ public class User {
         this.id=id;
     }
 
-    public User(String id, String name, String sec, String prog, String dept, String profession,String uni) {
+    public User(String id, String name, String sec, String prog, String dept, String profession,String uni,String email) {
         this.name = name;
         this.id = id;
         this.dept = dept;
@@ -26,9 +26,10 @@ public class User {
         this.profession = profession;
         this.sec=sec;
         this.uni=uni;
+        this.email=email;
     }
 
-    public User(String id, String name, String dept, String profession,String uni) {
+    public User(String id, String name, String dept, String profession,String uni,String email) {
         this.name = name;
         this.id = id;
         this.dept = dept;
@@ -37,6 +38,8 @@ public class User {
         this.profession = profession;
 
         this.uni=uni;
+        this.email=email;
+        System.out.println(email+" hoise email vaai 2");
     }
 
     public String getName() {
@@ -65,5 +68,13 @@ public class User {
 
     public String getSec() {
         return sec;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

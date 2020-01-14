@@ -68,18 +68,7 @@ public class SectionCreation extends AppCompatActivity {
 
         dataCheck=0;
 
-      /*  while (true){
-            System.out.println(secName+" secu  "+uid);
-            if(checkStatus().equals("ACCEPTED")){
-
-                startActivity(new Intent(getApplicationContext(), home_page_student.class));
-                break;}
-        }*/
-
-
-
-
-
+        NotiFication.createNotificationChannel(this);
     }
 
     void addSecID(){
@@ -312,6 +301,10 @@ public class SectionCreation extends AppCompatActivity {
                 }
                 else
                 {
+                    if(checkStatus.equals(secName)) {
+                        Intent intent = new Intent(SectionCreation.this, home_page_student.class);
+                        NotiFication.showNotification(SectionCreation.this.getApplicationContext(), intent, 1, "Request Accepted", "You have become a member of" + secName);
+                    }
                     startActivity(new Intent(getApplicationContext(), home_page_student.class));
                 }
                 }

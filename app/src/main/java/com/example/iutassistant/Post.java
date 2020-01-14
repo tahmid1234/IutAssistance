@@ -3,7 +3,7 @@ package com.example.iutassistant;
 public class Post {
 
     private String poster_name;
-    private String post,id;
+    private String post,id,postArea;
 
     public Post(){}
 
@@ -15,10 +15,15 @@ public class Post {
         return id;
     }
 
-    public Post(String poster_name, String post, String id) {
+    public String getPostArea() {
+        return postArea;
+    }
+
+    public Post(String poster_name, String post, String id, String postArea) {
         this.poster_name = poster_name;
         this.post = post;
         this.id=id;
+        this.postArea=postArea;
     }
 
     public String getPoster_name() {

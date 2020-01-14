@@ -150,7 +150,7 @@ public class CourseSelection extends AppCompatActivity {
 
 
                 System.out.println(sec+"    ****section  "+crs);
-                dbNameFechingRef= FirebaseDatabase.getInstance().getReference("Teachers").child(uid);
+                dbNameFechingRef= FirebaseDatabase.getInstance().getReference("University/IUT/Teachers").child(uid);
 
                 System.out.println(uid+" ******uid");
 
@@ -222,7 +222,7 @@ public class CourseSelection extends AppCompatActivity {
 
 
                 System.out.println(sec+"    ****section  "+crs);
-                dbNameFechingRef= FirebaseDatabase.getInstance().getReference("Teachers").child(uid);
+                dbNameFechingRef= FirebaseDatabase.getInstance().getReference("University/IUT/Teachers").child(uid);
 
                 System.out.println(uid+" ******uid");
 

@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -161,6 +163,9 @@ public class Quiz extends AppCompatActivity {
                month=month_edit.getText().toString().trim();
                year=year_edit.getText().toString().trim();
                final String quiz_date=day+"-"+month+"-"+year;
+               if(TextUtils.isEmpty(crs) ||TextUtils.isEmpty(sec)||TextUtils.isEmpty(quizNo)||TextUtils.isEmpty(syllabus)||TextUtils.isEmpty(day)||TextUtils.isEmpty(month)||TextUtils.isEmpty(year))
+               {    Toast.makeText(Quiz.this, "Please fill the form properly", Toast.LENGTH_SHORT).show();
+               return;}
                QuizInfo quizInfo=new QuizInfo(uid,syllabus,quiz_date,quizNo);
                FirebaseDatabase.getInstance().getReference("University/IUT").child("Quiz").child(sec).child(crs).setValue(quizInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                    @Override

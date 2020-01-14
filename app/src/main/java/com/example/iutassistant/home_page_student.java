@@ -48,7 +48,7 @@ public class home_page_student extends AppCompatActivity
 
     private FirebaseAuth mAuth;
 
-    private ImageView profileimageview, showAttendancePercentage,message,quiz_img,routin_img,assignment_img;
+    private ImageView profileimageview, showAttendancePercentage,message,quiz_img,routin_img,assignment_img,project_img;
     private Button postbutton;
     private EditText postedit;
     private ListView postList, requestListView;
@@ -61,7 +61,10 @@ public class home_page_student extends AppCompatActivity
     String requestedSecName;
     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+     String postArea;
+
     ArrayList<RequestInfo> requestInfoList =new ArrayList<RequestInfo>();
+
 
 
 
@@ -73,6 +76,7 @@ public class home_page_student extends AppCompatActivity
         setSupportActionBar(toolbar);
        databaseReference=FirebaseDatabase.getInstance().getReference("Post");
        // setDatabase();
+        postSpinner=findViewById(R.id.post_spinner_id_1);
 
         requestListView =findViewById(R.id.requestList);
 
@@ -87,7 +91,7 @@ public class home_page_student extends AppCompatActivity
 
         showAttendancePercentage = findViewById(R.id.moreid);
         postList = findViewById(R.id.postList);
-       getData();
+      // getData();
         showAttendancePercentage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,7 +102,7 @@ public class home_page_student extends AppCompatActivity
 
             }
         });
-        postSpinner=findViewById(R.id.post_spinner_id_1);
+
         addSpinnerList();
 
 
@@ -112,7 +116,7 @@ public class home_page_student extends AppCompatActivity
         databaseReference = FirebaseDatabase.getInstance().getReference("Post");
 
         quiz_img=findViewById(R.id.quiz_img);
-
+        project_img=findViewById(R.id.projects);
         routin_img=findViewById(R.id.routine);
         assignment_img=findViewById(R.id.assignment_img);
         assignment_img.setOnClickListener(new View.OnClickListener() {
@@ -144,6 +148,12 @@ public class home_page_student extends AppCompatActivity
                 startActivity(new Intent(getApplicationContext(), Profile.class));
             }
         });
+        project_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Projects.class));
+            }
+        });
         postbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -154,8 +164,10 @@ public class home_page_student extends AppCompatActivity
 
                     return;
                 }
+                postArea=postSpinner.getSelectedItem().toString().trim();
                 saveData();
-                getData();
+                //postArrayList.clear();
+                getData(postArea);
             }
         });
 
@@ -247,9 +259,9 @@ public class home_page_student extends AppCompatActivity
                         String poster_id=String.valueOf(dataSnapshot.child("id").getValue());
                         System.out.println(uid);
                         String post = postedit.getText().toString().trim();
-                        Post post1 = new Post(poster_name, post,poster_id);
+                        Post post1 = new Post(poster_name, post,poster_id,postArea);
                      //   key1 = databaseReference.push().getKey() + uid;
-                        databaseReference.child(key1).setValue(post1);
+                        FirebaseDatabase.getInstance().getReference("University/IUT/POST").child(postArea).child(key1).setValue(post1);
                         //System.out.println("University"+user.getUni());
                         Toast.makeText(getApplicationContext(), "Post sent", Toast.LENGTH_LONG).show();
 
@@ -279,41 +291,19 @@ public class home_page_student extends AppCompatActivity
     }
 
 
-    public void getData() {
+    public void getData(String postAreaCheck) {
 
-        final ArrayList<Post> postArrayList = new ArrayList<>();
-
-        FirebaseDatabase.getInstance().getReference("Post").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                postArrayList.clear();
-
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    Post post1 = dataSnapshot1.getValue(Post.class);
-
-                    postArrayList.add(post1);
-
-                    System.out.println(post1.getPost() + "................................");
-
-                }
-
-                Collections.reverse(postArrayList);
-                PostAdapter postAdapter = new PostAdapter(home_page_student.this, postArrayList);
-               //  ListView postList;
-               // postList= findViewById(R.id.postList);
-                postList.setAdapter(postAdapter);
-               // Toast.makeText(getApplicationContext(), "Post sent222", Toast.LENGTH_LONG).show();
-                System.out.println("OKAY");
+        //postArrayList.clear();
+        System.out.println(poster_dept+" poster er kahini ar ki"+requestedSecName);
+        if(!postAreaCheck.equals("IUT"))
+        getPostDetails("IUT");
+        if(!postAreaCheck.equals(poster_dept))
+        getPostDetails(poster_dept);
+        if(!postAreaCheck.equals(requestedSecName))
+        getPostDetails(requestedSecName);
+//        getPostDetails("DoneFetchingData");
 
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
     }
@@ -333,11 +323,12 @@ public class home_page_student extends AppCompatActivity
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list.clear();
+                list.add("IUT");
                 if (dataSnapshot.exists()) {
                    // for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
 
-                        String poster_dept = String.valueOf(dataSnapshot.child("dept").getValue());
+                        poster_dept = String.valueOf(dataSnapshot.child("dept").getValue());
 
                         requestedSecName=String.valueOf(dataSnapshot.child("sec").getValue());
 
@@ -345,18 +336,15 @@ public class home_page_student extends AppCompatActivity
 
                         list.add(poster_dept);
                         list.add(requestedSecName);
-                        list.add("IUT");
+
+                        getData("Initial posts");
+
                         getRequestList();
                       //  break;
 
 
                    // }
                 }
-
-
-
-
-
 
             }
 
@@ -365,7 +353,7 @@ public class home_page_student extends AppCompatActivity
 
             }
         });
-        list.add("");
+        list.add("IUT");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -403,6 +391,46 @@ public class home_page_student extends AppCompatActivity
 
             }
         });
+    }
+    final ArrayList<Post> postArrayList = new ArrayList<>();
+
+    void getPostDetails(final String postAreaIn){
+
+            postArrayList.clear();
+        System.out.println(postAreaIn+" post Area In");
+
+        FirebaseDatabase.getInstance().getReference("University/IUT/POST").child(postAreaIn).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    Post post1 = dataSnapshot1.getValue(Post.class);
+                    System.out.println("post dekhi"+String.valueOf(dataSnapshot1.child("post").getValue())+" "+String.valueOf(dataSnapshot1.child("postArea").getValue()));
+                    postArrayList.add(post1);
+
+                    System.out.println(post1.getPost() + "................................");
+
+                }
+
+                Collections.reverse(postArrayList);
+               // if(postAreaIn.equals("DoneFetchingData")){
+                PostAdapter postAdapter = new PostAdapter(home_page_student.this, postArrayList);
+                //  ListView postList;
+                // postList= findViewById(R.id.postList);
+                postList.setAdapter(postAdapter);//}
+                // Toast.makeText(getApplicationContext(), "Post sent222", Toast.LENGTH_LONG).show();
+                System.out.println("OKAY");
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 }

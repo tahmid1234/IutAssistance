@@ -69,15 +69,15 @@ public class MainActivity extends AppCompatActivity {
         inputUni =(EditText)findViewById(R.id.university);
         //inputSec=(Spinner) findViewById(R.id.sec) ;
         inputId=(EditText)findViewById(R.id.id);
-       // secText=(TextView)findViewById(R.id.secText);
-       // progText=(TextView)findViewById(R.id.progText);
-
-            //inputSec.setVisibility(View.INVISIBLE);
-           // inputProg.setVisibility(View.INVISIBLE);
-           // secText.setVisibility(View.INVISIBLE);
-           // progText.setVisibility(View.INVISIBLE);
 
 
+        // secText=(TextView)findViewById(R.id.secText);
+        // progText=(TextView)findViewById(R.id.progText);
+
+        //inputSec.setVisibility(View.INVISIBLE);
+        // inputProg.setVisibility(View.INVISIBLE);
+        // secText.setVisibility(View.INVISIBLE);
+        // progText.setVisibility(View.INVISIBLE);
 
 
 
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String email=emailAdd.getText().toString().trim();
+                final String email=emailAdd.getText().toString().trim();
                 String password=enteredPassword.getText().toString().trim();
                 String conPassword=confirmPassWord.getText().toString().trim();
                 final String name=inputName.getText().toString().trim();
@@ -127,7 +127,8 @@ public class MainActivity extends AppCompatActivity {
                                             //information=new User(id,name,sec,prog,dept,profession,university);
                                          // }
                                         //else
-                                            information=new User(id,name,dept,profession,university);
+                                        System.out.println(email+" hoise email vaai 1");
+                                            information=new User(id,name,dept,profession,university,email);
 
                                         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -145,14 +146,17 @@ public class MainActivity extends AppCompatActivity {
 
 
                                                 if(profession.equals("Students")){
-                                                    FirebaseDatabase.getInstance().getReference("University/IUT").child(profession).child(uid).child("sec").setValue("PENDING");
 
-                                                   // System.out.println(sec+"HOItese naki ***********************************"+id+"   "+timeStamp);
-                                                  //etar kaaj kora lagbe pore &&&&&&&&&&&&&&&&7->
-                                                   // FirebaseDatabase.getInstance().getReference("University/IUT/StudentsInSection").child(sec).child(id).setValue(uid);
-                                                    startActivity(new Intent(getApplicationContext(), SectionCreation.class));}
-                                                    else
+                                                    FirebaseDatabase.getInstance().getReference("University/IUT").child(profession).child(uid).child("sec").setValue("PENDING");
+                                                    FirebaseDatabase.getInstance().getReference("University/IUT").child("StudentsIdNUid").child(id).setValue(uid);
+
+                                                    startActivity(new Intent(getApplicationContext(), SectionCreation.class));
+                                                }
+                                                    else {
+
+
                                                     startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));
+                                                }
 
 
                                                 //startActivity(new Intent(getApplicationContext(), LogIn.class));
@@ -177,6 +181,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 
