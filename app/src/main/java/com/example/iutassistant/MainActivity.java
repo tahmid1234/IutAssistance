@@ -3,6 +3,7 @@ package com.example.iutassistant;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     RadioButton radioStudent,radioTeacher;
 
     DatabaseReference databaseReference,dbref,deptDatabase;
-
+    public static Context contextMain;
     TextView secText,progText;
 
     private FirebaseAuth mAuth;
@@ -136,10 +137,12 @@ public class MainActivity extends AppCompatActivity {
 
 
                                         //dbref.child(university).child(dept).child(prog).child(sec).child("UID").setValue(uid);//hierarchy of university to student uid is set
-                                        FirebaseDatabase.getInstance().getReference("University/IUT").child(profession).child(uid).setValue(information);
+
                                         //FirebaseDatabase.getInstance().getReference("University").child("IUT").child("StudentsInSection").child("id").setValue(uid);
                                         //databaseReference.child("profession").child(uid).setValue("");
-                                        FirebaseDatabase.getInstance().getReference("User").child(uid).setValue(information).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        FirebaseDatabase.getInstance().getReference("University/IUT").child(profession).child(uid).setValue(information);
+
+                                        FirebaseDatabase.getInstance().getReference("User").child(uid).child("profession").setValue(profession).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
 

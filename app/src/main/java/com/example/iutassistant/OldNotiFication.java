@@ -13,7 +13,7 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-public abstract class NotiFication {
+public abstract class OldNotiFication {
 
     public static final String CHANNEL_ID = "notsch";
 
@@ -51,6 +51,7 @@ public abstract class NotiFication {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(currentActivity);
 
         // notificationId is a unique int for each notification that you must define
+      
         notificationManager.notify(notification_id, builder.build());
 
 

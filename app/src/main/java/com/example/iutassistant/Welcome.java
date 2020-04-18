@@ -21,9 +21,9 @@ public class Welcome extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         LogIn logIn=new LogIn();
         TextView t1=(TextView)findViewById(R.id.textView1);
-        t1.setText(logIn.getUid());
+        t1.setText("WELCOME VAAI JAAN");
         System.out.println("Lol");
-        System.out.println(logIn.getUid());
+     //   System.out.println(logIn.getUid());
        // System.out.println(FirebaseAuth.getInstance().getCurrentUser().getUid());
     }
 }

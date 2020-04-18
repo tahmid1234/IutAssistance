@@ -8,8 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.iutassistant.LogIn;
 import com.example.iutassistant.R;
 import com.example.iutassistant.RequestInfo;
+import com.example.iutassistant.Services.Notification;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
@@ -76,6 +78,8 @@ public class Request_Adapter extends BaseAdapter {
                 FirebaseDatabase.getInstance().getReference(ref).child("Students").child(uid).child("sec").setValue(sec);
                 FirebaseDatabase.getInstance().getReference(ref).child("REQUEST").child(sec).child(sid).removeValue();
                 requestInfo.remove(j);
+                Notification notification=new Notification(uid+"Request","Accepted","You have become a member of "+sec, LogIn.contextLogin);
+                notification.setNotification();
 
             }
         });
@@ -88,6 +92,8 @@ public class Request_Adapter extends BaseAdapter {
                 FirebaseDatabase.getInstance().getReference(ref).child("Students").child(uid).child("sec").setValue("REJECTED");
                 FirebaseDatabase.getInstance().getReference(ref).child("REQUEST").child(sec).child(sid).removeValue();
                 requestInfo.remove(j);
+                Notification notification=new Notification(uid+"Request","Rejected",sec+" has rejected your request", LogIn.contextLogin);
+                notification.setNotification();
 
             }
         });
