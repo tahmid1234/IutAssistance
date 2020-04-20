@@ -3,10 +3,8 @@ package com.example.iutassistant;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.text.TextUtils;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -14,11 +12,8 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -26,14 +21,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class TeachersHomePage extends AppCompatActivity
 
@@ -86,20 +76,20 @@ public class TeachersHomePage extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 System.out.println("Quiz Class a jaitese");
-                startActivity(new Intent(getApplicationContext(), Quiz.class));
+                startActivity(new Intent(getApplicationContext(), QuizDeclarationActivity.class));
             }
         });
         classResheduling.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ClassReshedule.class));
+                startActivity(new Intent(getApplicationContext(), ClassResheduleDeclarationActivity.class));
             }
         });
 
         assignment_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Assignment.class));
+                startActivity(new Intent(getApplicationContext(), AssignmentDeclarationActivity.class));
             }
         });
 

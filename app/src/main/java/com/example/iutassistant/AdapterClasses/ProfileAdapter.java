@@ -1,15 +1,16 @@
-package com.example.iutassistant;
-import java.util.ArrayList;
+package com.example.iutassistant.AdapterClasses;
 import java.util.List;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.iutassistant.Model.ProfileInfo;
+import com.example.iutassistant.R;
 
 public class ProfileAdapter extends  RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder> {
 

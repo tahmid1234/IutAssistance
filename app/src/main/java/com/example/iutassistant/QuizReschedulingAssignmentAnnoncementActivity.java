@@ -9,6 +9,7 @@ import android.widget.ListView;
 import com.example.iutassistant.AdapterClasses.Assignment_Announcement_Adapter;
 import com.example.iutassistant.AdapterClasses.ClassRescheduling_Adapter;
 import com.example.iutassistant.AdapterClasses.Quiz_Announcement_Adapter;
+import com.example.iutassistant.Model.AnnouncementInfo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class AnnoncementReminder extends AppCompatActivity {
+public class QuizReschedulingAssignmentAnnoncementActivity extends AppCompatActivity {
 
     DatabaseReference announcementInfoDB;
     home_page_student homePageStudent=new home_page_student();
@@ -28,14 +29,14 @@ public class AnnoncementReminder extends AppCompatActivity {
     ListView listView;
     public int flag;
     static  int i=0;
-    ArrayList<AnnouncementDetail> list = new ArrayList<>();
+    ArrayList<AnnouncementInfo> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_reminder);
         flag=homePageStudent.getFlag();
-
+        System.out.println("Flag*************"+ flag);
      listView=findViewById(R.id.listViewAnnouncement);
         list_Creating();
 
@@ -59,7 +60,7 @@ public class AnnoncementReminder extends AppCompatActivity {
 
         announcementInfoDB = FirebaseDatabase.getInstance().getReference(path);
 
-        FirebaseDatabase.getInstance().getReference("User").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("University/IUT/Students").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -139,8 +140,8 @@ public class AnnoncementReminder extends AppCompatActivity {
                             teacher_id=String.valueOf(dataSnapshot.child("t_id").getValue());
                         }
                         else{
-                            date = String.valueOf(dataSnapshot.child("date").getValue());
-                            type = String.valueOf(dataSnapshot.child("type").getValue());
+                            date = String.valueOf(dataSnapshot.child("submissionDate").getValue());
+                            type = String.valueOf(dataSnapshot.child("media").getValue());
                             syllabus = String.valueOf(dataSnapshot.child("explanation").getValue());
                             teacher_id=String.valueOf(dataSnapshot.child("t_id").getValue());
                         }
@@ -163,21 +164,21 @@ public class AnnoncementReminder extends AppCompatActivity {
 
                 System.out.println("Teacher_********name"+teacher_name);
 
-                AnnouncementDetail announcementDetail=new AnnouncementDetail(crs,date,syllabus,type,teacher_id);
-                list.add(announcementDetail);
+                AnnouncementInfo announcementInfo =new AnnouncementInfo(crs,date,syllabus,type,teacher_id);
+                list.add(announcementInfo);
 
                 System.out.println(list.size()+" ****post  size 1*****");
                 System.out.println("Hocche  naki dekhio to !!!!!!!!!!!!");
                 if(flag==1){
-                Quiz_Announcement_Adapter quizAnnouncement_adapter =new Quiz_Announcement_Adapter(AnnoncementReminder.this,list);
+                Quiz_Announcement_Adapter quizAnnouncement_adapter =new Quiz_Announcement_Adapter(QuizReschedulingAssignmentAnnoncementActivity.this,list);
                 listView.setAdapter(quizAnnouncement_adapter);}
                 else if(flag==2)
                 {
-                    ClassRescheduling_Adapter classRescheduling_adapter=new ClassRescheduling_Adapter(AnnoncementReminder.this,list);
+                    ClassRescheduling_Adapter classRescheduling_adapter=new ClassRescheduling_Adapter(QuizReschedulingAssignmentAnnoncementActivity.this,list);
                     listView.setAdapter(classRescheduling_adapter);
                 }
                 else{
-                    Assignment_Announcement_Adapter assignment_announcement_adapter=new Assignment_Announcement_Adapter(AnnoncementReminder.this,list);
+                    Assignment_Announcement_Adapter assignment_announcement_adapter=new Assignment_Announcement_Adapter(QuizReschedulingAssignmentAnnoncementActivity.this,list);
                     listView.setAdapter(assignment_announcement_adapter);
                 }
 

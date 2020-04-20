@@ -15,6 +15,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.example.iutassistant.AdapterClasses.Request_Adapter;
+import com.example.iutassistant.Model.RequestInfo;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -123,14 +124,14 @@ public class home_page_student extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 flag=3;
-                startActivity(new Intent(getApplicationContext(), AnnoncementReminder.class));
+                startActivity(new Intent(getApplicationContext(), QuizReschedulingAssignmentAnnoncementActivity.class));
             }
         });
         routin_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 flag=2;
-                startActivity(new Intent(getApplicationContext(), AnnoncementReminder.class));
+                startActivity(new Intent(getApplicationContext(), QuizReschedulingAssignmentAnnoncementActivity.class));
             }
         });
 
@@ -138,7 +139,8 @@ public class home_page_student extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 flag=1;
-                startActivity(new Intent(getApplicationContext(), AnnoncementReminder.class));
+                startActivity(new Intent(getApplicationContext(), QuizReschedulingAssignmentAnnoncementActivity.class));
+                System.out.println(FirebaseAuth.getInstance().getUid()+" uid hoilo etaaaaaaaaaa" );
             }
         });
 

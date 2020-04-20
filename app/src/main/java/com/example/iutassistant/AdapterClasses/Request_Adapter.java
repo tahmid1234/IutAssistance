@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.iutassistant.LogIn;
 import com.example.iutassistant.R;
-import com.example.iutassistant.RequestInfo;
+import com.example.iutassistant.Model.RequestInfo;
 import com.example.iutassistant.Services.Notification;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -47,7 +47,7 @@ public class Request_Adapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view == null){
             LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = layoutInflater.inflate(R.layout.request_list,viewGroup,false);}
+            view = layoutInflater.inflate(R.layout.list_view_section_request,viewGroup,false);}
 
         TextView reqId = view.findViewById(R.id.requestSenderID);
          accept =view.findViewById(R.id.accept);

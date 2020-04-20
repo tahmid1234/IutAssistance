@@ -44,7 +44,7 @@ public class PostAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view == null){
             LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = layoutInflater.inflate(R.layout.post_list_item,viewGroup,false);
+            view = layoutInflater.inflate(R.layout.list_view_post_item,viewGroup,false);
         }
 
         TextView posterNameBox = view.findViewById(R.id.posterNameBox);

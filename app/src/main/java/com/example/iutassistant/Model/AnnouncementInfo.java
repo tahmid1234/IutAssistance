@@ -1,4 +1,4 @@
-package com.example.iutassistant;
+package com.example.iutassistant.Model;
 
 import androidx.annotation.NonNull;
 
@@ -7,8 +7,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class AnnouncementDetail {
+import java.io.Serializable;
+
+public class AnnouncementInfo implements Serializable {
     String crs,given_date,descriptive_part,type_or_no,teacher_name;
+
+    public AnnouncementInfo() {
+    }
 
     public String getCrs() {
         return crs;
@@ -30,7 +35,7 @@ public class AnnouncementDetail {
         return teacher_name;
     }
 
-    AnnouncementDetail(String crs, String given_date, String descriptive_part, String type_or_no, String t_id){
+    public AnnouncementInfo(String crs, String given_date, String descriptive_part, String type_or_no, String t_id){
         this.crs=crs;
         this.given_date=given_date;
         this.descriptive_part=descriptive_part;

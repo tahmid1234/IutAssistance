@@ -22,10 +22,10 @@
         <activity android:name=".Marks" />
         <activity android:name=".AssignmentReminder" />
         <activity android:name=".ClassReschedulingReminder" />
-        <activity android:name=".AnnoncementReminder" />
-        <activity android:name=".Assignment" />
-        <activity android:name=".ClassReshedule" />
-        <activity android:name=".Quiz" />
+        <activity android:name=".QuizReschedulingAssignmentAnnoncementActivity" />
+        <activity android:name=".AssignmentDeclarationActivity" />
+        <activity android:name=".ClassResheduleDeclarationActivity" />
+        <activity android:name=".QuizDeclarationActivity" />
         <activity android:name=".ShowAttendance" />
         <activity android:name=".AttendanceSelection" />
         <activity android:name=".Attendance" />

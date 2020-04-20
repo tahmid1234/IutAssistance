@@ -3,7 +3,6 @@ package com.example.iutassistant;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.iutassistant.Model.AssignmentInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Assignment extends AppCompatActivity {
+public class AssignmentDeclarationActivity extends AppCompatActivity {
     Spinner secSpinner, crsSpinner, typeSpinner;
     Button doneButton;
     EditText description_edit, day_edit, month_edit, year_edit;
@@ -171,11 +171,11 @@ public class Assignment extends AppCompatActivity {
                 year = year_edit.getText().toString().trim();
                 final String resheduled_date = day + "-" + month + "-" + year;
                 if(TextUtils.isEmpty(crs) ||TextUtils.isEmpty(sec)||TextUtils.isEmpty(type)||TextUtils.isEmpty(explanation)||TextUtils.isEmpty(day)||TextUtils.isEmpty(month)||TextUtils.isEmpty(year))
-                {    Toast.makeText(Assignment.this, "Please fill the form properly", Toast.LENGTH_SHORT).show();
+                {    Toast.makeText(AssignmentDeclarationActivity.this, "Please fill the form properly", Toast.LENGTH_SHORT).show();
                     return;}
-                ResheduledInfo resheduledInfo = new ResheduledInfo(uid, type, explanation, resheduled_date);
+                AssignmentInfo assignmentInfoT = new AssignmentInfo(uid, type, explanation, resheduled_date);
                 System.out.println(sec+"bhjg "+crs+" ");
-                FirebaseDatabase.getInstance().getReference("University/IUT").child("Assignment").child(sec).child(crs).setValue(resheduledInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+                FirebaseDatabase.getInstance().getReference("University/IUT").child("Assignment").child(sec).child(crs).setValue(assignmentInfoT).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                       //  startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));

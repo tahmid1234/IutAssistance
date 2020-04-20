@@ -1,6 +1,11 @@
-package com.example.iutassistant;
+package com.example.iutassistant.Model;
 
-public class RequestInfo {
+import java.io.Serializable;
+
+public class RequestInfo implements Serializable {
+    public RequestInfo() {
+    }
+
     String sid,uid,secName;
 
     public String getSid() {
@@ -15,9 +20,10 @@ public class RequestInfo {
         return secName;
     }
 
-    RequestInfo(String sid, String uid, String secName){
+    public RequestInfo(String sid, String uid, String secName){
             this.sid=sid;
             this.uid=uid;
             this.secName=secName;
     }
+
 }

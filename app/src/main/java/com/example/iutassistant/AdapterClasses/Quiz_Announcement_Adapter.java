@@ -11,29 +11,26 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.iutassistant.AnnouncementDetail;
-import com.example.iutassistant.Attendance_detail;
+import com.example.iutassistant.Model.AnnouncementInfo;
 import com.example.iutassistant.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import javax.annotation.meta.When;
-
 public class Quiz_Announcement_Adapter extends BaseAdapter {
     private Context mContext;
-    private ArrayList<AnnouncementDetail> announcementDetails;
+    private ArrayList<AnnouncementInfo> announcementInfos;
 
-    public Quiz_Announcement_Adapter(Context mContext, ArrayList<AnnouncementDetail> announcementDetails) {
-        this.announcementDetails=announcementDetails;
+    public Quiz_Announcement_Adapter(Context mContext, ArrayList<AnnouncementInfo> announcementInfos) {
+        this.announcementInfos = announcementInfos;
         this.mContext=mContext;
-        System.out.println(announcementDetails.size()+" ****atttttt okay  size 2*****");
+        System.out.println(announcementInfos.size()+" ****atttttt okay  size 2*****");
     }
 
     @Override
     public int getCount() {
-        return announcementDetails.size();
+        return announcementInfos.size();
     }
 
     @Override
@@ -51,7 +48,7 @@ public class Quiz_Announcement_Adapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view == null){
             LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = layoutInflater.inflate(R.layout.quiz_reminder_list,viewGroup,false);}
+            view = layoutInflater.inflate(R.layout.list_view_all_announcement_list,viewGroup,false);}
             System.out.println("Dhukse naki tw k jane!!!!!!!!!!!!!11");
 
         TextView crs = view.findViewById(R.id.crs);
@@ -65,13 +62,13 @@ public class Quiz_Announcement_Adapter extends BaseAdapter {
         date_text_var.setText("Quiz Date");
         info_text.setText("Syllabus");
         type_text.setText("Quiz No");
-        crs.setText(announcementDetails.get(i).getCrs());
-        date.setText(announcementDetails.get(i).getGiven_date());
-        type.setText(announcementDetails.get(i).getType_or_no());
-        syllabus.setText(announcementDetails.get(i).getDescriptive_part());
+        crs.setText(announcementInfos.get(i).getCrs());
+        date.setText(announcementInfos.get(i).getGiven_date());
+        type.setText(announcementInfos.get(i).getType_or_no());
+        syllabus.setText(announcementInfos.get(i).getDescriptive_part());
         String timeStamp =new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
-        System.out.println(timeStamp+" "+announcementDetails.get(i).getGiven_date());
-        if(timeStamp.equals(announcementDetails.get(i).getGiven_date())){
+        System.out.println(timeStamp+" "+ announcementInfos.get(i).getGiven_date());
+        if(timeStamp.equals(announcementInfos.get(i).getGiven_date())){
             view.setBackgroundColor(Color.argb((float) .3, 128, 0, 0));
             crs.setTextColor(Color.WHITE);
             date.setTextColor(Color.WHITE);
@@ -84,7 +81,7 @@ public class Quiz_Announcement_Adapter extends BaseAdapter {
 
 
         }
-        else if(timeStamp.compareTo(announcementDetails.get(i).getGiven_date())<0) {
+        else if(timeStamp.compareTo(announcementInfos.get(i).getGiven_date())<0) {
             view.setBackgroundColor(Color.argb((float) .3, 0, 0, 255));
 
         }
