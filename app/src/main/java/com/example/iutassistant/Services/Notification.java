@@ -1,14 +1,12 @@
 package com.example.iutassistant.Services;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.iutassistant.OldNotiFication;
+import com.example.iutassistant.SingleTone.MySingleton;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".signup_student">
+    tools:context=".Acitivities.signup_student">
 
     <ImageView
         android:layout_width="match_parent"

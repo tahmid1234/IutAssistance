@@ -7,13 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.iutassistant.Attendance_detail;
-import com.example.iutassistant.Post;
+import com.example.iutassistant.Acitivities.Attendance_detail;
 import com.example.iutassistant.R;
-import com.example.iutassistant.ShowAttendance;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Attendance_Adapter extends BaseAdapter {
     private Context mContext;
