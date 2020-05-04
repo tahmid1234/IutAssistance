@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.iutassistant.LogIn;
+import com.example.iutassistant.Acitivities.LogIn;
 import com.example.iutassistant.R;
 import com.example.iutassistant.Model.RequestInfo;
 import com.example.iutassistant.Services.Notification;

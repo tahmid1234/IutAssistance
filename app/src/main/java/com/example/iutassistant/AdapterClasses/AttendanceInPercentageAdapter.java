@@ -11,8 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.iutassistant.AttendanceInPercentage;
-import com.example.iutassistant.Attendance_detail;
+import com.example.iutassistant.Acitivities.AttendanceInPercentage;
 import com.example.iutassistant.R;
 
 import java.util.ArrayList;

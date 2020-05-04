@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.iutassistant.Post;
+import com.example.iutassistant.Acitivities.Post;
 import com.example.iutassistant.R;
 
 import java.util.ArrayList;

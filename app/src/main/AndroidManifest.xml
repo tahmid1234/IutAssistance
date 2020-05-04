@@ -3,7 +3,12 @@
     package="com.example.iutassistant"
     >
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.READ_CONTACTS"></uses-permission>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+
 
     <application
 
@@ -15,23 +20,23 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
 
-        <activity android:name=".SuperVisionActivity" />
-        <activity android:name=".Projects" />
-        <activity android:name=".SectionCreation" />
-        <activity android:name=".RecordsShowActivity" />
-        <activity android:name=".Marks" />
-        <activity android:name=".AssignmentReminder" />
-        <activity android:name=".ClassReschedulingReminder" />
-        <activity android:name=".QuizReschedulingAssignmentAnnoncementActivity" />
-        <activity android:name=".AssignmentDeclarationActivity" />
-        <activity android:name=".ClassResheduleDeclarationActivity" />
-        <activity android:name=".QuizDeclarationActivity" />
-        <activity android:name=".ShowAttendance" />
-        <activity android:name=".AttendanceSelection" />
-        <activity android:name=".Attendance" />
-        <activity android:name=".Profile" />
-        <activity android:name=".CourseSelection" />
-        <activity android:name=".LogIn" /> <!-- <service -->
+        <activity android:name=".Acitivities.SuperVisionActivity" />
+        <activity android:name=".Acitivities.Projects" />
+        <activity android:name=".Acitivities.SectionCreation" />
+        <activity android:name=".Acitivities.RecordsShowActivity" />
+        <activity android:name=".Acitivities.Marks" />
+        <activity android:name=".Acitivities.AssignmentReminder" />
+        <activity android:name=".Acitivities.ClassReschedulingReminder" />
+        <activity android:name=".Acitivities.QuizReschedulingAssignmentAnnoncementActivity" />
+        <activity android:name=".Acitivities.AssignmentDeclarationActivity" />
+        <activity android:name=".Acitivities.ClassResheduleDeclarationActivity" />
+        <activity android:name=".Acitivities.QuizDeclarationActivity" />
+        <activity android:name=".Acitivities.ShowAttendance" />
+        <activity android:name=".Acitivities.AttendanceSelection" />
+        <activity android:name=".Acitivities.AttendanceActivity" />
+        <activity android:name=".Acitivities.Profile" />
+        <activity android:name=".Acitivities.CourseSelection" />
+        <activity android:name=".Acitivities.LogIn" /> <!-- <service -->
         <!--  -->
         <!-- android:name=".MyMessage" -->
         <!-- android:enabled="true" -->
@@ -46,27 +51,27 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".Message" />
-        <activity android:name=".UniversitySelectingClass" />
+        <activity android:name=".Acitivities.Message" />
+        <activity android:name=".Acitivities.UniversitySelectingClass" />
         <activity
-            android:name=".TeachersHomePage"
+            android:name=".Acitivities.TeachersHomePage"
             android:label="@string/title_activity_teachers_home_page"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AdminLoginActivity" />
+        <activity android:name=".Acitivities.AdminLoginActivity" />
         <activity
-            android:name=".home_page_student"
+            android:name=".Acitivities.home_page_student"
             android:label="@string/title_activity_home_page"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Welcome" />
-        <activity android:name=".splash_screen">
+        <activity android:name=".Acitivities.Welcome" />
+        <activity android:name=".Acitivities.splash_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".signup_student" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Acitivities.signup_student" />
+        <activity android:name=".Acitivities.MainActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"
