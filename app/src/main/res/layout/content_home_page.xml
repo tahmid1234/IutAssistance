@@ -12,8 +12,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_height="0dp"
+        android:layout_weight="0"
         android:orientation="horizontal"
         android:weightSum="10"
         android:background="#164E0F"
@@ -21,8 +21,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_weight="2"
+            android:layout_height="0dp"
             android:elevation="12dp"
             android:layout_marginLeft="30dp"
             android:id="@+id/view2"
@@ -31,7 +30,7 @@
             >
 
             <ImageView
-                android:layout_height="80dp"
+                android:layout_height="0dp"
                 android:layout_width="80dp"
                 android:id="@+id/imageView1"
                 android:src="@drawable/ryad"
@@ -40,8 +39,7 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="8"
+            android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:text="Riyad\nB.Sc in SWE"
@@ -267,26 +265,24 @@
             android:layout_marginHorizontal="15dp"
             android:orientation="vertical"
             android:layout_weight="5"
-            android:weightSum="10"
+            android:weightSum="12"
             android:background="#EFF3EC"
             >
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_weight="7"
-                android:layout_height="140dp"
+                android:layout_height="0dp"
                 android:background="#1242"
                 android:hint="Write Your Post Here"
                 android:id="@+id/posteditid"
                 android:gravity="center"
                 />
-
                 <Spinner
-
                     android:id="@+id/post_spinner_id_1"
                     android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_height="0dp"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textAlignment="center"
@@ -294,12 +290,11 @@
 
                 </Spinner>
 
-
             <Button
                 android:id="@+id/postid"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_height="0dp"
+                android:layout_weight="3"
                 android:layout_gravity="center"
                 android:text="Post"
                 android:layout_marginTop="15dp"
@@ -311,9 +306,6 @@
 
 
         </LinearLayout>
-
-
-
 
 
     </LinearLayout>
