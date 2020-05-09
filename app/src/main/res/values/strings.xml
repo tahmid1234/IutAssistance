@@ -16,4 +16,10 @@
     <string name="title_activity_teachers_home_page">TeachersHomePage</string>
     <string name="title_activity_course_selection">CourseSelection</string>
     <string name="title_activity_attendence">Attendence</string>
+
+
+    <string name="class_info">Class Information</string>
+    <string name="project">Projects</string>
+    <string name="option3">Option 3</string>
+    <string name="option4">Option 4</string>
 </resources>
