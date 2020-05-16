@@ -3,12 +3,14 @@ package com.example.iutassistant.Acitivities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.iutassistant.R;
 
-public class NewHomePageStudent extends AppCompatActivity {
+public class NewHomePageStudent extends AppCompatActivity implements View.OnClickListener{
 
     private CardView classInfo,projects,invitation,request;
 
@@ -31,6 +33,24 @@ public class NewHomePageStudent extends AppCompatActivity {
         //textview er id
         numOfRequest = findViewById(R.id.requestNumberId);
 
+
+        classInfo.setOnClickListener(this);
+        projects.setOnClickListener(this);
+
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
+//        if(view.getId()==R.id.classInfoId){
+//            Intent intent = new Intent(getApplicationContext(), NewClassInfo.class);
+//            startActivity(intent)/
+//        }
+        if(view.getId()==R.id.projectId){
+            Intent intent = new Intent(getApplicationContext(), New_Project_List.class);
+            startActivity(intent);
+        }
 
     }
 }

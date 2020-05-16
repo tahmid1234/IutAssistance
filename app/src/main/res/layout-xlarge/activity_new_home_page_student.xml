@@ -66,7 +66,7 @@
                     <ImageView
                         android:layout_width="140dp"
                         android:layout_height="140dp"
-                        android:src="@drawable/class_infopng"
+                        android:src="@drawable/class_info"
                         />
 
                     <View
