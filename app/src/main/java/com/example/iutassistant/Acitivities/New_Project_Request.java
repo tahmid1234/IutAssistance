@@ -7,13 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.iutassistant.R;
 
 public class New_Project_Request extends AppCompatActivity {
 
-    Dialog myDialog;
+    private EditText projectName,teamMateId,courseName,description;
+    private AutoCompleteTextView supervisor;
+    private Button addId,request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
