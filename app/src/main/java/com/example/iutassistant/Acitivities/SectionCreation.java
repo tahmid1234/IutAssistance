@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
+import com.example.iutassistant.NewActivities.NewHomePageStudent;
 import com.example.iutassistant.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -373,7 +374,7 @@ public class SectionCreation extends AppCompatActivity {
                 }
                 else if(checkStatus.equals("REJECTED")){
                     warningText.setText("Your request is rejected");
-                    Intent intent = new Intent(SectionCreation.this, home_page_student.class);
+                    //Intent intent = new Intent(SectionCreation.this, home_page_student.class);
                    // Notification.setNotification("Your section request is rejected "+secName,intent,SectionCreation.this);
                    // setNotification("Your section request is rejected "+secName,intent);
                 }
@@ -381,14 +382,14 @@ public class SectionCreation extends AppCompatActivity {
                 {
                     if(checkStatus.equals(secName)) {
                         System.out.println("If er vitor achi");
-                        Intent intent = new Intent(SectionCreation.this, home_page_student.class);
+                        //Intent intent = new Intent(SectionCreation.this, home_page_stude.class);
 
                         //Notification.setNotification("You have become a member of "+secName,intent,SectionCreation.this);
                         System.out.println("send notir niche er vitor achi");
                       //  setNotification("You  became a member of "+secName,intent);
 
                     }
-                    startActivity(new Intent(getApplicationContext(), home_page_student.class));
+                    startActivity(new Intent(getApplicationContext(), NewHomePageStudent.class));
                     finish();
 
                 }

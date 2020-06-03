@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.iutassistant.Extra.Constant;
+import com.example.iutassistant.NewActivities.NewHomePageStudent;
 import com.example.iutassistant.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -53,16 +55,15 @@ public class LogIn extends AppCompatActivity {
 
         admin=(Button) findViewById(R.id.admin);
 
-        sp = getSharedPreferences("signIn",MODE_PRIVATE);
+        sp = getSharedPreferences(Constant.USER_LOGIN_INFO_SHARED_PREFERENCES,MODE_PRIVATE);
+        dataRetriver=getSharedPreferences(Constant.USER_INFO_SHARED_PREFERENCES,MODE_PRIVATE);
+        if(sp.getBoolean(Constant.user_login_state_shared_preference,false)){
+            checkUserInfo();
+        }
+        else{
+            dataRetriver.edit().putBoolean(Constant.user_exists_preference, false).apply();
+        }
 
-        editId=  getSharedPreferences(MY_PREFERENCE_KEY,MODE_PRIVATE);
-        //dataRetriver=getSharedPreferences(MY_PREFERENCE_KEY,MODE_PRIVATE);
-      /*  if(sp.getBoolean("logged",false)){
-            prefUid = editId.getString("UserID","No Id Defined");
-            System.out.println(prefUid+" uid before check prof");
-            checkProfession(prefUid);
-            finish();
-        }*/
 
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,8 +98,9 @@ public class LogIn extends AppCompatActivity {
                                            String prof =String.valueOf(dataSnapshot.child("profession").getValue());
                                            Toast.makeText(getApplicationContext(), prof, Toast.LENGTH_LONG).show();
                                            if(prof.equals("Students")) {
-                                               startActivity(new Intent(getApplicationContext(), SectionCreation.class));
-                                               sp.edit().putBoolean("logged",true).apply();
+                                               GoToSectionCreation();
+
+                                               sp.edit().putBoolean(Constant.user_login_state_shared_preference,true).apply();
                                                System.out.println(sp+"  if sp");
                                                //String id=FirebaseAuth.getInstance().getCurrentUser().getUid();
                                                editId.edit().putString("UserID",FirebaseAuth.getInstance().getCurrentUser().getUid()).apply();
@@ -108,9 +110,9 @@ public class LogIn extends AppCompatActivity {
 
                                            }
                                            else {
-                                               startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));
-                                               sp.edit().putBoolean("logged",true).apply();
-                                               editId.edit().putString("UserID",FirebaseAuth.getInstance().getCurrentUser().getUid()).apply();
+                                               GoToTeacherHomePage();
+                                               sp.edit().putBoolean(Constant.user_login_state_shared_preference,true).apply();
+
                                                System.out.println(sp+"  else sp");
                                                contextLogin=LogIn.this;
                                                finish();
@@ -156,82 +158,33 @@ public class LogIn extends AppCompatActivity {
 
     }
 
-  /*  public void checkSectionAcceptance(String prefUid){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 
+  public void checkUserInfo(){
+      if(dataRetriver.getBoolean(Constant.user_exists_preference,false)){
+          if(dataRetriver.getString(Constant.user_profession_preference,"Not Defined").equals("Students")){
+            GoToStudentHomePage();
+          }
+          else
+          {
+              GoToTeacherHomePage();
+          }
+      }
+      else
+      {
+          GoToSectionCreation();
+      }
+  }
 
-
-        DatabaseReference ref = database.getReference().child("University/IUT/Students").child(prefUid);
-
-        ValueEventListener valueEventListener = new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    String sectionStatus=String.valueOf(dataSnapshot.child("sec").getValue());
-                    System.out.println(sectionStatus+" section"+dataSnapshot);
-                    if(sectionStatus.equals("PENDING")||sectionStatus.equals("REJECTED")||sectionStatus.equals("REQUESTED"))
-                    startActivity(new Intent(getApplicationContext(),SectionCreation.class));
-                    else
-                        startActivity(new Intent(getApplicationContext(),home_page_student.class));
-                }
-                else {
-
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        };
-        ref.addListenerForSingleValueEvent(valueEventListener);
-
+  public void GoToStudentHomePage(){
+      startActivity(new Intent(getApplicationContext(), NewHomePageStudent.class));
+  }
+    public void GoToTeacherHomePage(){
+        startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));
     }
-
-    public void checkProfession(String prefUid){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-         String  ab=editId.getString("UserID","No Id Defined");
-
-
-        DatabaseReference ref = database.getReference().child("User").child(prefUid);
-
-        ValueEventListener valueEventListener = new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    String professionStatus=String.valueOf(dataSnapshot.child("profession").getValue());
-                    System.out.println(professionStatus+" section"+dataSnapshot);
-                    if(professionStatus.equals("Teachers"))
-                        startActivity(new Intent(getApplicationContext(),TeachersHomePage.class));
-                    else
-                       checkSectionAcceptance(editId.getString("UserID","No Id Defined"));
-                }
-                else {
-
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        };
-        ref.addListenerForSingleValueEvent(valueEventListener);
+    public void GoToSectionCreation(){
+        startActivity(new Intent(getApplicationContext(), SectionCreation.class));
     }
-
-    public void goToWelcome(){
-        startActivity(new Intent(getApplicationContext(),Welcome.class));
-    }*/
-
-
 
 
 
