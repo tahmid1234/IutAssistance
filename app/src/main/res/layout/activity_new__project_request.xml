@@ -51,6 +51,7 @@
             >
 
             <EditText
+                android:typeface="monospace"
                 android:id="@+id/team_mate_id"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
