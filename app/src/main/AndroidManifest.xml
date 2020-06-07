@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".NewActivities.New_project__Request_List_Teacher"></activity>
+        <activity android:name=".NewActivities.New_Existing_Project_Details"></activity>
+        <activity android:name=".NewActivities.New_Project_Details_After_Click_To_ListView" />
+        <activity android:name=".NewActivities.New_project__Request_List_Teacher" />
         <activity android:name=".NewActivities.New_ProjectList_Teacher" />
         <activity android:name=".NewActivities.New_Project_Teacher" />
         <activity android:name=".NewActivities.New_HomePage_Teacher" />
@@ -71,10 +73,10 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
 </manifest>
