@@ -1,4 +1,4 @@
-package com.example.iutassistant.Acitivities;
+package com.example.iutassistant.Model;
 
 public class User {
 

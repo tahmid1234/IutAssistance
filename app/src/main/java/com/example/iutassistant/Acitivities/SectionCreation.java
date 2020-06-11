@@ -16,7 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
-import com.example.iutassistant.NewActivities.NewHomePageStudent;
+import com.example.iutassistant.NewActivities.New_HomePage_Student_Activity;
 import com.example.iutassistant.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -389,7 +389,7 @@ public class SectionCreation extends AppCompatActivity {
                       //  setNotification("You  became a member of "+secName,intent);
 
                     }
-                    startActivity(new Intent(getApplicationContext(), NewHomePageStudent.class));
+                    startActivity(new Intent(getApplicationContext(), New_HomePage_Student_Activity.class));
                     finish();
 
                 }

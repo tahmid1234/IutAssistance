@@ -26,14 +26,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student_Project_List extends AppCompatActivity {
+public class Student_Project_List_Activity extends AppCompatActivity {
 
     private ListView projectList;
     SharedPreferences userInfo;
     private EditText projectNameText,teamMateIdText,descriptionText;
     private TextView warning;
     private AutoCompleteTextView supervisorText, crsText;
-    private String projectName,teamMateId,description,user_sid,allSid,supervisor,crs;
+    private String projectName,teamMateId="Nothing",description,user_sid,allSid,supervisor,crs;
 
     private ProjectInfo projectInfo;
     int check=1;
@@ -98,20 +98,24 @@ public class Student_Project_List extends AppCompatActivity {
         return false;
     }
 
-    public void submit(View view){
+    public void submit(View view) {
+        check = 2;
         warning.setText("");
 
-        projectName=projectNameText.getText().toString().trim();
-        if(!checkField(projectName))
+        projectName = projectNameText.getText().toString().trim();
+        if (!checkField(projectName))
             return;
-        supervisor =supervisorText.getText().toString().trim();
-        if(!checkField(supervisor))
+        supervisor = supervisorText.getText().toString().trim();
+
+        if (!checkField(supervisor))
             return;
-        teamMateId=teamMateIdText.getText().toString().trim();
-        if(check_tId_validity(teamMateId)) {
+        if (!teamMateId.equals(teamMateIdText.getText().toString().trim())){
+            teamMateId = teamMateIdText.getText().toString().trim();
+        if (check_tId_validity(teamMateId)) {
             allSid = allSid + "," + teamMateId;
             teamMateList.add(teamMateId);
         }
+    }
         if(!checkField(allSid))
             return;
         description=descriptionText.getText().toString();
@@ -216,28 +220,26 @@ public class Student_Project_List extends AppCompatActivity {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                System.out.println(" if er age  dekho to!!!!!!!!!!!!!!!!!!!!!!1");
-                check+=1;
-                if(dataSnapshot.exists()) {
-                    boolean status =false;
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        String existingProjects = snapshot.getKey();
-                        System.out.println(existingProjects + " dekho to!!!!!!!!!!!!!!!!!!!!!!1");
-                        if (existingProjects.equals(projectName)) {
-                            status = true;
-                            break;
-                        }
 
-                        System.out.println(status+" upre ");
+                boolean status =false;
+                if(dataSnapshot.child(projectName).exists()) {
 
-                    }
-                    if(status && check==2){
-                        System.out.println("ki kahini hoye gelo abar");
+
+                        String projectStatus=String.valueOf(dataSnapshot.child(projectName).getValue());
+
+
+                                status = true;
+
+
+
+
+
+                    if(check==2 ){
+
+
                         warning.setText("This project name is taken");
                     }
-                    else{
-                        saveProjectInfo();
-                    }
+
 
                 }
                 else
@@ -255,14 +257,30 @@ public class Student_Project_List extends AppCompatActivity {
     }
 
     public void saveProjectInfo(){
+        check=1;
         projectInfo=new ProjectInfo(projectName,crs,supervisor,allSid,description);
-        firebaseDatabase.child(Constant.Project_Structure_Root).child(Constant.Project_Course_Node).child(crs).child(projectName).setValue("Taken");
+        firebaseDatabase.child(Constant.Project_Structure_Root).child(Constant.Project_Course_Node).child(crs).child(projectName).setValue(Constant.Project_Status_Requested_Node);
         firebaseDatabase.child(Constant.Project_Structure_Root).child(Constant.Project_Node).child(projectName+"-"+crs).setValue(projectInfo);
-        for(String sid : teamMateList){
+
+
+
+        firebaseDatabase.child(Constant.Project_Structure_Root).child(Constant.Project_Supervisor_Node).child(getSupervisorMail()).child(Constant.Project_Status_Requested_Node).child(projectName+"-"+crs).setValue(userInfo.getString(Constant.user_prog_preference,"Not Defined")+userInfo.getString(Constant.user_batch_preference,"Not Defined"));
+        /*for(String sid : teamMateList){
             firebaseDatabase.child(Constant.Project_Structure_Root).child(Constant.Project_Student_Node).child(sid).child(projectName+"-"+crs).setValue(supervisor);
         }
-        teamMateList.clear();
+        teamMateList.clear();*/
+        projectNameText.setText("");
+        supervisorText.setText("");
+        teamMateIdText.setText(user_sid.substring(0,5)+"****");
+        crsText.setText("");
+        descriptionText.setText("");
     }
 
+
+
+
+    public String getSupervisorMail(){
+        return supervisor.substring(0,supervisor.indexOf("."));
+    }
 
 }

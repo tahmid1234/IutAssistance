@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:descendantFocusability="blocksDescendants"
+    >
 
     <GridLayout
         android:layout_width="match_parent"
@@ -15,7 +17,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/projectListCardViewId"
-            android:clickable="true"
+            android:focusable="false"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             app:cardElevation="6dp"
@@ -35,7 +37,7 @@
                 android:gravity="center">
 
                 <TextView
-                    android:id="@+id/sampleLayoutProjectNameId"
+                    android:id="@+id/ProjectName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Project Name"
@@ -44,7 +46,16 @@
                     />
 
                 <TextView
-                    android:id="@+id/sampleLayoutCourseNameId"
+                    android:id="@+id/CourseName"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#353535"
+                    android:text="Course Name"
+                    android:textSize="20dp"
+                    />
+                <TextView
+                    android:id="@+id/secBatchId"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewActivities.New_Existing_Project_Details">
+    tools:context=".NewActivities.Teachers_Supervising_Project_Details_Activity">
 
     <LinearLayout
         android:layout_width="match_parent"

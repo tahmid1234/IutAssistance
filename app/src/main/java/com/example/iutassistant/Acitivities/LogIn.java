@@ -14,7 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.iutassistant.Extra.Constant;
-import com.example.iutassistant.NewActivities.NewHomePageStudent;
+import com.example.iutassistant.NewActivities.New_HomePage_Student_Activity;
+import com.example.iutassistant.NewActivities.New_HomePage_Teacher_Activity;
 import com.example.iutassistant.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -177,10 +178,10 @@ public class LogIn extends AppCompatActivity {
   }
 
   public void GoToStudentHomePage(){
-      startActivity(new Intent(getApplicationContext(), NewHomePageStudent.class));
+      startActivity(new Intent(getApplicationContext(), New_HomePage_Student_Activity.class));
   }
     public void GoToTeacherHomePage(){
-        startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));
+        startActivity(new Intent(getApplicationContext(), New_HomePage_Teacher_Activity.class));
     }
     public void GoToSectionCreation(){
         startActivity(new Intent(getApplicationContext(), SectionCreation.class));

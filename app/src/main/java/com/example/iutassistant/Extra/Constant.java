@@ -16,6 +16,7 @@ public class Constant {
     public static final String user_dept_preference = "dept";
     public static final String user_prog_preference = "prog";
     public static final String user_sec_preference = "sec";
+    public static final String user_batch_preference = "batch";
     public static final String user_university_preference = "uni";
 
 
@@ -30,10 +31,12 @@ public class Constant {
     public static final String userInfo_node_name="name";
     public static final String userInfo_node_id="id";
     public static final String userInfo_node_sec="sec";
-    public static final String userInfo_node_programme="programme";
+    public static final String userInfo_node_programme="prog";
     public static final String userInfo_node_dept="deptment";
     public static final String userInfo_node_uni="uni";
+    public static final String userInfo_node_email="email";
     public static final String userInfo_node_profession="profession";
+
 
 
     //Database ref
@@ -46,15 +49,23 @@ public class Constant {
     public static final String Project_Node="Projects";
     public static final String Project_Course_Node="Courses";
     public static final String Project_Student_Node="Students";
-    public static final String Project_Teacher_Node="Teachers";
+    public static final String Project_Supervisor_Node="Supervisor";
+    public static final String Project_Status_Requested_Node="Requested";
+    public static final String Project_Status_Accepted_Node="Accepted";
+    public static final String Project_Status_Rejected_Node="Rejected";
 
     //project info
 
-    public static final String Project_Name="ProjectName";
-    public static final String Project_Course="Course";
-    public static final String Project_Supervisor_="SupervisorMail";
-    public static final String Project_Team_Mates="AllSid";
-    public static final String Project_Description="Description";
+    public static final String Project_Name="projectName";
+    public static final String Project_Course="course";
+    public static final String Project_Supervisor_="supervisorMail";
+    public static final String Project_Team_Mates="allSid";
+    public static final String Project_Description="description";
+
+
+    //removing substring from a mail id
+    public static final String Remove_Com=".com";
+    public static final String Remove_Edu=".edu";
 
 
 

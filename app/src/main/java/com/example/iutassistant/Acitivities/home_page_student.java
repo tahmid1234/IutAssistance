@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import com.example.iutassistant.AdapterClasses.Request_Adapter;
 import com.example.iutassistant.Model.RequestInfo;
+import com.example.iutassistant.Model.User;
 import com.example.iutassistant.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

@@ -1,6 +1,5 @@
 package com.example.iutassistant.NewActivities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -12,14 +11,12 @@ import android.widget.TextView;
 
 import com.example.iutassistant.Extra.Constant;
 import com.example.iutassistant.R;
+import com.example.iutassistant.SingleTone.UserInfoSharedPreferenceSingleTone;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-public class NewHomePageStudent extends AppCompatActivity implements View.OnClickListener{
+public class New_HomePage_Student_Activity extends AppCompatActivity implements View.OnClickListener{
 
     private CardView classInfo,projects,invitation,request;
 
@@ -28,6 +25,7 @@ public class NewHomePageStudent extends AppCompatActivity implements View.OnClic
     String uid;
     FirebaseDatabase database;
     DatabaseReference ref;
+    UserInfoSharedPreferenceSingleTone userInfoSharedPreferenceSingleTone=UserInfoSharedPreferenceSingleTone.getInstance();
 
 
 
@@ -49,9 +47,10 @@ public class NewHomePageStudent extends AppCompatActivity implements View.OnClic
         numOfRequest = findViewById(R.id.requestNumberId);
         userInfoCheck=getSharedPreferences(Constant.USER_INFO_SHARED_PREFERENCES,MODE_PRIVATE);
         logInSTate= getSharedPreferences(Constant.USER_LOGIN_INFO_SHARED_PREFERENCES,MODE_PRIVATE);
+        uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
         if(!(userInfoCheck.getBoolean(Constant.user_exists_preference,false)))
         {
-            storeUserInfo();
+            UserInfoSharedPreferenceSingleTone.storeUserInfo(userInfoCheck,logInSTate,"Students",database,ref,uid);
         }
 
         classInfo.setOnClickListener(this);
@@ -60,6 +59,7 @@ public class NewHomePageStudent extends AppCompatActivity implements View.OnClic
 
     }
 
+    //project button
     @Override
     public void onClick(View view) {
 
@@ -68,13 +68,13 @@ public class NewHomePageStudent extends AppCompatActivity implements View.OnClic
 //            startActivity(intent)/
 //        }
         if(view.getId()==R.id.projectId){
-            Intent intent = new Intent(getApplicationContext(), Student_Project_List.class);
+            Intent intent = new Intent(getApplicationContext(), Student_Project_List_Activity.class);
             startActivity(intent);
         }
 
     }
 
-    public void storeUserInfo(){
+   /* public void storeUserInfo(){
 
         database = FirebaseDatabase.getInstance();
         uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -107,5 +107,5 @@ public class NewHomePageStudent extends AppCompatActivity implements View.OnClic
 
 
 
-    }
+    }*/
 }

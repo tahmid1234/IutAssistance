@@ -5,7 +5,7 @@
     android:layout_gravity="center"
     android:layout_height="550dp"
     android:background="@drawable/edittextdesign"
-    tools:context=".NewActivities.Student_Project_List">
+    tools:context=".NewActivities.Student_Project_List_Activity">
 
 
     <LinearLayout
