@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".NewActivities.Teachers_Supervising_Project_Details_Activity"></activity>
+        <activity android:name=".NewActivities.New_Attendence_Details"></activity>
+        <activity android:name=".NewActivities.New_AttendenceList" />
+        <activity android:name=".NewActivities.New_Take_Attendence" />
+        <activity android:name=".NewActivities.New_Attendence_Teacher" />
+        <activity android:name=".NewActivities.Teachers_Supervising_Project_Details_Activity" />
         <activity android:name=".NewActivities.Teachers_Requested_Project_Details_Activity" />
         <activity android:name=".NewActivities.Teacher_Requested__ProjectList_Activity" />
         <activity android:name=".NewActivities.Teacher_Supervising_ProjectList_Activity" />

@@ -53,8 +53,11 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
-//        else if(view.getId() == R.id.attendenceId_teacher){
-//        }
+        else if(view.getId() == R.id.attendenceId_teacher){
+            Intent intent = new Intent(getApplicationContext(), New_Attendence_Teacher.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
 
     }
 }
