@@ -43,6 +43,7 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
 
         projects.setOnClickListener(this);
         attendence.setOnClickListener(this);
+        classInfo.setOnClickListener(this);
     }
 
     @Override
@@ -55,6 +56,11 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         }
         else if(view.getId() == R.id.attendenceId_teacher){
             Intent intent = new Intent(getApplicationContext(), New_Attendence_Teacher.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+        else if(view.getId() == R.id.classInfoId_teacher){
+            Intent intent = new Intent(getApplicationContext(), Teachers_Class_Info.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
