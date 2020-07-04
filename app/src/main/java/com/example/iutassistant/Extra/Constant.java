@@ -67,6 +67,11 @@ public class Constant {
     public static final String Remove_Com=".com";
     public static final String Remove_Edu=".edu";
 
+    //Parent Node
+    public static final String Course_Node="COURSES";
+    public static final String Section_Node="SECTION";
+
+
 
 
 

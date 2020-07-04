@@ -22,4 +22,8 @@
     <string name="project">Projects</string>
     <string name="option3">Option 3</string>
     <string name="option4">Option 4</string>
+    <string name="class_invitation">Class Invitation</string>
+    <string name="course_name">Course Name</string>
+    <string name="section_name">Section Name</string>
+    <string name="invite_button">Invite</string>
 </resources>

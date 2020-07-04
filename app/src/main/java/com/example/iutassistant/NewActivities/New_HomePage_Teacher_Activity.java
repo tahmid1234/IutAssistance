@@ -60,7 +60,7 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
             startActivity(intent);
         }
         else if(view.getId() == R.id.classInfoId_teacher){
-            Intent intent = new Intent(getApplicationContext(), Teachers_Class_Info.class);
+            Intent intent = new Intent(getApplicationContext(), Teachers_Class_Invitation.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }

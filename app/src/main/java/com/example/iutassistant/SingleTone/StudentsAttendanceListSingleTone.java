@@ -42,7 +42,7 @@ public class StudentsAttendanceListSingleTone {
         return instance;
     }
     public void setStudentsAttendanceList(String path,String sec,String crs){
-        System.out.println("ETA keu call korse? k?***************************************************"+student_list.size());
+
         student_list.clear();
         this.path=path;
         final String section=sec;

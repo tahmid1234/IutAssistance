@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".NewActivities.Teachers_Class_Info"></activity>
+        <activity android:name=".NewActivities.Teachers_Class_Invitation"></activity>
         <activity android:name=".NewActivities.New_Attendence_Details" />
         <activity android:name=".NewActivities.New_AttendenceList" />
         <activity android:name=".NewActivities.New_Take_Attendence" />
