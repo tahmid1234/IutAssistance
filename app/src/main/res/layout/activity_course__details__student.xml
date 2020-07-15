@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:weightSum="6"
+    android:background="@drawable/button_style_color"
+    tools:context=".Acitivities.Course_Details_Student">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1.5"
+        >
+
+        <TextView
+            android:id="@+id/courseTeacherName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Course Teacher"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/courseTeacher_Mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="teacher@gmail.com"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            >
+        </TextView>
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/attendence_Percentage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:background="@drawable/white_round"
+                android:text="100%"
+                android:textSize="25sp"
+                android:textColor="@color/borderColor"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Attendence"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                >
+
+            </TextView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="1.5"
+        >
+
+        <TextView
+            android:id="@+id/enrolledStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="82"
+            android:textStyle="bold"
+            android:textSize="35sp"
+            android:textColor="#ffffff"
+            android:drawableLeft="@drawable/multiple_user"
+            android:drawablePadding="10dp"
+            >
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  students Enrolled "
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:drawablePadding="10dp"
+            >
+
+        </TextView>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
