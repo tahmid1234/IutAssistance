@@ -41,6 +41,7 @@ public class CourseSelection extends AppCompatActivity {
 
        selectButton();
        attendanceBTN();
+
     }
 
     public void addItemsOnCourses() {

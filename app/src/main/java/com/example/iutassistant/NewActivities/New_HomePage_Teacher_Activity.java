@@ -36,6 +36,7 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         logInSTate= getSharedPreferences(Constant.USER_LOGIN_INFO_SHARED_PREFERENCES,MODE_PRIVATE);
         uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
         System.out.println(uid+" dskhgfksjhdjkghsdjkhjs");
+        System.out.println(userInfoCheck.getString(Constant.user_email_preference,"no"));
         if(!(userInfoCheck.getBoolean(Constant.user_exists_preference,false)))
         {
             UserInfoSharedPreferenceSingleTone.storeUserInfo(userInfoCheck,logInSTate,"Teachers",database,ref,uid);

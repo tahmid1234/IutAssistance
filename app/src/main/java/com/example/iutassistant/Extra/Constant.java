@@ -50,9 +50,7 @@ public class Constant {
     public static final String Project_Course_Node="Courses";
     public static final String Project_Student_Node="Students";
     public static final String Project_Supervisor_Node="Supervisor";
-    public static final String Project_Status_Requested_Node="Requested";
-    public static final String Project_Status_Accepted_Node="Accepted";
-    public static final String Project_Status_Rejected_Node="Rejected";
+
 
     //project info
 
@@ -70,6 +68,19 @@ public class Constant {
     //Parent Node
     public static final String Course_Node="COURSES";
     public static final String Section_Node="SECTION";
+    public static final String Teaches_Node="TEACHES";
+    public static final String Teacher_Node="Teachers";
+    public static final String Classes_Node="CLASSES";
+    public static final String Class_Invitation_Node="Invitation";
+
+
+    //status
+    public static final String Status_Invitation="Invited";
+    public static final String Project_Status_Requested_Node="Requested";
+    public static final String Project_Status_Accepted_Node="Accepted";
+    public static final String Project_Status_Rejected_Node="Rejected";
+
+
 
 
 

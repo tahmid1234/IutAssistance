@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_height="350dp"
+    android:layout_gravity="center"
+    android:background="@drawable/is_taken_dialog_style">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/teWarning"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFBA"
+            android:text="Mr.Hasanul Kabir (hasanul_kabir@iut-dhaka.edu) has already invited swe17 1 for this class .Do you want to invite as an assitant teacher?"
+            ></TextView>
+        <GridLayout
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:rowCount="1">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/presentId"
+            android:clickable="true"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            app:cardElevation="6dp"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@android:color/transparent"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/yesBtn"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/tick"
+                    />
+
+
+
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/absentId"
+            android:clickable="true"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="5dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@android:color/transparent"
+            >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/noBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/cross"
+
+                />
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        </GridLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>

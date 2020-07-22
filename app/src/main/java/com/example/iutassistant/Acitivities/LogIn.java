@@ -88,6 +88,7 @@ public class LogIn extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 
                                     uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                    System.out.println(uid+" hgfghf");
                                    dbFetch=FirebaseDatabase.getInstance().getReference("User").child(uid);
 
                                     FirebaseMessaging.getInstance().subscribeToTopic(uid+"Request");
@@ -98,6 +99,7 @@ public class LogIn extends AppCompatActivity {
                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                            String prof =String.valueOf(dataSnapshot.child("profession").getValue());
                                            Toast.makeText(getApplicationContext(), prof, Toast.LENGTH_LONG).show();
+                                           dataRetriver.edit().putBoolean(Constant.user_exists_preference, false).apply();
                                            if(prof.equals("Students")) {
                                                GoToSectionCreation();
 
