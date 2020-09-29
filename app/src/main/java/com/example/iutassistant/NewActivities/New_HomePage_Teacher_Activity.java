@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import com.example.iutassistant.Acitivities.MainActivity;
 import com.example.iutassistant.Extra.Constant;
 import com.example.iutassistant.R;
 import com.example.iutassistant.SingleTone.UserInfoSharedPreferenceSingleTone;
@@ -36,11 +38,15 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         logInSTate= getSharedPreferences(Constant.USER_LOGIN_INFO_SHARED_PREFERENCES,MODE_PRIVATE);
         uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
         System.out.println(uid+" dskhgfksjhdjkghsdjkhjs");
-        System.out.println(userInfoCheck.getString(Constant.user_email_preference,"no"));
+        System.out.println(userInfoCheck.getString(Constant.user_email_preference,"no")+" "+(userInfoCheck.getBoolean(Constant.user_exists_preference,false)));
+
         if(!(userInfoCheck.getBoolean(Constant.user_exists_preference,false)))
         {
             UserInfoSharedPreferenceSingleTone.storeUserInfo(userInfoCheck,logInSTate,"Teachers",database,ref,uid);
         }
+
+        Toast.makeText(this, userInfoCheck.getString(Constant.username_preference,"N/A"), Toast.LENGTH_SHORT).show();
+
 
         projects.setOnClickListener(this);
         attendence.setOnClickListener(this);

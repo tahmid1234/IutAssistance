@@ -12,6 +12,7 @@ public class Constant {
     public static final String uid_preference = "uid";
     public static final String user_profession_preference = "profession";
     public static final String user_email_preference = "email";
+    public static final String user_email_extentio_preference = "email_extension";
     public static final String user_sid_preference = "sid";
     public static final String user_dept_preference = "dept";
     public static final String user_prog_preference = "prog";
@@ -23,6 +24,10 @@ public class Constant {
     // session preference keys
     public static final String USER_LOGIN_INFO_SHARED_PREFERENCES = "login";
     public static final String user_login_state_shared_preference = "loggedIn";
+
+    //Courses shared preferences
+    public static final String CLASSES_INFO_SHARED_PREFERENCES = "course_info";
+    public static final String CLASSES_count_preference = "total_courses";
 
 
     //Firebase UsersInfo child node
@@ -39,6 +44,7 @@ public class Constant {
 
 
 
+    public static final String IDENTITY_NODE="IDENTITY";
     //Database ref
 
     public static final String Ref="University/IUT";

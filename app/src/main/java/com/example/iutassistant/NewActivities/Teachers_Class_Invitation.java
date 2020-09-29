@@ -32,9 +32,11 @@ public class Teachers_Class_Invitation extends AppCompatActivity {
     private boolean isNotTaken=true;
     private Dialog asstTeacherDialog;
     private TextView teWarning;
+    private int count_class;
     DatabaseReference firebaseDatabase,firebaseDatabaseCrs,firebaseDatabaseSec;
     FirebaseKeyDataListAutoTextInfo firebaseKeyDataListAutoTextInfo;
-    SharedPreferences userInfo;
+    SharedPreferences userInfo,classInfo;
+    String teachers_all_uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,7 @@ public class Teachers_Class_Invitation extends AppCompatActivity {
         setContentView(R.layout.activity_teachers__class__invitation);
 
         userInfo=getSharedPreferences(Constant.USER_INFO_SHARED_PREFERENCES,MODE_PRIVATE);
-
+        classInfo=getSharedPreferences(Constant.CLASSES_INFO_SHARED_PREFERENCES,MODE_PRIVATE);
         selectCourse = findViewById(R.id.courseSelectId);
         selectSection = findViewById(R.id.sectionSelectId);
 
@@ -97,7 +99,7 @@ public class Teachers_Class_Invitation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 
-                sendInvitation();
+                addClass(teachers_all_uid);
                 asstTeacherDialog.dismiss();
             }
         });
@@ -123,16 +125,15 @@ public class Teachers_Class_Invitation extends AppCompatActivity {
                 System.out.println(dataSnapshot);
                if(dataSnapshot.exists()){
                    System.out.println("kia hua");
-                   String teachers_all_uid=String.valueOf(dataSnapshot.getValue());
+                   teachers_all_uid=String.valueOf(dataSnapshot.getValue());
                    System.out.println(teachers_all_uid+ "uid");
-                   String[] teacher_uid=teachers_all_uid.split(",");
-                   System.out.println(teachers_all_uid+ "uid"+" "+teacher_uid.length);
-                   getTeachesName(teacher_uid);
+
+                   getTeachesName(teachers_all_uid);
                }
 
                else{
                    System.out.println("shabbash");
-                    sendInvitation();
+                    addClass(userInfo.getString(Constant.uid_preference,"N/A"));
                }
             }
 
@@ -145,8 +146,8 @@ public class Teachers_Class_Invitation extends AppCompatActivity {
 
 
 
-    public void getTeachesName(String [] all_uid){
-
+    public void getTeachesName(String teachers_all_uid){
+            String[] all_uid=teachers_all_uid.split(",");
             firebaseDatabase.child(Constant.Teacher_Node).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -171,10 +172,13 @@ public class Teachers_Class_Invitation extends AppCompatActivity {
 
     }
 //storing into Firebase
-    public void sendInvitation(){
+    public void addClass(String teachesId){
 
-        firebaseDatabase.child(Constant.Class_Invitation_Node).child(secText).child(userInfo.getString(Constant.uid_preference,"Not Defined")).child(courseText).setValue(Constant.Status_Invitation);
-        firebaseDatabase.child(Constant.Teaches_Node).child(secText).child(courseText).setValue(Constant.Status_Invitation);
+
+        firebaseDatabase.child(Constant.Teaches_Node).child(userInfo.getString(Constant.user_email_preference,"N/A")).child(secText).child(courseText).setValue("1");
+        firebaseDatabase.child(Constant.Classes_Node).child(secText).child(courseText).setValue(teachesId);
+        addClassesToSp();
+
 
 
     }
@@ -190,6 +194,13 @@ public class Teachers_Class_Invitation extends AppCompatActivity {
         noBtn();
         asstTeacherDialog.show();
 
+    }
+
+    public void addClassesToSp(){
+            count_class=classInfo.getInt(Constant.CLASSES_count_preference,0);
+            count_class++;
+            classInfo.edit().putString(String.valueOf(count_class),courseText+secText);
+            classInfo.edit().putInt(Constant.CLASSES_count_preference,count_class);
     }
 
 

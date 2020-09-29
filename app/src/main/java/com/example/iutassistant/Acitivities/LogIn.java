@@ -37,7 +37,7 @@ public class LogIn extends AppCompatActivity {
     DatabaseReference dbFetch;
     public static final String MY_PREFERENCE_KEY = "my_preference_key";
 
-    SharedPreferences sp,spId; //sp is going to be used to keep users logged in
+    SharedPreferences sp,spId,userInfoCheck; //sp is going to be used to keep users logged in
     SharedPreferences editId;//= (SharedPreferences.Editor) getSharedPreferences(MY_PREFERENCE_KEY,MODE_PRIVATE);
     SharedPreferences dataRetriver;//=getSharedPreferences("IDVAL",MODE_PRIVATE);
 
@@ -58,6 +58,8 @@ public class LogIn extends AppCompatActivity {
 
         sp = getSharedPreferences(Constant.USER_LOGIN_INFO_SHARED_PREFERENCES,MODE_PRIVATE);
         dataRetriver=getSharedPreferences(Constant.USER_INFO_SHARED_PREFERENCES,MODE_PRIVATE);
+        userInfoCheck=getSharedPreferences(Constant.USER_INFO_SHARED_PREFERENCES,MODE_PRIVATE);
+        Toast.makeText(LogIn.this,sp.getBoolean(Constant.user_login_state_shared_preference,false)+"", Toast.LENGTH_SHORT).show();
         if(sp.getBoolean(Constant.user_login_state_shared_preference,false)){
             checkUserInfo();
         }
@@ -100,6 +102,7 @@ public class LogIn extends AppCompatActivity {
                                            String prof =String.valueOf(dataSnapshot.child("profession").getValue());
                                            Toast.makeText(getApplicationContext(), prof, Toast.LENGTH_LONG).show();
                                            dataRetriver.edit().putBoolean(Constant.user_exists_preference, false).apply();
+                                           userInfoCheck.edit().putBoolean(Constant.user_exists_preference,false).apply();
                                            if(prof.equals("Students")) {
                                                GoToSectionCreation();
 

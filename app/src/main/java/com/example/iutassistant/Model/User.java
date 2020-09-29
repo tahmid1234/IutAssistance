@@ -1,27 +1,24 @@
 package com.example.iutassistant.Model;
 
-public class User {
+import com.example.iutassistant.Presenter.HomePagePresenter;
+import com.example.iutassistant.Presenter.IHomePagePresenter;
+
+public class User implements IUser{
 
 
-    private String name,id,dept,prog,uni,profession,sec,uid,email;
+    private String name, uid,dept, programme,uni,profession,sec,email;
 
     public User() {
     }
-    public void setUni(String uni) {
-        this.uni = uni;
-    }
 
-    public User(String id,String uid){
 
-        this.uid=uid;
-        this.id=id;
-    }
 
-    public User(String id, String name, String sec, String prog, String dept, String profession,String uni,String email) {
+
+    public User(String uid, String name, String sec, String programme, String dept, String profession, String uni, String email) {
         this.name = name;
-        this.id = id;
+        this.uid = uid;
         this.dept = dept;
-        this.prog = prog;
+        this.programme = programme;
 
         this.profession = profession;
         this.sec=sec;
@@ -29,33 +26,36 @@ public class User {
         this.email=email;
     }
 
-    public User(String id, String name, String dept, String profession,String uni,String email) {
+    public User(String uid, String name, String dept, String profession,String uni,String email) {
         this.name = name;
-        this.id = id;
+        this.uid = uid;
         this.dept = dept;
-
 
         this.profession = profession;
 
         this.uni=uni;
         this.email=email;
-        System.out.println(email+" hoise email vaai 2");
+
+
+    }
+
+    public User(IHomePagePresenter homePagePresenter) {
     }
 
     public String getName() {
         return name;
     }
 
-    public String getId() {
-        return id;
+    public String getUid() {
+        return uid;
     }
 
     public String getDept() {
         return dept;
     }
 
-    public String getProg() {
-        return prog;
+    public String getProgramme() {
+        return programme;
     }
 
     public String getUni() {
@@ -70,9 +70,9 @@ public class User {
         return sec;
     }
 
-    public String getUid() {
-        return uid;
-    }
+    public  String getEmailExtention(){ return email.substring(0,email.length()-5);}
+
+    public  String getEmailDomain(){ return email.substring(email.length()-4);}
 
     public String getEmail() {
         return email;

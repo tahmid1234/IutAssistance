@@ -17,7 +17,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.iutassistant.Extra.Constant;
+import com.example.iutassistant.Model.IdentityModel;
 import com.example.iutassistant.Model.User;
+import com.example.iutassistant.NewActivities.New_HomePage_Teacher_Activity;
 import com.example.iutassistant.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -120,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
+                                        Toast.makeText(MainActivity.this, "ki holo ", Toast.LENGTH_SHORT).show();
                                         System.out.println("professionnnnnnnnnnnnnnnnnnnnnnn");
                                         final String university= universitySelectingClass.getUid();
                                         final String profession=universitySelectingClass.getProffesion();
@@ -128,19 +132,32 @@ public class MainActivity extends AppCompatActivity {
                                             //information=new User(id,name,sec,prog,dept,profession,university);
                                          // }
                                         //else
-                                        System.out.println(email+" hoise email vaai 1");
-                                            information=new User(id,name,dept,profession,university,email);
-
                                         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+                                        System.out.println(email+" hoise email vaai 1");
+                                            information=new User(uid,name,dept,profession,university,email);
+
+
                                         setUid(uid);
+
 
 
                                         //dbref.child(university).child(dept).child(prog).child(sec).child("UID").setValue(uid);//hierarchy of university to student uid is set
 
                                         //FirebaseDatabase.getInstance().getReference("University").child("IUT").child("StudentsInSection").child("id").setValue(uid);
                                         //databaseReference.child("profession").child(uid).setValue("");
-                                        FirebaseDatabase.getInstance().getReference("University/IUT").child(profession).child(uid).setValue(information);
+                                        System.out.println(profession+" what is this");
+                                        Toast.makeText(MainActivity.this, profession+" ahkad", Toast.LENGTH_SHORT).show();
+                                        if(profession.equals("Students")) {
+                                            FirebaseDatabase.getInstance().getReference("University/IUT").child(profession).child(id).setValue(information);
+                                            FirebaseDatabase.getInstance().getReference("University/IUT").child(uid).child(Constant.IDENTITY_NODE).setValue(new IdentityModel(id));
+                                        }
+                                        else {
+                                            FirebaseDatabase.getInstance().getReference("University/IUT").child(profession).child(email.substring(0, (email.length() - 5))).setValue(information);
+                                            FirebaseDatabase.getInstance().getReference("University/IUT").child(Constant.IDENTITY_NODE).child(uid).setValue(new IdentityModel(email));
+
+                                        }
+
 
                                         FirebaseDatabase.getInstance().getReference("User").child(uid).child("profession").setValue(profession).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
@@ -150,15 +167,14 @@ public class MainActivity extends AppCompatActivity {
 
                                                 if(profession.equals("Students")){
 
-                                                    FirebaseDatabase.getInstance().getReference("University/IUT").child(profession).child(uid).child("sec").setValue("PENDING");
+                                                    FirebaseDatabase.getInstance().getReference("University/IUT").child(profession).child(id).child("sec").setValue("PENDING");
                                                     FirebaseDatabase.getInstance().getReference("University/IUT").child("StudentsIdNUid").child(id).setValue(uid);
 
                                                     startActivity(new Intent(getApplicationContext(), SectionCreation.class));
                                                 }
                                                     else {
-
-
-                                                    startActivity(new Intent(getApplicationContext(), TeachersHomePage.class));
+                                                    System.out.println(profession+" what is this");
+                                                    startActivity(new Intent(getApplicationContext(), New_HomePage_Teacher_Activity.class));
                                                 }
 
 

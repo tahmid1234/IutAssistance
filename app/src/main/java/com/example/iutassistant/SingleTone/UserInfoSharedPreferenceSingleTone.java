@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
 
 import com.example.iutassistant.Extra.Constant;
+import com.example.iutassistant.Model.IdentityModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,6 +17,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class UserInfoSharedPreferenceSingleTone {
     private static UserInfoSharedPreferenceSingleTone instance;
+    private IdentityModel identityModel;
 
      private UserInfoSharedPreferenceSingleTone() {
     }
@@ -35,9 +37,41 @@ public class UserInfoSharedPreferenceSingleTone {
             DatabaseReference ref,String uid){
 
         database = FirebaseDatabase.getInstance();
-        uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
-        ref = database.getReference().child("University/IUT").child(profession).child(uid);
+        final String uidd= FirebaseAuth.getInstance().getCurrentUser().getUid();
         userInfoCheck.edit().putString(Constant.uid_preference,uid).apply();
+        database.getReference().child("University/IUT").child(Constant.IDENTITY_NODE).child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+              //  for (DataSnapshot dataSnapshot1 : dataSnapshot)  {
+                    System.out.println(dataSnapshot.getValue());
+
+                    IdentityModel identityModel = dataSnapshot.getValue(IdentityModel.class);
+                    String identity=identityModel.getIdentity();
+                    if(profession.equals("Teachers"))
+                        identity=identity.substring(0,identity.length()-5);
+                    fetchInfo(userInfoCheck, logInState, profession, FirebaseDatabase.getInstance(), ref, identity);
+
+                //}
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
+
+    }
+
+    public  static  void fetchInfo(SharedPreferences userInfoCheck,SharedPreferences logInState,String profession,FirebaseDatabase database,
+                                   DatabaseReference ref,String identity){
+        ref = database.getReference().child("University/IUT").child(profession).child(identity);
+
         ValueEventListener valueEventListener=new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -64,10 +98,6 @@ public class UserInfoSharedPreferenceSingleTone {
             }
         };
         ref.addListenerForSingleValueEvent(valueEventListener);
-
-
-
-
     }
 
     public static String getBatch( String sec){

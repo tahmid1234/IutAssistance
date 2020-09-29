@@ -14,8 +14,7 @@
 
         <activity android:name=".Acitivities.Course_Details_Student"></activity>
         <activity android:name=".NewActivities.New_Class_Info_Student" />
-        <activity android:name=".NewActivities.Teachers_Class_Invitation" />
-
+       
         <activity android:name=".NewActivities.New_Attendence_Details" />
         <activity android:name=".NewActivities.New_AttendenceList" />
         <activity android:name=".NewActivities.New_Take_Attendence" />
