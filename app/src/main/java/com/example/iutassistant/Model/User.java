@@ -1,9 +1,8 @@
 package com.example.iutassistant.Model;
 
-import com.example.iutassistant.Presenter.HomePagePresenter;
 import com.example.iutassistant.Presenter.IHomePagePresenter;
 
-public class User implements IUser{
+public class User implements IUser,IModel{
 
 
     private String name, uid,dept, programme,uni,profession,sec,email;

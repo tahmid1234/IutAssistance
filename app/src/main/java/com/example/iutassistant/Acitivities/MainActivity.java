@@ -31,6 +31,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -153,8 +154,11 @@ public class MainActivity extends AppCompatActivity {
                                             FirebaseDatabase.getInstance().getReference("University/IUT").child(uid).child(Constant.IDENTITY_NODE).setValue(new IdentityModel(id));
                                         }
                                         else {
-                                            FirebaseDatabase.getInstance().getReference("University/IUT").child(profession).child(email.substring(0, (email.length() - 5))).setValue(information);
-                                            FirebaseDatabase.getInstance().getReference("University/IUT").child(Constant.IDENTITY_NODE).child(uid).setValue(new IdentityModel(email));
+                                            Gson gson = new Gson();
+                                            String json = gson.toJson(information);
+
+                                            FirebaseDatabase.getInstance().getReference("University/IUT").child(profession).child(email.substring(0, (email.length() - 5))).setValue(json);
+                                            FirebaseDatabase.getInstance().getReference("University/IUT").child(Constant.IDENTITY_NODE).child(uid).setValue(new IdentityModel(email.substring(0, (email.length() - 5))));
 
                                         }
 

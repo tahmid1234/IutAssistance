@@ -9,26 +9,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.iutassistant.Acitivities.MainActivity;
 import com.example.iutassistant.Extra.Constant;
+import com.example.iutassistant.Presenter.HomePagePresenter;
+import com.example.iutassistant.Presenter.IHomePagePresenter;
 import com.example.iutassistant.R;
 import com.example.iutassistant.SingleTone.UserInfoSharedPreferenceSingleTone;
+import com.example.iutassistant.View.IHomePageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class New_HomePage_Teacher_Activity extends AppCompatActivity implements View.OnClickListener {
+public class New_HomePage_Teacher_Activity extends AppCompatActivity implements View.OnClickListener, IHomePageView {
 
     CardView classInfo,projects,announcement,attendence;
-    SharedPreferences userInfoCheck,logInSTate;
+    SharedPreferences userInfoCheck,logInSTate,userInfoSp;
     String uid;
     FirebaseDatabase database;
     DatabaseReference ref;
+    private IHomePagePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new__home_page__teacher);
+
+
 
         classInfo = findViewById(R.id.classInfoId_teacher);
         projects = findViewById(R.id.projectId_teacher);
@@ -37,7 +42,9 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         userInfoCheck=getSharedPreferences(Constant.USER_INFO_SHARED_PREFERENCES,MODE_PRIVATE);
         logInSTate= getSharedPreferences(Constant.USER_LOGIN_INFO_SHARED_PREFERENCES,MODE_PRIVATE);
         uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
-        System.out.println(uid+" dskhgfksjhdjkghsdjkhjs");
+        presenter=new HomePagePresenter(this,userInfoCheck,logInSTate,Constant.Teacher_Node,this
+        );
+        presenter.onOpeningHomePage();
         System.out.println(userInfoCheck.getString(Constant.user_email_preference,"no")+" "+(userInfoCheck.getBoolean(Constant.user_exists_preference,false)));
 
         if(!(userInfoCheck.getBoolean(Constant.user_exists_preference,false)))

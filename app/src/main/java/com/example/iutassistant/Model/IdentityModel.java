@@ -1,6 +1,6 @@
 package com.example.iutassistant.Model;
 
-public class IdentityModel {
+public class IdentityModel implements IModel {
     private  String identity;
 
     public String getIdentity() {
