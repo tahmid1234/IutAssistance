@@ -93,6 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
+        android:orientation="vertical"
         android:layout_weight="1.5"
         >
 
@@ -100,11 +101,10 @@
             android:id="@+id/enrolledStudent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="82"
+            android:text="4.00"
             android:textStyle="bold"
             android:textSize="35sp"
             android:textColor="#ffffff"
-            android:drawableLeft="@drawable/multiple_user"
             android:drawablePadding="10dp"
             >
 
@@ -112,7 +112,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="  students Enrolled "
+            android:text="Course Credit"
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:drawablePadding="10dp"
