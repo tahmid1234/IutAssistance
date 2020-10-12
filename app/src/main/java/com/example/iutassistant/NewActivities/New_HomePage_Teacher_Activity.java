@@ -10,16 +10,22 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.iutassistant.Extra.Constant;
+import com.example.iutassistant.Model.CourseModel;
 import com.example.iutassistant.Presenter.HomePagePresenter;
 import com.example.iutassistant.Presenter.IHomePagePresenter;
+import com.example.iutassistant.Presenter.IPopUpClassAssignmentPresenter;
+import com.example.iutassistant.Presenter.PopUpClassAssignPresenterI;
 import com.example.iutassistant.R;
 import com.example.iutassistant.SingleTone.UserInfoSharedPreferenceSingleTone;
+import com.example.iutassistant.View.IClassAssignmentPopUpView;
 import com.example.iutassistant.View.IHomePageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class New_HomePage_Teacher_Activity extends AppCompatActivity implements View.OnClickListener, IHomePageView {
+import java.util.List;
+
+public class New_HomePage_Teacher_Activity extends AppCompatActivity implements View.OnClickListener, IHomePageView , IClassAssignmentPopUpView {
 
     CardView classInfo,projects,announcement,attendence;
     SharedPreferences userInfoCheck,logInSTate,userInfoSp;
@@ -33,8 +39,9 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new__home_page__teacher);
 
-
-
+        IPopUpClassAssignmentPresenter iPopUpClassAssignmentPresenter=new PopUpClassAssignPresenterI(this);
+        //this method to be called after pop up
+        //iPopUpClassAssignmentPresenter.fetchCourseLIst();
         classInfo = findViewById(R.id.classInfoId_teacher);
         projects = findViewById(R.id.projectId_teacher);
         attendence = findViewById(R.id.attendenceId_teacher);
@@ -79,5 +86,18 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
             startActivity(intent);
         }
 
+
+
+
+
+    }
+    //pop up course spinner section
+    public void makeCourseListSpinner(List<CourseModel> courseModels){
+        /*ami toke course list pathai disi tui ekhn ei list je vabe khushi use korbi as in pop up hole jei course er spinner asbe
+        ota banabi.age pop up bana then eta use korte parbi ar ki
+
+        *
+        */
+        //System.out.println(courseModels.get(0).getName());
     }
 }
