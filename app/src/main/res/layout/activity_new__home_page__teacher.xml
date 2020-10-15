@@ -33,8 +33,6 @@
                 android:layout_height="match_parent"
                 android:textSize="30sp"
                 android:text="IUT ASSISTANT"
-                android:fontFamily="@font/smile"
-                android:textColorHighlight="@color/themeGreen"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
@@ -86,21 +84,20 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/ic_class_info"
+                        android:src="@drawable/class_info"
                         />
 
-<!--                    <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:layout_margin="10dp"-->
-<!--                    android:background="@color/classinfo"-->
-<!--                    />-->
+                    <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/classinfo"
+                    />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/class_info"
-                        android:fontFamily="@font/smile"
+                        android:text="Assign Class"
                         android:textAlignment="center"
                         android:layout_gravity="center"
                         android:textStyle="bold"
@@ -135,21 +132,20 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/ic_project4"
+                        android:src="@drawable/projectss"
                         />
 
-<!--                    <View-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="1dp"-->
-<!--                        android:layout_margin="10dp"-->
-<!--                        android:background="@color/project"-->
-<!--                        />-->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/project"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/project"
-                        android:fontFamily="@font/smile"
                         android:textAlignment="center"
                         android:layout_gravity="center"
                         android:textStyle="bold"
@@ -185,21 +181,20 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/ic_attendence"
+                        android:src="@drawable/attendence"
                         />
 
-<!--                    <View-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="1dp"-->
-<!--                        android:layout_margin="10dp"-->
-<!--                        android:background="@color/option3"-->
-<!--                        />-->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/option3"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Attendence"
-                        android:fontFamily="@font/smile"
                         android:textAlignment="center"
                         android:layout_gravity="center"
                         android:textStyle="bold"
@@ -235,21 +230,20 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/ic_announcement"
+                        android:src="@drawable/announcement"
                         />
 
-<!--                    <View-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="1dp"-->
-<!--                        android:layout_margin="10dp"-->
-<!--                        android:background="@color/option4"-->
-<!--                        />-->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/option4"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Announcement"
-                        android:fontFamily="@font/smile"
                         android:textAlignment="center"
                         android:layout_gravity="center"
                         android:textStyle="bold"
