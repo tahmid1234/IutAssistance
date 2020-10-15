@@ -1,6 +1,9 @@
 package com.example.iutassistant.Acitivities;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import android.view.View;
@@ -26,12 +29,15 @@ import android.view.Menu;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class TeachersHomePage extends AppCompatActivity
 
 
         implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
+
+
 
     private ImageView profileimageview, classResheduling, assignment_img, quiz_img;
     Button courses, moreimageview;
@@ -50,6 +56,8 @@ public class TeachersHomePage extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         databaseReference = FirebaseDatabase.getInstance().getReference("Post");
+
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -191,6 +199,10 @@ public class TeachersHomePage extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+
 
   /*  public void addItemsOnSextion() {
 

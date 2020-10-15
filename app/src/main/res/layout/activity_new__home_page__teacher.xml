@@ -33,6 +33,7 @@
                 android:layout_height="match_parent"
                 android:textSize="30sp"
                 android:text="IUT ASSISTANT"
+                android:textColorHighlight="@color/themeGreen"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
@@ -62,13 +63,15 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/classInfoId_teacher"
                 android:clickable="true"
+                android:onClick="PopupScreen"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="6dp"
                 android:layout_margin="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
                 >
 
                 <LinearLayout
@@ -82,15 +85,15 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/class_info"
+                        android:src="@drawable/ic_class_info"
                         />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/classinfo"
-                        />
+<!--                    <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:background="@color/classinfo"-->
+<!--                    />-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -112,10 +115,11 @@
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="6dp"
                 android:layout_margin="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
                 >
 
                 <LinearLayout
@@ -129,15 +133,15 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/projectss"
+                        android:src="@drawable/ic_project4"
                         />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/project"
-                        />
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        android:background="@color/project"-->
+<!--                        />-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -160,10 +164,11 @@
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="6dp"
                 android:layout_margin="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
                 >
 
                 <LinearLayout
@@ -177,15 +182,15 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/attendence"
+                        android:src="@drawable/ic_attendence"
                         />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/option3"
-                        />
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        android:background="@color/option3"-->
+<!--                        />-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -207,10 +212,11 @@
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="6dp"
                 android:layout_margin="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
                 >
 
                 <LinearLayout
@@ -225,15 +231,15 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/announcement"
+                        android:src="@drawable/ic_announcement"
                         />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/option4"
-                        />
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        android:background="@color/option4"-->
+<!--                        />-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -249,9 +255,11 @@
 
             </androidx.cardview.widget.CardView>
 
-
-
         </GridLayout>
+
+
+
+
 
 
     </LinearLayout>

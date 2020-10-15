@@ -3,10 +3,15 @@ package com.example.iutassistant.NewActivities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.iutassistant.Extra.Constant;
@@ -33,6 +38,7 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
     FirebaseDatabase database;
     DatabaseReference ref;
     private IHomePagePresenter presenter;
+    Dialog myDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +58,9 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         presenter=new HomePagePresenter(this,userInfoCheck,logInSTate,Constant.Teacher_Node,this
         );
         presenter.onOpeningHomePage();
+
+        myDialog = new Dialog(this);
+
         System.out.println(userInfoCheck.getString(Constant.user_email_preference,"no")+" "+(userInfoCheck.getBoolean(Constant.user_exists_preference,false)));
 
         if(!(userInfoCheck.getBoolean(Constant.user_exists_preference,false)))
@@ -64,7 +73,8 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
 
         projects.setOnClickListener(this);
         attendence.setOnClickListener(this);
-        classInfo.setOnClickListener(this);
+        //classInfo.setOnClickListener(this);  pop up screen er jonno eta of  kora. pop up drkr na hoile eta on kora lagbe abar
+
     }
 
     @Override
@@ -81,9 +91,11 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
             startActivity(intent);
         }
         else if(view.getId() == R.id.classInfoId_teacher){
-            Intent intent = new Intent(getApplicationContext(), Teachers_Class_Invitation.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            //Intent intent = new Intent(getApplicationContext(), Teachers_Class_Invitation.class);
+            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            //startActivity(intent);
+
+
         }
 
 
@@ -99,5 +111,22 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         *
         */
         //System.out.println(courseModels.get(0).getName());
+    }
+
+    public void PopupScreen(View v) {
+        TextView txtclose;
+        Button doneBtn;
+        myDialog.setContentView(R.layout.course_selection_popup);
+        txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
+        txtclose.setText("X");
+        doneBtn= (Button) myDialog.findViewById(R.id.popUpBtn);
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
     }
 }

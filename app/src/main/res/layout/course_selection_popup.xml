@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="300dp"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    >
+
+    <TextView
+        android:id="@+id/txtclose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:layout_gravity="end"
+        android:text="X"
+        android:background="@drawable/white_round"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+
+
+        <AutoCompleteTextView
+            android:id="@+id/sectionField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Section"
+            android:background="@drawable/bg_edittext"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:layout_margin="15dp"
+            >
+        </AutoCompleteTextView>
+
+
+        <AutoCompleteTextView
+            android:id="@+id/CourseField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Course"
+            android:background="@drawable/bg_edittext"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:layout_margin="15dp"
+            >
+        </AutoCompleteTextView>
+
+        <Button
+            android:id="@+id/popUpBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:background="@drawable/pop_up_btn_shape"
+            android:layout_margin="15dp"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center_horizontal"
+            >
+
+        </Button>
+
+
+
+    </LinearLayout>
+
