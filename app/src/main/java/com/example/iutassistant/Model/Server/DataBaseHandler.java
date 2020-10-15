@@ -1,4 +1,4 @@
-package com.example.iutassistant.Server;
+package com.example.iutassistant.Model.Server;
 
 import com.example.iutassistant.Model.IModel;
 

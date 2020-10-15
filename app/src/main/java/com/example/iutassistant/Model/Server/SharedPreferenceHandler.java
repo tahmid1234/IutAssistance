@@ -1,10 +1,9 @@
-package com.example.iutassistant.Server;
+package com.example.iutassistant.Model.Server;
 
 import android.content.SharedPreferences;
 
 import com.example.iutassistant.Model.IModel;
-import com.example.iutassistant.Presenter.Connectors.DatabaseConnector;
-import com.example.iutassistant.Presenter.Connectors.ISharePreferenceConnector;
+import com.example.iutassistant.Model.Connectors.ISharePreferenceConnector;
 import com.google.gson.Gson;
 
 public class SharedPreferenceHandler implements DataBaseHandler {

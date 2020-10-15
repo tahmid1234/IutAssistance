@@ -1,8 +1,7 @@
-package com.example.iutassistant.Presenter.Connectors;
+package com.example.iutassistant.Model.Connectors;
 
 import com.example.iutassistant.Model.IModel;
-import com.example.iutassistant.Server.DataBaseHandler;
-import com.google.firebase.database.DataSnapshot;
+import com.example.iutassistant.Model.Server.DataBaseHandler;
 
 public abstract class DatabaseConnector {
 

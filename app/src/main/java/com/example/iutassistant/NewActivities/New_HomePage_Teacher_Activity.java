@@ -38,7 +38,7 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new__home_page__teacher);
-
+        
         IPopUpClassAssignmentPresenter iPopUpClassAssignmentPresenter=new PopUpClassAssignPresenterI(this);
         //this method to be called after pop up
         //iPopUpClassAssignmentPresenter.fetchCourseLIst();

@@ -5,13 +5,12 @@ import android.content.SharedPreferences;
 
 import com.example.iutassistant.Model.IdentityModel;
 import com.example.iutassistant.Model.User;
-import com.example.iutassistant.Presenter.Connectors.DatabaseConnector;
-import com.example.iutassistant.Presenter.Connectors.IdentityFirebaseConnector;
-import com.example.iutassistant.Presenter.Connectors.UserFirebaseConnector;
-import com.example.iutassistant.Presenter.Connectors.UserSPConnector;
+import com.example.iutassistant.Model.Connectors.DatabaseConnector;
+import com.example.iutassistant.Model.Connectors.IdentityFirebaseConnector;
+import com.example.iutassistant.Model.Connectors.UserFirebaseConnector;
+import com.example.iutassistant.Model.Connectors.UserSPConnector;
 import com.example.iutassistant.View.IHomePageView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
 public class HomePagePresenter implements IHomePagePresenter, FireBaseIdentityPresenter, FirebaseUserPresenter,SharedPreferenceUserPresenter {

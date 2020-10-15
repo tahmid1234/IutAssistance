@@ -1,9 +1,9 @@
-package com.example.iutassistant.Server;
+package com.example.iutassistant.Model.Server;
 
 import androidx.annotation.NonNull;
 
 import com.example.iutassistant.Model.IModel;
-import com.example.iutassistant.Presenter.Connectors.FirebaseConnector;
+import com.example.iutassistant.Model.Connectors.FirebaseConnector;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

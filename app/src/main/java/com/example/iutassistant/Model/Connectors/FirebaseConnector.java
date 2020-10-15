@@ -1,4 +1,4 @@
-package com.example.iutassistant.Presenter.Connectors;
+package com.example.iutassistant.Model.Connectors;
 
 import com.google.firebase.database.DataSnapshot;
 

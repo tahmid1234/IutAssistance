@@ -1,10 +1,10 @@
-package com.example.iutassistant.Presenter.Connectors;
+package com.example.iutassistant.Model.Connectors;
 
 import com.example.iutassistant.Extra.Constant;
 import com.example.iutassistant.Model.CourseModel;
 import com.example.iutassistant.Model.IModel;
 import com.example.iutassistant.Presenter.IFirebaseCourseListPresenter;
-import com.example.iutassistant.Server.FirebaseDataBaseHandler;
+import com.example.iutassistant.Model.Server.FirebaseDataBaseHandler;
 import com.google.firebase.database.DataSnapshot;
 
 import java.util.ArrayList;
@@ -25,16 +25,7 @@ public class CourseListFirebaseConnector extends DatabaseConnector implements Fi
 
 
 
-    @Override
-    public void postData(IModel iModel) {
-        super.postData(iModel);
-    }
 
-    @Override
-    public void getData() {
-        super.getData();
-
-    }
 
     @Override
     public void convertDataSnapShot(DataSnapshot dataSnapshot) {
