@@ -10,4 +10,6 @@
     <color name="option4">#FF5722</color>
     <color name="borderColor">#2CA01D</color>
     <color name="redColor">#F44336</color>
+
+    <color name="themeGreen">#2CA01D</color>
 </resources>
