@@ -29,7 +29,7 @@ public class CourseListFirebaseConnector extends DatabaseConnector implements Fi
 
     @Override
     public void convertDataSnapShot(DataSnapshot dataSnapshot) {
-        System.out.println(dataSnapshot);
+
         for(DataSnapshot ds:dataSnapshot.getChildren()){
             String key=ds.getKey();
             CourseModel courseModel=ds.getValue(CourseModel.class);

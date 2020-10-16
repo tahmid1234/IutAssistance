@@ -7,6 +7,7 @@ import com.example.iutassistant.Model.Connectors.DatabaseConnector;
 import com.example.iutassistant.Model.Section;
 import com.example.iutassistant.View.IClassAssignmentPopUpView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PopUpClassAssignPresenterI implements IFirebaseCourseListPresenter,IPopUpClassAssignmentPresenter,IFirebaseSectionListPresenter {
@@ -26,7 +27,11 @@ public class PopUpClassAssignPresenterI implements IFirebaseCourseListPresenter,
 
     @Override
     public void useFireBaseCourseModelList(List<CourseModel> courseModelList) {
-            iClassAssignmentPopUpView.makeCourseListSpinner(courseModelList);
+        List<String> courseNameList =new ArrayList<>();
+        for (CourseModel course:courseModelList){
+            courseNameList.add(course.getName());
+        }
+            iClassAssignmentPopUpView.makeCourseListSpinner(courseNameList);
     }
 
     @Override
@@ -43,6 +48,12 @@ public class PopUpClassAssignPresenterI implements IFirebaseCourseListPresenter,
 
     @Override
     public void useFirebaseSectionlList(List<Section> sectionList) {
-        System.out.println(sectionList.get(0).getSectionName()+" "+sectionList.size());
+
+        List<String> sectionNameList =new ArrayList<>();
+        for (Section section:sectionList){
+            sectionNameList.add(section.getSectionName());
+        }
+        iClassAssignmentPopUpView.makeSectionListSpinner(sectionNameList);
+
     }
 }
