@@ -27,7 +27,7 @@ public class SectionListFirebaseConnector extends DatabaseConnector implements F
 
     @Override
     public void convertDataSnapShot(DataSnapshot dataSnapshot) {
-        System.out.println(dataSnapshot);
+
         for(DataSnapshot sectionDataSnapshot:dataSnapshot.getChildren()){
             String key=sectionDataSnapshot.getKey();
             Section section=new Section();

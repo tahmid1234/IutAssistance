@@ -23,7 +23,7 @@ public class UserFirebaseConnector extends DatabaseConnector implements Firebase
         super.dataBaseHandler =new FirebaseDataBaseHandler(this,path);
     }
 
-    
+
 
     @Override
     public void convertDataSnapShot(DataSnapshot dataSnapshot) {

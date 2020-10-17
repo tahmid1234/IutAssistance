@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.iutassistant.Extra.Constant;
 import com.example.iutassistant.Model.CourseModel;
+import com.example.iutassistant.Model.Section;
 import com.example.iutassistant.Presenter.HomePagePresenter;
 import com.example.iutassistant.Presenter.IHomePagePresenter;
 import com.example.iutassistant.Presenter.IPopUpClassAssignmentPresenter;
@@ -45,9 +46,7 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new__home_page__teacher);
         
-        IPopUpClassAssignmentPresenter iPopUpClassAssignmentPresenter=new PopUpClassAssignPresenterI(this);
-        //this method to be called after pop up
-        //iPopUpClassAssignmentPresenter.fetchCourseLIst();
+
         classInfo = findViewById(R.id.classInfoId_teacher);
         projects = findViewById(R.id.projectId_teacher);
         attendence = findViewById(R.id.attendenceId_teacher);
@@ -63,12 +62,7 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
 
         System.out.println(userInfoCheck.getString(Constant.user_email_preference,"no")+" "+(userInfoCheck.getBoolean(Constant.user_exists_preference,false)));
 
-        if(!(userInfoCheck.getBoolean(Constant.user_exists_preference,false)))
-        {
-            UserInfoSharedPreferenceSingleTone.storeUserInfo(userInfoCheck,logInSTate,"Teachers",database,ref,uid);
-        }
 
-        Toast.makeText(this, userInfoCheck.getString(Constant.username_preference,"N/A"), Toast.LENGTH_SHORT).show();
 
 
         projects.setOnClickListener(this);
@@ -103,17 +97,19 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
 
 
     }
-    //pop up course spinner section
-    public void makeCourseListSpinner(List<CourseModel> courseModels){
-        /*ami toke course list pathai disi tui ekhn ei list je vabe khushi use korbi as in pop up hole jei course er spinner asbe
-        ota banabi.age pop up bana then eta use korte parbi ar ki
 
-        *
-        */
-        //System.out.println(courseModels.get(0).getName());
-    }
 
     public void PopupScreen(View v) {
+
+        IPopUpClassAssignmentPresenter iPopUpClassAssignmentPresenter=new PopUpClassAssignPresenterI(this);
+        /*
+        * these two methods are called for fetching all offered course
+        * and all existed section for teachers to assign a course to a section as a class
+         */
+        iPopUpClassAssignmentPresenter.fetchCourseLIst();
+        iPopUpClassAssignmentPresenter.fetchSectionList();
+
+
         TextView txtclose;
         Button doneBtn;
         myDialog.setContentView(R.layout.course_selection_popup);
@@ -128,5 +124,26 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
+    }
+
+    //pop up course spinner section
+    public void makeCourseListSpinner(List<String> courseModels){
+        /*ami toke course list pathai disi tui ekhn ei list je vabe khushi use korbi as in pop up hole jei course er spinner asbe
+        ota banabi.age pop up bana then eta use korte parbi ar ki
+
+        *
+        */
+        //running a loop on get(i) will give u all courses name
+        System.out.println(courseModels.get(0));
+    }
+    public void makeSectionListSpinner(List<String> sections){
+        /*ami toke course list pathai disi tui ekhn ei list je vabe khushi use korbi as in pop up hole jei course er spinner asbe
+        ota banabi.age pop up bana then eta use korte parbi ar ki
+        auto text hob ar ki
+
+        *
+        */
+        //this running a loop on get(i) function will give u all sections name
+        System.out.println(sections.get(0));
     }
 }
