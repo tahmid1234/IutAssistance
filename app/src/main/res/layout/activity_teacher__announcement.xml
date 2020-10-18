@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Acitivities.Teacher_Announcement">
+    tools:context=".Acitivities.Teachers_ClassInfo">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Announcement"
+                    android:text="Class Info"
                     android:textSize="30sp"
                     android:typeface="monospace"
                     android:textColor="#ffffff"
@@ -46,16 +46,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
+                android:orientation="horizontal"
+                android:gravity="center"
                 >
 
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tablayoutId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:tabTextColor="#FFFFFF"
-                    >
 
-                </com.google.android.material.tabs.TabLayout>
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tablayoutId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tabTextColor="#E0E5DB"
+                        app:tabSelectedTextColor="#FFFFFF"
+                        >
+
+                    </com.google.android.material.tabs.TabLayout>
+
+
+
+
 
             </LinearLayout>
 
@@ -67,7 +75,6 @@
             android:layout_height="0dp"
             android:layout_weight="8.5"
             android:orientation="vertical"
-            android:layout_marginHorizontal="15dp"
             >
 
 

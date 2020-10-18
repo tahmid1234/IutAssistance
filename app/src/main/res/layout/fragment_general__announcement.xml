@@ -1,14 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Acitivities.General_Announcement">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/iut"
+        android:alpha="0.05">
 
-</FrameLayout>
+    </ImageView>
+
+    <LinearLayout
+        android:layout_marginHorizontal="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        >
+
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_columnWeight="1"-->
+<!--        android:layout_rowWeight="1"-->
+<!--        app:cardCornerRadius="6dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        >-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="10dp">-->
+
+<!--            <EditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:hint="Enter details..."-->
+<!--                android:padding="5dp"-->
+<!--                android:background="@drawable/white_round"-->
+<!--                >-->
+
+<!--            </EditText>-->
+
+
+<!--        </LinearLayout>-->
+
+
+<!--    </androidx.cardview.widget.CardView>-->
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:hint="Enter details..."
+            android:padding="5dp"
+            android:background="@drawable/round_linear_corner"
+            >
+
+        </EditText>
+
+
+
+    <Button
+        android:id="@+id/generalPost"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Post"
+        android:background="@drawable/pop_up_btn_shape"
+        android:layout_margin="15dp"
+        android:textColor="@color/borderColor"
+        android:layout_gravity="center_horizontal"
+        >
+
+    </Button>
+
+    </LinearLayout>
+
+</RelativeLayout>

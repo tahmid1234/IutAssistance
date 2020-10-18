@@ -12,17 +12,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.iutassistant.Acitivities.Teachers_ClassInfo;
 import com.example.iutassistant.Extra.Constant;
-import com.example.iutassistant.Model.CourseModel;
-import com.example.iutassistant.Model.Section;
 import com.example.iutassistant.Presenter.HomePagePresenter;
 import com.example.iutassistant.Presenter.IHomePagePresenter;
 import com.example.iutassistant.Presenter.IPopUpClassAssignmentPresenter;
 import com.example.iutassistant.Presenter.PopUpClassAssignPresenterI;
 import com.example.iutassistant.R;
-import com.example.iutassistant.SingleTone.UserInfoSharedPreferenceSingleTone;
 import com.example.iutassistant.View.IClassAssignmentPopUpView;
 import com.example.iutassistant.View.IHomePageView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -68,6 +65,7 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         projects.setOnClickListener(this);
         attendence.setOnClickListener(this);
         //classInfo.setOnClickListener(this);  pop up screen er jonno eta of  kora. pop up drkr na hoile eta on kora lagbe abar
+        announcement.setOnClickListener(this);
 
     }
 
@@ -90,6 +88,12 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
             //startActivity(intent);
 
 
+        }
+
+        else if(view.getId() == R.id.announcementId_teacher){
+            Intent intent = new Intent(getApplicationContext(), Teachers_ClassInfo.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
 
 

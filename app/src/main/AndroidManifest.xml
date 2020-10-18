@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Acitivities.Teacher_Announcement"></activity>
+        <activity android:name=".Acitivities.Teachers_ClassInfo"></activity>
         <activity android:name=".NewActivities.Teachers_Class_Invitation" />
         <activity android:name=".Acitivities.Course_Details_Student" />
         <activity android:name=".NewActivities.New_Class_Info_Student" />

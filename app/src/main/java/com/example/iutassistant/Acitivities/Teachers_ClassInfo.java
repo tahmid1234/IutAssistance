@@ -13,7 +13,7 @@ import android.os.Bundle;
 import com.example.iutassistant.R;
 import com.google.android.material.tabs.TabLayout;
 
-public class Teacher_Announcement extends AppCompatActivity {
+public class Teachers_ClassInfo extends AppCompatActivity {
 
     private TabLayout tablayout;
     private ViewPager viewpager;
@@ -50,7 +50,7 @@ public class Teacher_Announcement extends AppCompatActivity {
 
     class MyPagerAdapter extends FragmentPagerAdapter {
 
-        String[] text = {"Quiz", "Assignment","General"};
+        String[] text = {"Courses","Quiz", "Task","Others"};
         public MyPagerAdapter(@NonNull FragmentManager fm) {
             super(fm);
         }
@@ -60,14 +60,17 @@ public class Teacher_Announcement extends AppCompatActivity {
         public Fragment getItem(int position) {
 
             if(position == 0){
-                return new Quiz_Announcement();
+                return new Taken_Course();
             }
 
             if(position == 1){
-                return new Assignment_Announcement();
+                return new Quiz_Announcement();
             }
 
             if(position == 2){
+                return new Assignment_Announcement();
+            }
+            if(position == 3){
                 return new General_Announcement();
             }
 
