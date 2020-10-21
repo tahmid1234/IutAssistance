@@ -6,6 +6,8 @@ import com.example.iutassistant.Model.User;
 import com.example.iutassistant.Presenter.FirebaseUserPresenter;
 import com.example.iutassistant.Model.Server.FirebaseDataBaseHandler;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class UserFirebaseConnector extends DatabaseConnector implements FirebaseConnector {
 
@@ -13,6 +15,7 @@ public class UserFirebaseConnector extends DatabaseConnector implements Firebase
     private FirebaseUserPresenter firebaseUserPresenter;
     private String path;
     private User user;
+    private DatabaseReference databaseReference;
 
     public UserFirebaseConnector(FirebaseUserPresenter firebaseUserPresenter, String identity, String profession) {
 
@@ -20,7 +23,8 @@ public class UserFirebaseConnector extends DatabaseConnector implements Firebase
 
 
         path=Constant.Ref+"/"+profession+"/"+identity;
-        super.dataBaseHandler =new FirebaseDataBaseHandler(this,path);
+        databaseReference= FirebaseDatabase.getInstance().getReference().child(path);
+        super.dataBaseHandler =new FirebaseDataBaseHandler(this,databaseReference);
     }
 
 
@@ -29,6 +33,16 @@ public class UserFirebaseConnector extends DatabaseConnector implements Firebase
     public void convertDataSnapShot(DataSnapshot dataSnapshot) {
             user=dataSnapshot.getValue(User.class);
             firebaseUserPresenter.useFireBaseUserModel(user);
+
+    }
+
+    @Override
+    public void setErrorStatus(String error) {
+
+    }
+
+    @Override
+    public void onDataNotExist() {
 
     }
 }

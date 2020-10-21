@@ -13,7 +13,7 @@ import com.example.iutassistant.View.IHomePageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
-public class HomePagePresenter implements IHomePagePresenter, FireBaseIdentityPresenter, FirebaseUserPresenter,SharedPreferenceUserPresenter {
+public class HomePagePresenter implements IHomePagePresenter, FireBaseIdentityPresenter, FirebaseUserPresenter,SharedPreferenceUserPresenter ,Presenter{
 
     private   IHomePageView iHomePageView;
     private   User user;
@@ -72,5 +72,13 @@ public class HomePagePresenter implements IHomePagePresenter, FireBaseIdentityPr
     @Override
     public void useSpUserModel(User user) {
             //implemet
+    }
+    public void sendErrorStatus(){
+
+    }
+
+    @Override
+    public void sendWarning(String status) {
+       // System.out.println(status+" error status");
     }
 }

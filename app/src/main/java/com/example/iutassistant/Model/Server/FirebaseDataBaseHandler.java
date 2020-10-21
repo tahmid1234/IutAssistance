@@ -4,10 +4,10 @@ import androidx.annotation.NonNull;
 
 import com.example.iutassistant.Model.IModel;
 import com.example.iutassistant.Model.Connectors.FirebaseConnector;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class FirebaseDataBaseHandler implements DataBaseHandler {
@@ -24,10 +24,13 @@ public class FirebaseDataBaseHandler implements DataBaseHandler {
 
     private FirebaseConnector firebaseConnector;
 
-    public FirebaseDataBaseHandler(FirebaseConnector firebaseConnector,String path) {
-        this.path=path;
+
+
+    public FirebaseDataBaseHandler(FirebaseConnector firebaseConnector,DatabaseReference databaseReference) {
+
         this.firebaseConnector=firebaseConnector;
-        databaseReference= FirebaseDatabase.getInstance().getReference().child(path);
+        this.databaseReference= databaseReference;
+
 
     }
 
@@ -48,11 +51,14 @@ public class FirebaseDataBaseHandler implements DataBaseHandler {
 
                     firebaseConnector.convertDataSnapShot(dataSnapshot);
                 }
+                else {
+                    firebaseConnector.onDataNotExist();
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                firebaseConnector.setErrorStatus(databaseError.toString());
             }
         };
         databaseReference.addListenerForSingleValueEvent(valueEventListener);
@@ -63,6 +69,12 @@ public class FirebaseDataBaseHandler implements DataBaseHandler {
 
     @Override
     public void send(IModel model) {
-        databaseReference.setValue(model);
+        firebaseConnector.setErrorStatus("true");
+        databaseReference.setValue(model).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                firebaseConnector.setErrorStatus(e.toString());
+            }
+        });
     }
 }

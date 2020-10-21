@@ -37,6 +37,8 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
     DatabaseReference ref;
     private IHomePagePresenter presenter;
     Dialog myDialog;
+    TextView txtclose;
+    Button doneBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +88,6 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
             //Intent intent = new Intent(getApplicationContext(), Teachers_Class_Invitation.class);
             //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             //startActivity(intent);
-
-
         }
 
         else if(view.getId() == R.id.announcementId_teacher){
@@ -95,17 +95,12 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
-
-
-
-
-
-    }
+ }
 
 
     public void PopupScreen(View v) {
 
-        IPopUpClassAssignmentPresenter iPopUpClassAssignmentPresenter=new PopUpClassAssignPresenterI(this);
+        IPopUpClassAssignmentPresenter iPopUpClassAssignmentPresenter=new PopUpClassAssignPresenterI(this,this);
         /*
         * these two methods are called for fetching all offered course
         * and all existed section for teachers to assign a course to a section as a class
@@ -114,11 +109,11 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         iPopUpClassAssignmentPresenter.fetchSectionList();
 
 
-        TextView txtclose;
-        Button doneBtn;
+
         myDialog.setContentView(R.layout.course_selection_popup);
         txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
         txtclose.setText("X");
+
         doneBtn= (Button) myDialog.findViewById(R.id.popUpBtn);
         txtclose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,12 +129,12 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
     public void makeCourseListSpinner(List<String> courseModels){
         /*ami toke course list pathai disi tui ekhn ei list je vabe khushi use korbi as in pop up hole jei course er spinner asbe
         ota banabi.age pop up bana then eta use korte parbi ar ki
-
         *
         */
         //running a loop on get(i) will give u all courses name
         System.out.println(courseModels.get(0));
     }
+
     public void makeSectionListSpinner(List<String> sections){
         /*ami toke course list pathai disi tui ekhn ei list je vabe khushi use korbi as in pop up hole jei course er spinner asbe
         ota banabi.age pop up bana then eta use korte parbi ar ki
@@ -150,4 +145,7 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         //this running a loop on get(i) function will give u all sections name
         System.out.println(sections.get(0));
     }
+
+
+
 }

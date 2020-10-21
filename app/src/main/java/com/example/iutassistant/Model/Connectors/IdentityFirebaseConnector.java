@@ -1,12 +1,13 @@
 package com.example.iutassistant.Model.Connectors;
 
 import com.example.iutassistant.Extra.Constant;
-import com.example.iutassistant.Model.IModel;
 import com.example.iutassistant.Model.IdentityModel;
 import com.example.iutassistant.Presenter.FireBaseIdentityPresenter;
 import com.example.iutassistant.Model.Server.FirebaseDataBaseHandler;
+import com.example.iutassistant.Presenter.Presenter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class IdentityFirebaseConnector extends DatabaseConnector implements FirebaseConnector {
     DatabaseReference databaseReference;
@@ -17,7 +18,9 @@ public class IdentityFirebaseConnector extends DatabaseConnector implements Fire
         this.fireBaseIdentityPresenter = fireBaseIdentityPresenter;
 
         path=Constant.Ref+"/"+Constant.IDENTITY_NODE+"/"+uid;
-        super.dataBaseHandler =new FirebaseDataBaseHandler(this,path);
+        databaseReference= FirebaseDatabase.getInstance().getReference().child(path);
+
+        super.dataBaseHandler =new FirebaseDataBaseHandler(this,databaseReference);
     }
 
 
@@ -27,6 +30,17 @@ public class IdentityFirebaseConnector extends DatabaseConnector implements Fire
 
           identityModel=  dataSnapshot.getValue(IdentityModel.class);
           fireBaseIdentityPresenter.useFireBaseIdentityModel(identityModel);
+
+    }
+
+    @Override
+    public void setErrorStatus(String status) {
+        Presenter presenter= (Presenter) fireBaseIdentityPresenter;
+        ((Presenter) fireBaseIdentityPresenter).sendWarning(status);
+    }
+
+    @Override
+    public void onDataNotExist() {
 
     }
 }

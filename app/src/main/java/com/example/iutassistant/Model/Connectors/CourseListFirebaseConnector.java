@@ -6,6 +6,8 @@ import com.example.iutassistant.Model.IModel;
 import com.example.iutassistant.Presenter.IFirebaseCourseListPresenter;
 import com.example.iutassistant.Model.Server.FirebaseDataBaseHandler;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +17,14 @@ public class CourseListFirebaseConnector extends DatabaseConnector implements Fi
     private IFirebaseCourseListPresenter firebaseCourseListPresenter;
     private String path;
     private List<CourseModel> courseModels;
+    private DatabaseReference databaseReference;
 
     public CourseListFirebaseConnector(IFirebaseCourseListPresenter firebaseCourseListPresenter) {
         this.firebaseCourseListPresenter = firebaseCourseListPresenter;
         path= Constant.Ref+"/"+Constant.Course_Node;
-        super.dataBaseHandler =new FirebaseDataBaseHandler(this,path);
+
+        databaseReference= FirebaseDatabase.getInstance().getReference().child(path);
+        super.dataBaseHandler =new FirebaseDataBaseHandler(this,databaseReference);
         courseModels=new ArrayList<CourseModel>();
     }
 
@@ -43,6 +48,16 @@ public class CourseListFirebaseConnector extends DatabaseConnector implements Fi
 
 
 
+
+    }
+
+    @Override
+    public void setErrorStatus(String error) {
+
+    }
+
+    @Override
+    public void onDataNotExist() {
 
     }
 }

@@ -87,6 +87,12 @@ public class Constant {
     public static final String Project_Status_Rejected_Node="Rejected";
 
 
+    //hints
+    public static final String CLASS_FIREBASE_CONNECTOR="CLASS FIREBASE CONNECTOR";
+    public static final String USER_SHARED_PREFERENCE_CONNECTOR="USER SP CONNECTOR";
+
+
+
 
 
 

@@ -6,6 +6,8 @@ import com.example.iutassistant.Model.Section;
 import com.example.iutassistant.Model.Server.FirebaseDataBaseHandler;
 import com.example.iutassistant.Presenter.IFirebaseSectionListPresenter;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +17,13 @@ public class SectionListFirebaseConnector extends DatabaseConnector implements F
     IFirebaseSectionListPresenter firebaseSectionListPresenter;
     private String path;
     private List<Section> sections;
+    DatabaseReference databaseReference;
 
     public SectionListFirebaseConnector(IFirebaseSectionListPresenter firebaseSectionListPresenter) {
         this.firebaseSectionListPresenter = firebaseSectionListPresenter;
         path= Constant.Ref+"/"+Constant.Section_Node;
-        super.dataBaseHandler =new FirebaseDataBaseHandler(this,path);
+        databaseReference= FirebaseDatabase.getInstance().getReference().child(path);
+        super.dataBaseHandler =new FirebaseDataBaseHandler(this,databaseReference);
         sections=new ArrayList<Section>();
     }
 
@@ -35,5 +39,15 @@ public class SectionListFirebaseConnector extends DatabaseConnector implements F
             sections.add(section);
         }
         firebaseSectionListPresenter.useFirebaseSectionlList(sections);
+    }
+
+    @Override
+    public void setErrorStatus(String error) {
+
+    }
+
+    @Override
+    public void onDataNotExist() {
+
     }
 }
