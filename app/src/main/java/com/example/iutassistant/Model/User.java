@@ -69,9 +69,9 @@ public class User implements IUser,IModel{
         return sec;
     }
 
-    public  String getEmailExtention(){ return email.substring(0,email.length()-5);}
+    public  String getEmailExtention(){ return email.substring(email.length()-4);}
 
-    public  String getEmailDomain(){ return email.substring(email.length()-4);}
+    public  String getEmailDomain(){ return email.substring(0,email.length()-5);}
 
     public String getEmail() {
         return email;

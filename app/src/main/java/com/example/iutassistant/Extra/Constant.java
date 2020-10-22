@@ -1,11 +1,15 @@
 package com.example.iutassistant.Extra;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Constant {
     /*Notification Channel ID */
     public static final String CHANNEL_ID = "notsch";
 
     //userInfo
     public static final String USER_INFO_SHARED_PREFERENCES = "info";
+
+    public static final String ASSIGNED_CLASSES_SHARED_PREFERENCES = "assignedClasses";
 
     public static final String user_exists_preference = "Userinfo";
     public static final String username_preference = "name";
@@ -89,7 +93,12 @@ public class Constant {
 
     //hints
     public static final String CLASS_FIREBASE_CONNECTOR="CLASS FIREBASE CONNECTOR";
+    public static final String TEACHES_FIREBASE_CONNECTOR="TEACHES FIREBASE CONNECTOR";
     public static final String USER_SHARED_PREFERENCE_CONNECTOR="USER SP CONNECTOR";
+    public static final String TEACHES_SHARED_PREFERENCE_CONNECTOR="TEACHES SP CONNECTOR";
+
+    //path
+    public static final String ASSIGNED_CLASSES_SHARED_PREFERENCE_PATH= FirebaseAuth.getInstance().getCurrentUser().getUid() +"classes";
 
 
 

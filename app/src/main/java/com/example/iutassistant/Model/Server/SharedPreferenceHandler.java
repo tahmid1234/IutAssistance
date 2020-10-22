@@ -21,6 +21,7 @@ public class SharedPreferenceHandler implements DataBaseHandler {
     public void receive() {
 
         String json = sharedPreference.getString(path, "");
+
         iSharePreferenceConnector.convertJson(json);
 
     }

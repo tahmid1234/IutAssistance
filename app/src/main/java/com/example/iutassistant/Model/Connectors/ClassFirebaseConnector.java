@@ -26,7 +26,7 @@ public class ClassFirebaseConnector extends DatabaseConnector implements Firebas
         this.firebaseClassPresenter = firebaseClassPresenter;
 
         path= Constant.Ref+"/"+Constant.Classes_Node+"/"+section+"/"+course;
-        System.out.println(path+" path ");
+
         databaseReference= FirebaseDatabase.getInstance().getReference().child(path);
         super.dataBaseHandler=new FirebaseDataBaseHandler(this,databaseReference);
     }

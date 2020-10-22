@@ -11,25 +11,27 @@ import com.example.iutassistant.Model.CourseModel;
 import com.example.iutassistant.Model.Connectors.CourseListFirebaseConnector;
 import com.example.iutassistant.Model.Connectors.DatabaseConnector;
 import com.example.iutassistant.Model.Section;
+import com.example.iutassistant.Model.Teaches;
 import com.example.iutassistant.Model.User;
 import com.example.iutassistant.View.IClassAssignmentPopUpView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PopUpClassAssignPresenterI implements IFirebaseCourseListPresenter,IPopUpClassAssignmentPresenter,IFirebaseSectionListPresenter,IFirebaseClassPresenter ,SharedPreferenceUserPresenter{
+public class PopUpClassAssignPresenterI implements IFirebaseCourseListPresenter,IPopUpClassAssignmentPresenter,IFirebaseSectionListPresenter,IFirebaseClassPresenter ,SharedPreferenceUserPresenter,IFirebaseTeachesPresenter,ISharedPreferenceTeachesPresenter{
 
    private IClassAssignmentPopUpView iClassAssignmentPopUpView;
    private DatabaseConnector databaseConnector;
    private DatabaseConnectorFactory databaseConnectorFactory;
-    private DatabaseConnector sharedPreferenceRecievingConector;
-   private DatabaseConnector firebaseRecievingConector;
-   private DatabaseConnector firebaseSendingConnector;
+    private DatabaseConnector sharedPreferenceRecievingConector,sharedPreferenceTeachesRecievingConector,sharedPreferenceTeachesSendingConector;
+   private DatabaseConnector firebaseRecievingConector,firebaseTeachesRecievingConector;
+   private DatabaseConnector firebaseSendingConnector,firebaseTeachesSendingConnector;
 
    private String course,section;
    private Context context;
+
+   private String userMailDomain;
 
     public PopUpClassAssignPresenterI(IClassAssignmentPopUpView iClassAssignmentPopUpView, Context context) {
         this.iClassAssignmentPopUpView = iClassAssignmentPopUpView;
@@ -64,7 +66,7 @@ public class PopUpClassAssignPresenterI implements IFirebaseCourseListPresenter,
     public void saveCLass(String section,String course) {
         this.section=section;
         this.course=course;
-        firebaseRecievingConector = databaseConnectorFactory.getDatabaseConnector(this,section,course, Constant.CLASS_FIREBASE_CONNECTOR);
+        firebaseRecievingConector = databaseConnectorFactory.getDatabaseConnector((IFirebaseClassPresenter) this,section,course, Constant.CLASS_FIREBASE_CONNECTOR);
         firebaseRecievingConector.getData();
     }
 
@@ -101,8 +103,51 @@ public class PopUpClassAssignPresenterI implements IFirebaseCourseListPresenter,
     @Override
     public void useSpUserModel(User user) {
         System.out.println(user.getEmail()+ "  ahskh");
+        userMailDomain =user.getEmailDomain();
         firebaseSendingConnector =new ClassFirebaseConnector(section,course);
         firebaseSendingConnector.postData(new AssignedClass(user.getEmail()));
 
+        firebaseTeachesRecievingConector=databaseConnectorFactory.getDatabaseConnector((IFirebaseTeachesPresenter)this, userMailDomain,section,Constant.TEACHES_FIREBASE_CONNECTOR);
+        firebaseTeachesRecievingConector.getData();
+
+        sharedPreferenceTeachesRecievingConector=databaseConnectorFactory.getDatabaseConnector(this,context,Constant.ASSIGNED_CLASSES_SHARED_PREFERENCE_PATH,Constant.TEACHES_FIREBASE_CONNECTOR);
+        sharedPreferenceTeachesRecievingConector.getData();
+
+
+
     }
+
+    @Override
+    public void useFireBaseTeaches(Teaches teaches) {
+        firebaseTeachesSendingConnector=databaseConnectorFactory.getDatabaseConnector(userMailDomain,section,Constant.TEACHES_FIREBASE_CONNECTOR);
+        firebaseTeachesSendingConnector.postData(new Teaches(teaches.getCourse()+","+course));
+
+
+    }
+
+    @Override
+    public void onTeachesDataNotFound() {
+
+        firebaseTeachesSendingConnector=databaseConnectorFactory.getDatabaseConnector(userMailDomain,section,Constant.TEACHES_FIREBASE_CONNECTOR);
+        firebaseTeachesSendingConnector.postData(new Teaches(course));
+
+    }
+
+    @Override
+    public void useSharedPreferenceTeachesModel(Teaches teaches) {
+
+        sharedPreferenceTeachesSendingConector=databaseConnectorFactory.getDatabaseConnector(context,Constant.ASSIGNED_CLASSES_SHARED_PREFERENCE_PATH,Constant.TEACHES_FIREBASE_CONNECTOR);
+
+        try {
+            
+
+            sharedPreferenceTeachesSendingConector.postData(new Teaches(teaches.getCourse()+","+course,teaches.getSection()+","+section));
+
+
+        }
+        catch (Exception e){
+            sharedPreferenceTeachesSendingConector.postData(new Teaches(course,section));
+
+        }
+          }
 }

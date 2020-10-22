@@ -113,8 +113,13 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         myDialog.setContentView(R.layout.course_selection_popup);
         txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
         txtclose.setText("X");
-
         doneBtn= (Button) myDialog.findViewById(R.id.popUpBtn);
+        doneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iPopUpClassAssignmentPresenter.saveCLass("SWE17 3","CSE5690");
+            }
+        });
         txtclose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
