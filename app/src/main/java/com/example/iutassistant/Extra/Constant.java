@@ -100,6 +100,10 @@ public class Constant {
     //path
     public static final String ASSIGNED_CLASSES_SHARED_PREFERENCE_PATH= FirebaseAuth.getInstance().getCurrentUser().getUid() +"classes";
 
+    //Warning
+    public static final String ALREADY_TAKEN_CLASSES_WARNING="-> contact with the email user to add yourseld a co-assistant teacher";
+
+
 
 
 

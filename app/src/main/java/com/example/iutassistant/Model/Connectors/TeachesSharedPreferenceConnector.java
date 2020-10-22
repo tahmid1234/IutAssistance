@@ -39,7 +39,7 @@ public class TeachesSharedPreferenceConnector extends DatabaseConnector implemen
     @Override
     public void convertJson(String json) {
         Gson gson = new Gson();
-        System.out.println(json+" json");
+
         teaches = gson.fromJson(json, Teaches.class);
 
 

@@ -10,6 +10,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -39,6 +41,10 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
     Dialog myDialog;
     TextView txtclose;
     Button doneBtn;
+    AutoCompleteTextView atCourse;
+
+    //pop up er e hok r main page er e hok joto button, lebel,shob variable ekhene declare koriss
+    //r kaaj shesh hole amr bangla comment gulo muche diss
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,12 +120,9 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
         txtclose.setText("X");
         doneBtn= (Button) myDialog.findViewById(R.id.popUpBtn);
-        doneBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iPopUpClassAssignmentPresenter.saveCLass("SWE17 3","CSE5690");
-            }
-        });
+
+        atCourse =(AutoCompleteTextView) myDialog.findViewById(R.id.CourseField) ;
+
         txtclose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,12 +135,12 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
 
     //pop up course spinner section
     public void makeCourseListSpinner(List<String> courseModels){
-        /*ami toke course list pathai disi tui ekhn ei list je vabe khushi use korbi as in pop up hole jei course er spinner asbe
-        ota banabi.age pop up bana then eta use korte parbi ar ki
-        *
-        */
-        //running a loop on get(i) will give u all courses name
-        System.out.println(courseModels.get(0));
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, courseModels);
+
+        atCourse.setThreshold(1);
+        atCourse.setAdapter(dataAdapter);
+        System.out.println(courseModels+ " wooo");
     }
 
     public void makeSectionListSpinner(List<String> sections){
@@ -151,6 +154,16 @@ public class New_HomePage_Teacher_Activity extends AppCompatActivity implements 
         System.out.println(sections.get(0));
     }
 
+    @Override
+    public void showWarning(String warning) {
+        /*
+        pop up a ekta warning level add kor then ei string ta print kor
+         */
+    }
+
+    // button function gulo alda kore likh oi dialog er okhane onek elo melo lagtese
+    //assign button er vitor iPopupClassAssignment.saveClass(section,course) evabe call korbi
+    //section mani auto text view theke jei section select korsi,course er o same,selected course
 
 
 }

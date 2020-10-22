@@ -10,4 +10,6 @@ public interface IClassAssignmentPopUpView {
     public void makeCourseListSpinner(List<String> courseModels);
 
     public void makeSectionListSpinner(List<String> sections);
+
+    public void showWarning(String warning);
 }

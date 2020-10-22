@@ -50,7 +50,7 @@ public class PopUpClassAssignPresenterI implements IFirebaseCourseListPresenter,
     public void useFireBaseCourseModelList(List<CourseModel> courseModelList) {
         List<String> courseNameList =new ArrayList<>();
         for (CourseModel course:courseModelList){
-            courseNameList.add(course.getName());
+            courseNameList.add(course.getCourseCode()+" ("+course.getName()+") ");
         }
             iClassAssignmentPopUpView.makeCourseListSpinner(courseNameList);
     }
@@ -87,7 +87,8 @@ public class PopUpClassAssignPresenterI implements IFirebaseCourseListPresenter,
     public void useFireBaseAssignedClass(AssignedClass assignedClass) {
 
         String emails=assignedClass.getTeachersEmail();
-        System.out.println(emails+" Contact any one of these email user to add u as a co-assistant teacher");
+        iClassAssignmentPopUpView.showWarning(emails+Constant.ALREADY_TAKEN_CLASSES_WARNING);
+
 
 
     }
@@ -102,7 +103,7 @@ public class PopUpClassAssignPresenterI implements IFirebaseCourseListPresenter,
 
     @Override
     public void useSpUserModel(User user) {
-        System.out.println(user.getEmail()+ "  ahskh");
+
         userMailDomain =user.getEmailDomain();
         firebaseSendingConnector =new ClassFirebaseConnector(section,course);
         firebaseSendingConnector.postData(new AssignedClass(user.getEmail()));
@@ -139,7 +140,7 @@ public class PopUpClassAssignPresenterI implements IFirebaseCourseListPresenter,
         sharedPreferenceTeachesSendingConector=databaseConnectorFactory.getDatabaseConnector(context,Constant.ASSIGNED_CLASSES_SHARED_PREFERENCE_PATH,Constant.TEACHES_FIREBASE_CONNECTOR);
 
         try {
-            
+
 
             sharedPreferenceTeachesSendingConector.postData(new Teaches(teaches.getCourse()+","+course,teaches.getSection()+","+section));
 
